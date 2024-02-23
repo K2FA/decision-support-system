@@ -20,7 +20,7 @@ export default function Sidebar() {
             </button>
             {/* Brand */}
             <Link
-              className="md:block text-left md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-lg uppercase font-extrabold p-4 px-0"
+              className="md:block md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-lg uppercase font-extrabold p-4 px-0 border-b border-gray-400 text-center"
               to="/"
             >
               Dashboard Admin
