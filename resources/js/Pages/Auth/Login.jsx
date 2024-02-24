@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import Auth from '@/Layouts/Auth/Auth';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -27,71 +28,92 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
-            <Head title="Log in" />
-
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData('email', e.target.value)}
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) => setData('remember', e.target.checked)}
-                        />
-                        <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
-                    </label>
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+        <Auth>
+            <div className="container mx-auto px-4 h-full">
+            <div className="flex content-center items-center justify-center h-full">
+                <div className="w-full lg:w-4/12 px-4">
+                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+                    <div className="rounded-t mb-0 px-6 py-6">
+                    <div className="text-center mb-3">
+                        <h6 className="text-blueGray-500 text-xl font-bold">
+                        Sign in 
+                        </h6>
+                    </div>
+                    <hr className="mt-6 border-b-1 border-blueGray-300" />
+                    </div>
+                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                    
+                    <form>
+                        <div className="relative w-full mb-3">
+                        <label
+                            className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                            htmlFor="grid-password"
                         >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                            placeholder="Email"
+                        />
+                        </div>
+    
+                        <div className="relative w-full mb-3">
+                        <label
+                            className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                            htmlFor="grid-password"
+                        >
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                            placeholder="Password"
+                        />
+                        </div>
+                        <div>
+                        <label className="inline-flex items-center cursor-pointer">
+                            <input
+                            id="customCheckLogin"
+                            type="checkbox"
+                            className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                            />
+                            <span className="ml-2 text-sm font-semibold text-blueGray-600">
+                            Remember me
+                            </span>
+                        </label>
+                        </div>
+    
+                        <div className="text-center mt-6">
+                        <button
+                            className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                            type="button"
+                        >
+                            Sign In
+                        </button>
+                        </div>
+                    </form>
+                    </div>
                 </div>
-            </form>
-        </GuestLayout>
+                <div className="flex flex-wrap mt-6 relative">
+                    <div className="w-1/2">
+                    <a
+                        href="#pablo"
+                        onClick={(e) => e.preventDefault()}
+                        className="text-blueGray-200"
+                    >
+                        <small>Forgot password?</small>
+                    </a>
+                    </div>
+                    <div className="w-1/2 text-right">
+                    <Link to="/auth/register" className="text-blueGray-200">
+                        <small>Create new account</small>
+                    </Link>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </Auth>
     );
-}
+  }
