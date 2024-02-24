@@ -8,12 +8,12 @@ import Table from "@/Components/Table/Table";
 
 import '@/../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
-export default function Admin(){
+export default function Admin({user}){
     return(
         <>
             <Sidebar/>
             <div className="relative md:ml-64 bg-blueGray-100">
-                <AdminNavbar/>
+                <AdminNavbar user= {user}/>
 
                 <Header/>
 

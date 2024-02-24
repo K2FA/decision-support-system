@@ -2,7 +2,7 @@ import React from "react";
 
 import UserDropdown from "../Dropdowns/UserDropdown";
 
-export default function AdminNavbar() {
+export default function AdminNavbar({user}) {
     return (
       <>
         {/* Navbar */}
@@ -31,7 +31,7 @@ export default function AdminNavbar() {
             </form>
             {/* User */}
             <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-              <UserDropdown />
+              <UserDropdown user = {user} />
             </ul>
           </div>
         </nav>

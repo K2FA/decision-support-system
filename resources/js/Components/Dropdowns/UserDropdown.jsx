@@ -1,13 +1,15 @@
 import React from "react";
 import { Menu } from "@headlessui/react";
+import { Link } from "@inertiajs/react";
 
-  export default function UserDropdown(){
+  export default function UserDropdown({user}){
     return (
       <div className="items-center flex">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-14 h-14 justify-center rounded-full mt-2 bg-black/20 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-            <img src="assets/img/noise.jpg" alt="" className="w-full h-full rounded-full align-middle border-none shadow-lg"/>
+          <Menu.Button className="inline-flex px-4 py-2 rounded justify-center  mt-2 bg-black/20 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+            {/* <img src="assets/img/noise.jpg" alt="" className="w-full h-full rounded-full align-middle border-none shadow-lg"/> */}
+            {user}
             
           </Menu.Button>
         </div>
@@ -28,14 +30,14 @@ import { Menu } from "@headlessui/react";
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <Link href={route('logout')} method="post"  as="button"
                     className={`${
                       active ? 'bg-violet-500 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     
                     Log Out
-                  </button>
+                  </Link>
                 )}
               </Menu.Item>
             </div>
