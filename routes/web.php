@@ -25,9 +25,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/admin', function(){
-    return Inertia::render('Admin/DashboardAdmin');
-});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Admin/DashboardAdmin');
