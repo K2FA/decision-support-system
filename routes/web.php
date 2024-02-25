@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Admin/DashboardAdmin');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/goal', [GoalController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/alternative', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('alternative');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

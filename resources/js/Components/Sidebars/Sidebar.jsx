@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-import NotificationDropdown from "../Dropdowns/NotificationDropdown";
 import UserDropdown from "../Dropdowns/UserDropdown";
 
-export default function Sidebar() {
+export default function Sidebar({user}) {
     const [collapseShow, setCollapseShow] = React.useState("hidden");
     return (
       <>
@@ -20,18 +19,16 @@ export default function Sidebar() {
             </button>
             {/* Brand */}
             <Link
-              className="md:block md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-lg uppercase font-extrabold p-4 px-0 border-b border-gray-400 text-center"
+              className="md:block md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-sm sm:text-lg uppercase font-extrabold p-4 px-0 border-b border-gray-400 text-center"
               to="/"
             >
               Dashboard Admin
             </Link>
             {/* User */}
             <ul className="md:hidden items-center flex flex-wrap list-none">
+              
               <li className="inline-block relative">
-                <NotificationDropdown />
-              </li>
-              <li className="inline-block relative">
-                <UserDropdown />
+                <UserDropdown user = {user} />
               </li>
             </ul>
             {/* Collapse */}
@@ -46,10 +43,10 @@ export default function Sidebar() {
                 <div className="flex flex-wrap">
                   <div className="w-6/12">
                     <Link
-                      className="md:block text-left md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap uppercase font-bold p-4 px-0 text-xl`"
+                      className="md:block md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-sm sm:text-lg uppercase font-extrabold p-4 px-0 border-b border-gray-400 text-center`"
                       to="/"
                     >
-                      Notus React
+                      Dashboard Admin
                     </Link>
                   </div>
                   <div className="w-6/12 flex justify-end">
@@ -64,12 +61,14 @@ export default function Sidebar() {
                 </div>
               </div>
               {/* Form */}
-              <form className="mt-6 mb-4 md:hidden">
+              <form className="mt-2 mb-4 md:hidden">
                 <div className="mb-3 pt-0">
+                  <label htmlFor="search">Search</label>
                   <input
                     type="text"
                     placeholder="Search"
                     className="border-0 px-3 py-2 h-12 border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
+                    id="search"
                   />
                 </div>
               </form>
@@ -86,21 +85,42 @@ export default function Sidebar() {
                   <Link
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
+                      (window.location.href.indexOf("/goal") !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                    to="/admin/tables"
+                    to="/goal" href="/goal"
                   >
                     <i
                       className={
                         "fas fa-table mr-2 text-sm " +
-                        (window.location.href.indexOf("/admin/tables") !== -1
+                        (window.location.href.indexOf("/goal") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
                     Tujuan
+                  </Link>
+                </li>
+                <li className="items-center">
+                  <Link
+                    className={
+                      "text-xs uppercase py-3 font-bold block " +
+                      (window.location.href.indexOf("/alternative") !== -1
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                    to="/login" href="/alternative"
+                  >
+                    <i
+                      className={
+                        "fas fa-table mr-2 text-sm " +
+                        (window.location.href.indexOf("/alternative") !== -1
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    Alternatif
                   </Link>
                 </li>
   

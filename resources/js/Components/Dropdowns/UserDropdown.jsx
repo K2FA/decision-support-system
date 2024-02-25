@@ -3,11 +3,12 @@ import { Menu } from "@headlessui/react";
 import { Link } from "@inertiajs/react";
 
   export default function UserDropdown({user}){
+    
     return (
       <div className="items-center flex">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex px-4 py-2 rounded justify-center  mt-2 bg-black/20 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+          <Menu.Button className="inline-flex px-2 sm:px-4 py-2  rounded justify-center  mt-2 bg-black/20 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             {/* <img src="assets/img/noise.jpg" alt="" className="w-full h-full rounded-full align-middle border-none shadow-lg"/> */}
             {user}
             
