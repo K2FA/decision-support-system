@@ -28,10 +28,10 @@ export default function AlternativeTable(){
                     <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-left">contoh</td>
                     <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-left">C1</td>
                     <td className="px-2 sm:w-36 align-middle border border-solid  text-sm  border-slate-300 whitespace-nowrap text-white text-center">
-                        <button className="sm:w-1/2 bg-green-700 rounded p-1">Edit</button>
+                        <button className="sm:w-1/2 bg-green-700 hover:bg-green-500 rounded p-1">Edit</button>
                     </td>
                     <td className="px-2 w-36 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-white text-center">
-                        <button className="sm:w-1/2 bg-red-500 rounded p-1">Delete</button>
+                        <button className="sm:w-1/2 bg-red-500 hover:bg-red-700 rounded p-1">Delete</button>
                     </td>
                 </tr>
             </tbody>
