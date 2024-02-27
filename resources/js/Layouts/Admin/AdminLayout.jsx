@@ -8,7 +8,7 @@ import Table from "@/Components/Table/Table";
 
 import '@/../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
-export default function Admin({user,initialTableType }){
+export default function AdminLayout({user,initialTableType }){
     const [tableType, setTableType] = React.useState(initialTableType);
     
     React.useEffect(()=>{

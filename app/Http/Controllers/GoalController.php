@@ -14,7 +14,7 @@ class GoalController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/GoalsPage');
+        return Inertia::render('Admin/Tables/GoalsPage');
     }
 
     /**
@@ -22,7 +22,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/AlternativePage');
+        return Inertia::render('Admin/Form/Add');
     }
 
     /**

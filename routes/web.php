@@ -27,8 +27,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/goal', [GoalController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/alternative', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('alternative');
+
+// Route::get('/alternative', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('alternative');
+
+
+Route::prefix('goal')->group(function(){
+    Route::get('/', [GoalController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/add', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('Add');
+});
 
 
 Route::middleware('auth')->group(function () {

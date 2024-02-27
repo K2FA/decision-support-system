@@ -22,12 +22,12 @@ export default function CardTable({tableType}){
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
                     <div className="block sm:flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 className="font-bold text-xl text-black uppercase">
+                            <h3 className="font-extrabold text-xl text-black uppercase">
                                 {headerText}
                             </h3>
                         </div>
                         <div className="relative ml-4 mt-4 sm:mr-8">
-                            <Link className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700">Add</Link>
+                            <Link className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700" href="/goal/add">Add</Link>
                         </div>
                     </div>
                 </div>
