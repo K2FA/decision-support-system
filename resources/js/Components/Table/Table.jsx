@@ -8,7 +8,7 @@ export default function Table({tableType}){
         <>
             <div className="flex flex-wrap mt-4 h-screen">
                 <div className="w-full mb-12 px-4 ">
-                <CardTable tableType = {tableType}/>
+                    <CardTable tableType = {tableType}/>
                 </div>
             </div>
         </>

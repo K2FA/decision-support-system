@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { Tab } from "@headlessui/react";
+
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+
+function funAction(key){
+    return key == 0 ? 'tujuan' :
+    key == 1 ? 'alternatife' :
+    key == 2 ? 'kriteria' : ''
+}
 
 export default function CardForm(){
+    const [categories, setCategories] = useState({
+        Tujuan:[{
+            title: 'Tujuan',
+            name: 'tujuan'
+        }],
+        Alternatif:[{
+            title: 'Alternatif',
+            name: 'alternatif'
+        },
+        {
+            title: 'Kode Alternatif',
+            name: 'kode_alternatif'
+        }],
+        Kriteria:[{
+            title: 'Kriteria',
+            name: 'kriteria'
+        },
+        {
+            title: 'Kode Kriteria',
+            name: 'kode_kriteria'
+        }]
+    });
+    
     return(
         <>
         <div className="flex flex-wrap mt-4 h-screen">
@@ -17,13 +52,52 @@ export default function CardForm(){
                         </div>
                     </div>
                     <div className="block w-full overflow-x-auto p-2 sm:px-8 sm:py-4">
-                        <form action="" className="flex flex-col">
-                            <label htmlFor="tujuan" className="text-blueGray-700 font-semibold mr-2 mb-2">Nama Tujuan : </label>
-                            <input type="text" placeholder="Masukkan Nama Tujuan" className="input input-bordered input-warning w-full bg-gray-200 text-gray-500  " id="tujuan" name="tujuan"/>
-                            <div className="w-full flex justify-center">
-                                <button className="btn bg-orange-400 hover:bg-warning text-white border border-warning mt-4 w-1/6">Submit</button>
-                            </div>
-                        </form>
+                        <Tab.Group>
+                            <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+                                {Object.keys(categories).map((category)=>(
+                                    <Tab
+                                    key={category}
+                                    className={({ selected }) =>
+                                    classNames(
+                                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 ',
+                                        'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 ',
+                                        selected
+                                        ? 'bg-white text-blue-700 shadow'
+                                        : 'text-blueGray-500 hover:bg-white/[0.12] hover:text-white'
+                                        )
+                                    }
+                                    >
+                                    {category}
+                                  </Tab>
+                                ))
+                                }
+                            </Tab.List>
+                            
+                            <Tab.Panels className='mt-2'>
+                                {Object.values(categories).map((values, idx)=>(
+                                    <Tab.Panel 
+                                    key={idx}
+                                    className={classNames(
+                                      'rounded-xl bg-white p-3',
+                                      'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                                    )}>
+                                         <form action={funAction(idx)} >
+                                            {values.map((field, index) => (
+                                                <div className="mt-4" key={index}>
+                                                    <label htmlFor={field.name} className="text-blueGray-700 font-semibold mr-2 "> {field.title} : </label>
+                                                    <input type="text" placeholder={`Masukkan ${field.title}`} className="input mt-2 input-bordered input-warning w-full bg-gray-200 text-gray-500  " id={field.name} name={field.name}/>
+                                                </div>
+                                                
+                                            ))}
+                                            
+                                            <div className="w-full flex justify-center">
+                                                <button className="btn bg-orange-400 hover:bg-warning text-white border border-warning mt-4 w-1/6">Submit</button>
+                                            </div>
+                                        </form>
+                                    </Tab.Panel>
+                                ))}
+                            </Tab.Panels>
+                        </Tab.Group>
                     </div>
                 </div>
             </div>
