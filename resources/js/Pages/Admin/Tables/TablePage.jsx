@@ -1,6 +1,6 @@
 import AdminLayout from "@/Layouts/Admin/AdminLayout";
 
-export default function GoalsPage({auth}){
+export default function TablePage({auth}){
     return(
             <AdminLayout user = {auth.user.name}/>
                 

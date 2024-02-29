@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Tab } from "@headlessui/react";
+import { router } from "@inertiajs/react";
 
 
 function classNames(...classes) {
@@ -7,34 +8,56 @@ function classNames(...classes) {
   }
 
 function funAction(key){
-    return key == 0 ? 'tujuan' :
-    key == 1 ? 'alternatife' :
-    key == 2 ? 'kriteria' : ''
+    return key == 0 ? '/goal/new' :
+    key == 1 ? '/alternative/new' :
+    key == 2 ? '/kriteria/new' : ''
 }
 
 export default function CardForm(){
     const [categories, setCategories] = useState({
         Tujuan:[{
             title: 'Tujuan',
-            name: 'tujuan'
+            name: 'name'
         }],
         Alternatif:[{
             title: 'Alternatif',
-            name: 'alternatif'
+            name: 'name'
         },
         {
             title: 'Kode Alternatif',
-            name: 'kode_alternatif'
+            name: 'code'
         }],
         Kriteria:[{
             title: 'Kriteria',
-            name: 'kriteria'
+            name: 'name'
         },
         {
             title: 'Kode Kriteria',
-            name: 'kode_kriteria'
+            name: 'code'
         }]
     });
+
+    const [form, setForm] = useState([]);
+
+    const handleOnChange = (event) => {
+        event.preventDefault()
+
+        const target_name = event.target.name
+        const target_value = event.target.value
+
+
+        setForm(prev => ({
+            ...prev,
+            [target_name]: target_value
+        }))
+
+        
+    }
+    
+    const handleSubmit = (event, route) => {
+        event.preventDefault()
+        router.post(route, form);
+    }
     
     return(
         <>
@@ -81,11 +104,11 @@ export default function CardForm(){
                                       'rounded-xl bg-white p-3',
                                       'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                                     )}>
-                                         <form action={funAction(idx)} >
+                                         <form onSubmit={event => handleSubmit(event, funAction(idx))}>
                                             {values.map((field, index) => (
                                                 <div className="mt-4" key={index}>
                                                     <label htmlFor={field.name} className="text-blueGray-700 font-semibold mr-2 "> {field.title} : </label>
-                                                    <input type="text" placeholder={`Masukkan ${field.title}`} className="input mt-2 input-bordered input-warning w-full bg-gray-200 text-gray-500  " id={field.name} name={field.name}/>
+                                                    <input onChange={handleOnChange} type="text" placeholder={`Masukkan ${field.title}`} className="input mt-2 input-bordered input-warning w-full bg-gray-200 text-gray-500  " id={field.name} name={field.name}/>
                                                 </div>
                                                 
                                             ))}

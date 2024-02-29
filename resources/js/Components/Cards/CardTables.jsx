@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-import GoalTable from "../FillTable/GoalTable.jsx";
-import AlternativeTable from "../FillTable/AlternativeTable.jsx";
+import GoalTable from "../FillTable/GoalTable";
+import AlternativeTable from "../FillTable/AlternativeTable";
 
 export default function CardTable({tableType}){
     let headerText;
     let TableComponent;
+    let link;
 
     if(tableType === "GoalTable" ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
+        link = '/goal/new'
     }else if(tableType === "AlternativeTable" ){
         headerText = "Alternatif"
         TableComponent = AlternativeTable;
+        link = '/alternative/new'
     }
 
     return(
@@ -27,7 +30,7 @@ export default function CardTable({tableType}){
                             </h3>
                         </div>
                         <div className="relative ml-4 mt-4 sm:mr-8">
-                            <Link className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700" href="/goal/add">Add</Link>
+                            <Link className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700" href={link}>Add</Link>
                         </div>
                     </div>
                 </div>

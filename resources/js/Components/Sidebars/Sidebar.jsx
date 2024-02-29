@@ -89,7 +89,7 @@ export default function Sidebar({user}) {
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                    to="/goal" href="/goal"
+                     href="/goal"
                   >
                     <i
                       className={
@@ -110,7 +110,7 @@ export default function Sidebar({user}) {
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
-                    to="/login" href="/alternative"
+                     href="/alternative"
                   >
                     <i
                       className={

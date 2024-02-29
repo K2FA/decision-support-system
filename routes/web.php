@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -33,7 +34,14 @@ Route::get('/', function () {
 
 Route::prefix('goal')->group(function(){
     Route::get('/', [GoalController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('/add', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('Add');
+    Route::get('/new', [GoalController::class,'create'])->middleware(['auth', 'verPified'])->name('Add');
+    Route::post('/new', [GoalController::class,'store'])->middleware(['auth', 'verified'])->name('create_goal');
+});
+
+Route::prefix('alternative')->group(function(){
+    Route::get('/', [AlternativeController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/new', [AlternativeController::class,'create'])->middleware(['auth', 'verified'])->name('Add');
+    Route::post('/new', [AlternativeController::class,'store'])->middleware(['auth', 'verified'])->name('create_alternative');
 });
 
 

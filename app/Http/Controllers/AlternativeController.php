@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Goal;
+use App\Models\Alternative;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-use function Termwind\render;
-
-class GoalController extends Controller
+class AlternativeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $goals = Goal::all();
-        
-        return Inertia::render('Admin/Tables/TablePage', compact('goals'));
+        $alternatives = Alternative::all();
+        return Inertia::render('Admin/Tables/TablePage', compact('alternatives'));
     }
 
     /**
@@ -33,12 +30,7 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        $valid =  $request->validate([
-            'name' => ['required', 'string']
-        ]);
-
-        Goal::create($valid);
-        return redirect()->back();
+        
     }
 
     /**

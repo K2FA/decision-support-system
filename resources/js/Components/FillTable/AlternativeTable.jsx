@@ -1,6 +1,9 @@
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function AlternativeTable(){
+
+    // console.log(usePage().props)
     return(
         <table className="items-center w-full bg-transparent border-collapse">
             <thead>
