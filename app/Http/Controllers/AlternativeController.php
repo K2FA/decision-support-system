@@ -30,7 +30,13 @@ class AlternativeController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $valid =  $request->validate([
+            'name' => ['required', 'string'],
+            'code' => ['required', 'string']
+        ]);
+
+        Alternative::create($valid);
+        return redirect()->back();
     }
 
     /**

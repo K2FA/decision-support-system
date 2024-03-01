@@ -9,7 +9,7 @@ class Alternative extends Model
 {
     use HasFactory;
 
-    protected $fillabale = [
+    protected $fillable = [
         'name',
         'code',
     ];
