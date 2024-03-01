@@ -36,7 +36,7 @@ class AlternativeController extends Controller
         ]);
 
         Alternative::create($valid);
-        return redirect()->back();
+        return redirect()->route('alternative.index');
     }
 
     /**
@@ -66,8 +66,9 @@ class AlternativeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Alternative $alternative)
     {
-        //
+        $alternative -> delete();
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

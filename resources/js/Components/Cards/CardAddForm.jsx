@@ -8,12 +8,13 @@ function classNames(...classes) {
   }
 
 function funAction(key){
-    return key == 0 ? '/goal/new' :
-    key == 1 ? '/alternative/new' :
-    key == 2 ? '/kriteria/new' : ''
+    return key == 0 ? '/goal' :
+    key == 1 ? '/alternative' :
+    key == 2 ? '/kriteria' : ''
 }
 
-export default function CardForm(){
+export default function CardAddForm(){
+    
     const [categories, setCategories] = useState({
         Tujuan:[{
             title: 'Tujuan',

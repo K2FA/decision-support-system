@@ -38,7 +38,7 @@ class GoalController extends Controller
         ]);
 
         Goal::create($valid);
-        return redirect()->back();
+        return redirect()->route('goal.index');
     }
 
     /**
@@ -68,8 +68,9 @@ class GoalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Goal $goal)
     {
-        //
+        $goal->delete();
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

@@ -4,7 +4,7 @@ import AdminNavbar from "@/Components/Navbars/AdminNavbar";
 import Header from "@/Components/Header/Header";
 import Sidebar from "@/Components/Sidebars/Sidebar";
 import FooterAdmin from "@/Components/Footers/FooterAdmin";
-import CardForm from "@/Components/Cards/CardForm";
+import CardAddForm from "@/Components/Cards/CardAddForm";
 
 import '@/../../node_modules/@fortawesome/fontawesome-free/css/all.css';
 
@@ -18,7 +18,7 @@ export default function FormAdminLayout({user}){
                 <Header/>
 
                 <div className="px-4 md:px-10 mx-auto w-full -m-24">
-                    <CardForm/>
+                    <CardAddForm/>
                     <FooterAdmin/>
                 </div>
             </div>

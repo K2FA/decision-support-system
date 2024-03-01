@@ -32,17 +32,10 @@ Route::get('/', function () {
 // Route::get('/alternative', [GoalController::class,'create'])->middleware(['auth', 'verified'])->name('alternative');
 
 
-Route::prefix('goal')->group(function(){
-    Route::get('/', [GoalController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('/new', [GoalController::class,'create'])->middleware(['auth', 'verPified'])->name('Add');
-    Route::post('/new', [GoalController::class,'store'])->middleware(['auth', 'verified'])->name('create_goal');
-});
 
-Route::prefix('alternative')->group(function(){
-    Route::get('/', [AlternativeController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('/new', [AlternativeController::class,'create'])->middleware(['auth', 'verified'])->name('Add');
-    Route::post('/new', [AlternativeController::class,'store'])->middleware(['auth', 'verified'])->name('create_alternative');
-});
+
+Route::resource('goal', GoalController::class)->only('index','create', 'store', 'update', 'destroy');
+Route::resource('alternative', AlternativeController::class)->only('index','create', 'store', 'update', 'destroy');
 
 
 Route::middleware('auth')->group(function () {

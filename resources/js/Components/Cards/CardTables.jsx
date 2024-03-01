@@ -12,11 +12,11 @@ export default function CardTable({tableType}){
     if(tableType === "GoalTable" ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
-        link = '/goal/new'
+        link = '/goal/create'
     }else if(tableType === "AlternativeTable" ){
         headerText = "Alternatif"
         TableComponent = AlternativeTable;
-        link = '/alternative/new'
+        link = '/alternative/create'
     }
 
     return(
