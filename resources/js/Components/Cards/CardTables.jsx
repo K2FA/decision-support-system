@@ -3,6 +3,7 @@ import { Link } from "@inertiajs/react";
 
 import GoalTable from "../FillTable/GoalTable";
 import AlternativeTable from "../FillTable/AlternativeTable";
+import CriteriaTable from "../FillTable/CriteriaTable";
 
 export default function CardTable({tableType}){
     let headerText;
@@ -12,11 +13,15 @@ export default function CardTable({tableType}){
     if(tableType === "GoalTable" ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
-        link = '/goal/create'
+        link = '/goal/create';
     }else if(tableType === "AlternativeTable" ){
-        headerText = "Alternatif"
+        headerText = "Alternatif";
         TableComponent = AlternativeTable;
-        link = '/alternative/create'
+        link = '/alternative/create';
+    }else if(tableType === "CriteriaTable"){
+        headerText = "Kriteria";
+        TableComponent = CriteriaTable;
+        link = '/criteria/create';
     }
 
     return(

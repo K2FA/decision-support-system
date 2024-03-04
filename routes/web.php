@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlternativeController;
+use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -36,6 +37,7 @@ Route::get('/', function () {
 
 Route::resource('goal', GoalController::class)->only('index','create', 'store', 'update', 'destroy');
 Route::resource('alternative', AlternativeController::class)->only('index','create', 'store', 'update', 'destroy');
+Route::resource('criteria', CriteriaController::class)->only('index','create', 'store', 'update', 'destroy');
 
 
 Route::middleware('auth')->group(function () {

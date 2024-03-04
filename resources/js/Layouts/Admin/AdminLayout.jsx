@@ -15,7 +15,9 @@ export default function AdminLayout({user,initialTableType }){
         if(window.location.href.indexOf('/goal') !== -1 ){
             setTableType('GoalTable');
         }else if(window.location.href.indexOf('/alternative') !== -1 ){
-            setTableType  ('AlternativeTable');
+            setTableType('AlternativeTable');
+        }else if(window.location.href.indexOf('/criteria') !== -1){
+            setTableType('CriteriaTable');
         }
     },[initialTableType]);
     

@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function AlternativeTable(){
-    console.log(usePage().props);
     const {alternatives,flash} = usePage().props;
     const {delete:destroy} = useForm({});
 
