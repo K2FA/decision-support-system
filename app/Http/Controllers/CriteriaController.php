@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Criteria;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,8 @@ class CriteriaController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Tables/TablePage');
+        $criterias = Criteria::all();
+        return Inertia::render('Admin/Tables/TablePage', compact('criterias'));
     }
 
     /**
@@ -22,7 +24,7 @@ class CriteriaController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Admin/Form/Add');
     }
 
     /**
@@ -30,7 +32,12 @@ class CriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valid = $request->validate([
+            'name' => ['required', 'string'],
+            'code' => ['required', 'string']
+        ]);
+        Criteria::create($valid);
+        return redirect()->route('criteria.index');
     }
 
     /**
@@ -60,8 +67,9 @@ class CriteriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Criteria $criteria)
     {
-        //
+        $criteria -> delete();
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }
