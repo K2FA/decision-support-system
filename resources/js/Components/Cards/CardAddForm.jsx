@@ -10,7 +10,7 @@ function classNames(...classes) {
 function funAction(key){
     return key == 0 ? '/goal' :
     key == 1 ? '/alternative' :
-    key == 2 ? '/kriteria' : ''
+    key == 2 ? '/criteria' : ''
 }
 
 export default function CardAddForm(){

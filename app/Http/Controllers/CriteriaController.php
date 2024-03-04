@@ -67,9 +67,9 @@ class CriteriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Criteria $criteria)
+    public function destroy(Criteria $criterion)
     {
-        $criteria -> delete();
+        $criterion -> delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }
