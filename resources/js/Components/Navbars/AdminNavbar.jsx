@@ -14,7 +14,7 @@ export default function AdminNavbar({user}) {
               href="#pablo"
               onClick={(e) => e.preventDefault()}
             >
-              Dashboard
+              
             </a>
             {/* Form */}
             

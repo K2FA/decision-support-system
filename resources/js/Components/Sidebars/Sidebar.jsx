@@ -7,7 +7,7 @@ export default function Sidebar({user}) {
     const [collapseShow, setCollapseShow] = React.useState("hidden");
     return (
       <>
-        <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-gray-200 flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+        <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
           <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
             {/* Toggler */}
             <button
@@ -60,18 +60,7 @@ export default function Sidebar({user}) {
                   </div>
                 </div>
               </div>
-              {/* Form */}
-              <form className="mt-2 mb-4 md:hidden">
-                <div className="mb-3 pt-0">
-                  <label htmlFor="search">Search</label>
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="border-0 px-3 py-2 h-12 border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
-                    id="search"
-                  />
-                </div>
-              </form>
+             
   
               {/* Divider */}
               <hr className="my-4 md:min-w-full" />
@@ -84,7 +73,7 @@ export default function Sidebar({user}) {
                 <li className="items-center">
                   <Link
                     className={
-                      "text-xs uppercase py-3 font-bold block " +
+                      "text-sm uppercase py-3 font-bold block " +
                       (window.location.href.indexOf("/goal") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
@@ -93,19 +82,19 @@ export default function Sidebar({user}) {
                   >
                     <i
                       className={
-                        "fas fa-table mr-2 text-sm " +
+                        "fa-solid fa-bullseye mr-2 text-sm sm:text-base " +
                         (window.location.href.indexOf("/goal") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Tujuan
+                    Tabel Tujuan
                   </Link>
                 </li>
                 <li className="items-center">
                   <Link
                     className={
-                      "text-xs uppercase py-3 font-bold block " +
+                      "text-sm uppercase py-3 font-bold block " +
                       (window.location.href.indexOf("/alternative") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
@@ -114,19 +103,19 @@ export default function Sidebar({user}) {
                   >
                     <i
                       className={
-                        "fas fa-table mr-2 text-sm " +
+                        "fa-solid fa-mug-saucer mr-2 text-sm " +
                         (window.location.href.indexOf("/alternative") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Alternatif
+                    Tabel Alternatif
                   </Link>
                 </li>
                 <li className="items-center">
                   <Link
                     className={
-                      "text-xs uppercase py-3 font-bold block " +
+                      "text-sm uppercase py-3 font-bold block " +
                       (window.location.href.indexOf("/criteria") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
@@ -135,13 +124,13 @@ export default function Sidebar({user}) {
                   >
                     <i
                       className={
-                        "fas fa-table mr-2 text-sm " +
+                        "fa-solid fa-rectangle-list mr-2 text-sm " +
                         (window.location.href.indexOf("/criteria") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Kriteria
+                    Tabel Kriteria
                   </Link>
                 </li>
   
