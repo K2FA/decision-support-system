@@ -37,7 +37,7 @@ export default function CriteriaTable(){
                     <tr key={criteria.id}>
                         <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-center">{++index}</td>
                         <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-left">{criteria.name}</td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-left">{criteria.code}</td>
+                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-left uppercase">{criteria.code}</td>
                         <td className="px-2 sm:w-36 align-middle border border-solid  text-sm  border-slate-300 whitespace-nowrap text-white text-center">
                             <button className="sm:w-1/2 bg-green-700 hover:bg-green-500 rounded p-1">Edit</button>
                         </td>
