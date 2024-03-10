@@ -11,7 +11,7 @@ import { Link } from "@inertiajs/react";
           <Menu.Button className="inline-flex px-2 sm:px-4 py-2  rounded justify-center  mt-2 bg-black/20 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             {/* <img src="assets/img/noise.jpg" alt="" className="w-full h-full rounded-full align-middle border-none shadow-lg"/> */}
             {user}
-            <i class="fa-solid fa-chevron-down mt-1 ml-2 text-xs"></i>
+            <i className="fa-solid fa-chevron-down mt-1 ml-2 text-xs"></i>
           </Menu.Button>
         </div>
         
