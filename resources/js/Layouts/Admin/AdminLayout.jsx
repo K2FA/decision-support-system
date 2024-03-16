@@ -15,13 +15,13 @@ export default function AdminLayout({user,initialTableType }){
     const [tableTitle, setTableTitle] = React.useState('');
     
     React.useEffect(()=>{
-        if(window.location.href.indexOf('/goal') !== -1 ){
+        if(window.location.href.indexOf('/table/goal') !== -1 ){
             setTableType('GoalTable');
             setTableTitle('Tabel Tujuan');
-        }else if(window.location.href.indexOf('/alternative') !== -1 ){
+        }else if(window.location.href.indexOf('/table/alternative') !== -1 ){
             setTableType('AlternativeTable');
             setTableTitle('Tabel Alternative');
-        }else if(window.location.href.indexOf('/criteria') !== -1){
+        }else if(window.location.href.indexOf('/table/criteria') !== -1){
             setTableType('CriteriaTable');
             setTableTitle('Tabel Kriteria');
         }

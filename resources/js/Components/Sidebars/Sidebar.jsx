@@ -3,6 +3,7 @@ import { Link } from "@inertiajs/react";
 
 import UserDropdown from "../Dropdowns/UserDropdown";
 import TableSideBar from "../Navigation Sidebar/TableSidebar";
+import BobotSideBar from "../Navigation Sidebar/BobotSidebar";
 
 export default function Sidebar({user}) {
     const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -81,7 +82,9 @@ export default function Sidebar({user}) {
                 Data Bobot
               </h6>
               {/* End of Heading*/}
-
+              {/* Navigation Table */}
+               <BobotSideBar/>
+              {/* End of Navigation Table */}
             </div>
           </div>
         </nav>

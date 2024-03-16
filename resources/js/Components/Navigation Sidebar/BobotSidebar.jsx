@@ -1,77 +1,76 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-export default function TableSideBar(){
-    return (
+export default function BobotSideBar(){
+    return(
         <>
-             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-  
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                 <li className="items-center">
                     <Link
                     className={
                         "text-sm uppercase py-3 font-bold block " +
-                        (window.location.href.indexOf("/table/goal") !== -1
+                        (window.location.href.indexOf("/bobot/natural") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
                     }
-                    href="/table/goal"
+                    href="/bobot/natural"
                     >
                     <i
                         className={
-                        "fa-solid fa-bullseye mr-2 text-sm sm:text-base " +
-                        (window.location.href.indexOf("/table/goal") !== -1
+                        "fa-solid fa-seedling mr-2 text-sm sm:text-base " +
+                        (window.location.href.indexOf("/bobot/natural") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")
                         }
                     ></i>{" "}
-                    Tabel Tujuan
+                    Bobot Natural
                     </Link>
                 </li>
                 <li className="items-center">
                     <Link
                     className={
                         "text-sm uppercase py-3 font-bold block " +
-                        (window.location.href.indexOf("/table/alternative") !== -1
+                        (window.location.href.indexOf("/bobot/full-wash") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
                     }
-                    href="/table/alternative"
+                    href="/bobot/full-wash"
                     >
                     <i
                         className={
-                        "fa-solid fa-mug-saucer mr-2 text-sm " +
-                        (window.location.href.indexOf("/table/alternative") !== -1
+                        "fa-solid fa-droplet mr-2 text-sm " +
+                        (window.location.href.indexOf("/bobot/full-wash") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")
                         }
                     ></i>{" "}
-                    Tabel Alternatif
+                    Bobot Full Wash
                     </Link>
                 </li>
                 <li className="items-center">
                     <Link
                     className={
                         "text-sm uppercase py-3 font-bold block " +
-                        (window.location.href.indexOf("/table/criteria") !== -1
+                        (window.location.href.indexOf("/bobot/honey") !== -1
                         ? "text-blueGray-700 hover:text-blueGray-500"
                         : "text-blueGray-500 hover:text-blueGray-400")
                     }
-                    href="/table/criteria"
+                    href="/bobot/honey"
                     >
                     <i
                         className={
-                        "fa-solid fa-rectangle-list mr-2 text-sm " +
-                        (window.location.href.indexOf("/table/criteria") !== -1
+                        "fa-brands fa-forumbee mr-2 text-sm " +
+                        (window.location.href.indexOf("/bobot/honey") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")
                         }
                     ></i>{" "}
-                    Tabel Kriteria
+                    Bobot Honey
                     </Link>
                 </li>
 
                 
-            </ul>
+            </ul>       
         </>
     )
 }
