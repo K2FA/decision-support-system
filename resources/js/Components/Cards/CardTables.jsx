@@ -5,6 +5,8 @@ import GoalTable from "../FillTable/GoalTable";
 import AlternativeTable from "../FillTable/AlternativeTable";
 import CriteriaTable from "../FillTable/CriteriaTable";
 
+import "../../../css/style.css";
+
 export default function CardTable({tableType}){
     let headerText;
     let TableComponent;
@@ -13,15 +15,15 @@ export default function CardTable({tableType}){
     if(tableType === "GoalTable" ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
-        link = '/goal/create';
+        link = '/table/goal/create';
     }else if(tableType === "AlternativeTable" ){
         headerText = "Alternatif";
         TableComponent = AlternativeTable;
-        link = '/alternative/create';
+        link = '/table/alternative/create';
     }else if(tableType === "CriteriaTable"){
         headerText = "Kriteria";
         TableComponent = CriteriaTable;
-        link = '/criteria/create';
+        link = '/table/criteria/create';
     }
 
     return(
@@ -30,7 +32,7 @@ export default function CardTable({tableType}){
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
                     <div className="block sm:flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 className="font-extrabold text-xl text-black uppercase">
+                            <h3 className="table-title font-bold tracking-widest text-2xl text-black uppercase pt-2">
                                 {headerText}
                             </h3>
                         </div>

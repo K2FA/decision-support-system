@@ -5,6 +5,7 @@ import Header from "@/Components/Header/Header";
 import Sidebar from "@/Components/Sidebars/Sidebar";
 import FooterAdmin from "@/Components/Footers/FooterAdmin";
 import Table from "@/Components/Table/Table";
+import BobotTable from "@/Components/Table/BobotTable";
 
 import { Head } from "@inertiajs/react";
 
@@ -24,6 +25,12 @@ export default function AdminLayout({user,initialTableType }){
         }else if(window.location.href.indexOf('/table/criteria') !== -1){
             setTableType('CriteriaTable');
             setTableTitle('Tabel Kriteria');
+        }else if(window.location.href.indexOf('/bobot/natural') !== -1){
+            setTableType('NaturalTable');
+        }else if(window.location.href.indexOf('/bobot/fullwash') !== -1){
+            setTableType('FullWashTable');
+        }else if(window.location.href.indexOf('/bobot/honey') !== -1){
+            setTableType('HoneyTable');
         }
     },[initialTableType]);
     
@@ -38,7 +45,7 @@ export default function AdminLayout({user,initialTableType }){
                 <Header/>
 
                 <div className="px-4 md:px-10 mx-auto w-full -m-24">
-                    <Table tableType ={tableType}/>
+                    {(window.location.href.indexOf('/bobot') !== -1 )? <BobotTable tableType={tableType}/>:<Table tableType ={tableType}/>}
                     <FooterAdmin/>
                 </div>
             </div>

@@ -8,13 +8,14 @@ function classNames(...classes) {
   }
 
 function funAction(key){
-    return key == 0 ? '/goal' :
-    key == 1 ? '/alternative' :
-    key == 2 ? '/criteria' : ''
+    return key == 0 ? '/table/goal' :
+    key == 1 ? '/table/alternative' :
+    key == 2 ? '/table/criteria' : ''
 }
 
 export default function CardAddForm(){
     
+    const [form, setForm] = useState([]);
     const [categories, setCategories] = useState({
         Tujuan:[{
             title: 'Tujuan',
@@ -37,8 +38,6 @@ export default function CardAddForm(){
             name: 'code'
         }]
     });
-
-    const [form, setForm] = useState([]);
 
     const handleOnChange = (event) => {
         event.preventDefault()
