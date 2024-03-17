@@ -7,20 +7,20 @@ import CriteriaTable from "../FillTable/CriteriaTable";
 
 import "../../../css/style.css";
 
-export default function CardTable({tableType}){
+export default function CardTable(){
     let headerText;
     let TableComponent;
     let link;
 
-    if(tableType === "GoalTable" ){
+    if(window.location.href.indexOf('/table/goal') !== -1 ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
         link = '/table/goal/create';
-    }else if(tableType === "AlternativeTable" ){
+    }else if(window.location.href.indexOf('/table/alternative') !== -1 ){
         headerText = "Alternatif";
         TableComponent = AlternativeTable;
         link = '/table/alternative/create';
-    }else if(tableType === "CriteriaTable"){
+    }else if(window.location.href.indexOf('/table/criteria') !== -1 ){
         headerText = "Kriteria";
         TableComponent = CriteriaTable;
         link = '/table/criteria/create';

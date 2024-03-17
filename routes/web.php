@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\FullWashController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\HoneyController;
 use App\Http\Controllers\NaturalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -43,6 +45,8 @@ Route::prefix('table')->group(function(){
 
 Route::prefix('bobot')->group(function(){
     Route::resource('natural', NaturalController::class)->only('index');
+    Route::resource('full-wash', FullWashController::class)->only('index');
+    Route::resource('honey', HoneyController::class)->only('index');
 });
 
 

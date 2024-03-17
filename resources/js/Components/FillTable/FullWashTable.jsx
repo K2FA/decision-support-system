@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NaturalTable() {
+export default function FullWashTable(){
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -23,7 +23,7 @@ export default function NaturalTable() {
                             1
                         </td>
                         <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
-                            coba
+                            Cek Full Wash
                         </td>
                         <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
                             5

@@ -1,8 +1,21 @@
 import React from "react";
 
 import NaturalTable from "../FillTable/NaturalTable";
+import FullWashTable from "../FillTable/FullWashTable";
+import HoneyTable from "../FillTable/HoneyTable";
 
 export default function CardBobot({ tableType }) {
+    let  TableComponent;
+
+    if(window.location.href.indexOf('/bobot/natural')!== -1){
+         TableComponent = NaturalTable;
+    }else if(window.location.href.indexOf('/bobot/full-wash')!== -1){
+        TableComponent = FullWashTable;
+    }else if(window.location.href.indexOf('/bobot/honey')!== -1){
+        TableComponent = HoneyTable;
+    }
+
+
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -27,7 +40,7 @@ export default function CardBobot({ tableType }) {
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
                     {/* {TableComponent && <TableComponent />} */}
 
-                    <NaturalTable/>
+                    {TableComponent && <TableComponent/>}
                 </div>
             </div>
 
@@ -53,7 +66,7 @@ export default function CardBobot({ tableType }) {
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
                     {/* {TableComponent && <TableComponent />} */}
 
-                    <NaturalTable/>
+                    {TableComponent && <TableComponent/>}
                 </div>
             </div>
 
@@ -79,7 +92,7 @@ export default function CardBobot({ tableType }) {
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
                     {/* {TableComponent && <TableComponent />} */}
 
-                    <NaturalTable/>
+                    {TableComponent && <TableComponent/>}
                 </div>
             </div>
         </>

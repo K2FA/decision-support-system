@@ -11,7 +11,7 @@ class Natural extends Model
 
     protected $fillable = [
         'title',
-        'name',
-        'bobot',
+        'subcriteria',
+        'weight',
     ];
 }

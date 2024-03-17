@@ -17,22 +17,19 @@ export default function AdminLayout({user,initialTableType }){
     
     React.useEffect(()=>{
         if(window.location.href.indexOf('/table/goal') !== -1 ){
-            setTableType('GoalTable');
             setTableTitle('Tabel Tujuan');
         }else if(window.location.href.indexOf('/table/alternative') !== -1 ){
-            setTableType('AlternativeTable');
             setTableTitle('Tabel Alternative');
         }else if(window.location.href.indexOf('/table/criteria') !== -1){
-            setTableType('CriteriaTable');
             setTableTitle('Tabel Kriteria');
         }else if(window.location.href.indexOf('/bobot/natural') !== -1){
-            setTableType('NaturalTable');
-        }else if(window.location.href.indexOf('/bobot/fullwash') !== -1){
-            setTableType('FullWashTable');
+            setTableTitle('Tabel Bobot Natural');
+        }else if(window.location.href.indexOf('/bobot/full-wash') !== -1){
+            setTableTitle('Tabel  Bobot Full Wash');
         }else if(window.location.href.indexOf('/bobot/honey') !== -1){
-            setTableType('HoneyTable');
+            setTableTitle('Tabel Bobot Honey');
         }
-    },[initialTableType]);
+    });
     
     return(
         <>
@@ -45,7 +42,7 @@ export default function AdminLayout({user,initialTableType }){
                 <Header/>
 
                 <div className="px-4 md:px-10 mx-auto w-full -m-24">
-                    {(window.location.href.indexOf('/bobot') !== -1 )? <BobotTable tableType={tableType}/>:<Table tableType ={tableType}/>}
+                    {(window.location.href.indexOf('/bobot') !== -1 )? <BobotTable />:<Table/>}
                     <FooterAdmin/>
                 </div>
             </div>
