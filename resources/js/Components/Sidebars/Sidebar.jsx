@@ -85,6 +85,15 @@ export default function Sidebar({user}) {
               {/* Navigation Table */}
                <BobotSideBar/>
               {/* End of Navigation Table */}
+
+              {/* Divider */}
+              <hr className="my-4 md:min-w-full mt-4" />
+              {/* End of Divider*/}
+              {/* Heading*/}
+              <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-2 no-underline ">
+                Data TFN Chang 1996
+              </h6>
+              {/* End of Heading*/}
             </div>
           </div>
         </nav>

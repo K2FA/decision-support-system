@@ -67,9 +67,7 @@ export default function BobotSideBar(){
                     ></i>{" "}
                     Bobot Honey
                     </Link>
-                </li>
-
-                
+                </li>               
             </ul>       
         </>
     )
