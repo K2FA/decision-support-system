@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Natural;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,8 @@ class NaturalController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Admin/Tables/TablePage");
+        $naturals = Natural::with('criteria')->get();
+        return Inertia::render("Admin/Tables/TablePage", compact('naturals'));
     }
 
     /**

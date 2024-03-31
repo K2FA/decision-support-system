@@ -11,8 +11,7 @@ import { Head } from "@inertiajs/react";
 
 import '@/../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
-export default function AdminLayout({user,initialTableType }){
-    const [tableType, setTableType] = React.useState(initialTableType);
+export default function AdminLayout({user}){
     const [tableTitle, setTableTitle] = React.useState('');
     
     React.useEffect(()=>{
