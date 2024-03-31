@@ -1,7 +1,5 @@
 import React from "react";
 
-import Login from "@/Pages/Auth/Login";
-
 export default function Auth({children}){
 
     const backgroundImage = 'assets/img/register_bg_2.png';
