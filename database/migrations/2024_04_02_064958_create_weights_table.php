@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\FullWash;
+use App\Models\Honey;
 use App\Models\Natural;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,6 +17,8 @@ return new class extends Migration
         Schema::create('weights', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Natural::class);
+            $table->foreignIdFor(FullWash::class);
+            $table->foreignIdFor(Honey::class);
             $table->timestamps();
         });
     }

@@ -15,17 +15,17 @@ class Criteria extends Model
         'code',
     ];
 
-    public function natural():HasMany
+    public function Natural():HasMany
     {
         return $this->hasMany(Natural::class);
     }
 
-    public function fullwash():HasMany
+    public function FullWash():HasMany
     {
         return $this->hasMany(FullWash::class);
     }
 
-    public function honey():HasMany
+    public function Honey():HasMany
     {
         return $this->hasMany(Honey::class);
     }

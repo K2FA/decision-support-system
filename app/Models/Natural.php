@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Natural extends Model
 {
@@ -19,5 +20,10 @@ class Natural extends Model
     public function Criteria():BelongsTo
     {
         return $this->belongsTo(Criteria::class);
+    }
+
+    public function Weight():HasOne
+    {
+        return $this->hasOne(Weight::class);
     }
 }
