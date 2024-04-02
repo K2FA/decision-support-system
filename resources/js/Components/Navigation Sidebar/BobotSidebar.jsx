@@ -17,7 +17,7 @@ export default function BobotSideBar(){
                     >
                     <i
                         className={
-                        "fa-solid fa-seedling mr-2 text-sm sm:text-base " +
+                        "fa-solid fa-seedling mr-1 text-sm sm:text-base " +
                         (window.location.href.indexOf("/bobot/natural") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")
@@ -38,7 +38,7 @@ export default function BobotSideBar(){
                     >
                     <i
                         className={
-                        "fa-solid fa-droplet mr-2 text-sm " +
+                        "fa-solid fa-droplet mr-3 text-sm " +
                         (window.location.href.indexOf("/bobot/full-wash") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")
@@ -59,7 +59,7 @@ export default function BobotSideBar(){
                     >
                     <i
                         className={
-                        "fa-brands fa-forumbee mr-2 text-sm " +
+                        "fa-brands fa-forumbee mr-3 text-sm " +
                         (window.location.href.indexOf("/bobot/honey") !== -1
                             ? "opacity-75"
                             : "text-blueGray-300")

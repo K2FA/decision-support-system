@@ -19,4 +19,14 @@ class Criteria extends Model
     {
         return $this->hasMany(Natural::class);
     }
+
+    public function fullwash():HasMany
+    {
+        return $this->hasMany(FullWash::class);
+    }
+
+    public function honey():HasMany
+    {
+        return $this->hasMany(Honey::class);
+    }
 }
