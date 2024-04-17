@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             GoalSeeder::class,
             CriteriaSeeder::class,
             AlternativeSeeder::class,
+            WeightSeeder::class,
         ]);
     }
 }

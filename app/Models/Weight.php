@@ -12,7 +12,7 @@ class Weight extends Model
 
     protected $fillable = [
         'natural_id',
-        'fullwash_id',
+        'full_wash_id',
         'honey_id',
     ];
 
