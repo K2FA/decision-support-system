@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             NaturalSeeder::class,
+            FullWashSeeder::class,
+            HoneySeeder::class,
             UserSeeder::class,
             GoalSeeder::class,
             CriteriaSeeder::class,

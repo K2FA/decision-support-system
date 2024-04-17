@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fullwashes', function (Blueprint $table) {
+        Schema::create('honeys', function (Blueprint $table) {
             $table->id();
             $table->string('subcriteria');
             $table->integer('weight');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fullwashes');
+        Schema::dropIfExists('honeys');
     }
 };
