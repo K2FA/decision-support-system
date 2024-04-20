@@ -7,6 +7,7 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\HoneyController;
 use App\Http\Controllers\NaturalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WeightController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -44,9 +45,9 @@ Route::prefix('table')->group(function(){
 });
 
 Route::prefix('bobot')->group(function(){
-    Route::resource('natural', NaturalController::class)->only('index');
-    Route::resource('full-wash', FullWashController::class)->only('index');
-    Route::resource('honey', HoneyController::class)->only('index');
+    Route::resource('natural', WeightController::class)->only('index');
+    Route::resource('full-wash', WeightController::class)->only('index');
+    Route::resource('honey', WeightController::class)->only('index');
 });
 
 
