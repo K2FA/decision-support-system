@@ -7,7 +7,6 @@ export default function NaturalTable({ criteriaId }) {
     const filterNaturals = naturals.filter(
         (natural) => natural.criteria_id == criteriaId
     );
-    console.log(filterNaturals)
 
     return (
         <>

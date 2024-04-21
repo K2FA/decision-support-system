@@ -1,6 +1,13 @@
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function FullWashTable(){
+export default function FullWashTable({ criteriaId }) {
+    const {full_washes} = usePage().props;
+
+    const filterFullWash = full_washes.filter(
+        (fullWash) => fullWash.criteria_id == criteriaId
+    );
+
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -18,17 +25,19 @@ export default function FullWashTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
-                            1
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
-                            Cek Full Wash
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
-                            5
-                        </td>
-                    </tr>
+                    {filterFullWash.map((fullwash, index) => (
+                        <tr key={fullwash.id}>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
+                                {++index}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
+                                {fullwash.subcriteria}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
+                                {fullwash.weight}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
