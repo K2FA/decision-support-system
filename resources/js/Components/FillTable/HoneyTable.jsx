@@ -1,6 +1,13 @@
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function HoneyTable(){
+export default function HoneyTable({ criteriaId }) {
+    const { honeys } = usePage().props;
+
+    const filterHoney = honeys.filter(
+        (honey) => honey.criteria_id == criteriaId
+    );
+
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -18,17 +25,19 @@ export default function HoneyTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
-                            1
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
-                            Cek Honey
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
-                            3
-                        </td>
-                    </tr>
+                    {filterHoney.map((honey, index) => (
+                        <tr key={honey.id}>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
+                                {++index}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
+                                {honey.subcriteria}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
+                                {honey.weight}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
