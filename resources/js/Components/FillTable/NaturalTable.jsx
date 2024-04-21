@@ -1,6 +1,14 @@
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function NaturalTable() {
+export default function NaturalTable({ criteriaId }) {
+    const { naturals } = usePage().props;
+
+    const filterNaturals = naturals.filter(
+        (natural) => natural.criteria_id == criteriaId
+    );
+    console.log(filterNaturals)
+
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -18,17 +26,19 @@ export default function NaturalTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
-                            1
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
-                            coba
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
-                            5
-                        </td>
-                    </tr>
+                    {filterNaturals.map((natural, index) => (
+                        <tr key={natural.id}>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
+                                {++index}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold">
+                                {natural.subcriteria}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
+                                {natural.weight}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
