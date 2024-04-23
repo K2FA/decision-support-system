@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/react";
 import UserDropdown from "../Dropdowns/UserDropdown";
 import TableSideBar from "../Navigation Sidebar/TableSidebar";
 import BobotSideBar from "../Navigation Sidebar/BobotSidebar";
+import ChangSidebar from "../Navigation Sidebar/ChangSidebar";
 
 export default function Sidebar({ user }) {
     const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -108,6 +109,7 @@ export default function Sidebar({ user }) {
                                 Data TFN Chang 1996
                             </h6>
                             {/* End of Heading*/}
+                            <ChangSidebar/>
                         </span>
                     </div>
                 </div>

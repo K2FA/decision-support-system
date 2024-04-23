@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlternativeController;
+use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FullWashController;
 use App\Http\Controllers\GoalController;
@@ -48,6 +49,10 @@ Route::prefix('bobot')->group(function(){
     Route::resource('natural', WeightController::class)->only('index');
     Route::resource('full-wash', WeightController::class)->only('index');
     Route::resource('honey', WeightController::class)->only('index');
+});
+
+Route::prefix('tfn')->group(function(){
+    Route::resource('chang', ChangController::class)->only('index');
 });
 
 

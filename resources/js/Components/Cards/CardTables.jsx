@@ -12,15 +12,15 @@ export default function CardTable(){
     let TableComponent;
     let link;
 
-    if(window.location.href.indexOf('/table/goal') !== -1 ){
+    if(window.location.href.includes('/table/goal')  ){
         headerText = 'Tujuan';
         TableComponent = GoalTable;
         link = '/table/goal/create';
-    }else if(window.location.href.indexOf('/table/alternative') !== -1 ){
+    }else if(window.location.href.includes('/table/alternative')  ){
         headerText = "Alternatif";
         TableComponent = AlternativeTable;
         link = '/table/alternative/create';
-    }else if(window.location.href.indexOf('/table/criteria') !== -1 ){
+    }else if(window.location.href.includes('/table/criteria')  ){
         headerText = "Kriteria";
         TableComponent = CriteriaTable;
         link = '/table/criteria/create';
