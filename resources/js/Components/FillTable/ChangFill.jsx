@@ -1,18 +1,21 @@
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function ChangFill() {
+    const { changs } = usePage().props;
+
+    console.log(changs);
+
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
                 <thead>
                     <tr>
-                        <th className="px-4 sm:px-6  sm:w-4 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-center text-blueGray-700">
-                            No
-                        </th>
+                        
                         <th className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-left text-blueGray-700">
                             Intensitas Kepentingan
                         </th>
-                        <th className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-left text-blueGray-700">
+                        <th className="px-4 sm:px-6 text-wrap align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-left text-blueGray-700">
                             Himpunan Linguistik
                         </th>
                         <th className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-left text-blueGray-700">
@@ -24,23 +27,23 @@ export default function ChangFill() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
-                            1
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
-                            1
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
-                            cek
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
-                            (1, 1, 1)
-                        </td>
-                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
-                            (1, 1, 1)
-                        </td>
-                    </tr>
+                    {changs.map((chang, index) => (
+                        <tr key={chang.id}>
+                            
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
+                                {chang.importance}
+                            </td>
+                            <td className="px-4 sm:px-6 text-wrap align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-left font-semibold uppercase">
+                                {chang.desc}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
+                                {chang.tfn}
+                            </td>
+                            <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
+                                {chang.reciprocal}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
