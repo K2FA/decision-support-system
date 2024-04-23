@@ -11,6 +11,14 @@ class ChangController extends Controller
     public function index()
     {
         $changs = Chang::all();
-        return Inertia::render("Admin/Tables/TablePage", compact('changs'));
+        $tfns = [];
+        $reciprocals = [];
+
+        foreach($changs as $chang){
+            $tfns[]= json_decode($chang->tfn);
+            $reciprocals[] = json_decode($chang->reciprocal);
+        }
+        // dd($tfns);
+        return Inertia::render("Admin/Tables/TablePage", compact('changs', 'tfns', 'reciprocals'));
     }
 }

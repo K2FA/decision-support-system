@@ -83,7 +83,7 @@ class ChangSeeder extends Seeder
     private function formatJson($json){
         $arr = json_decode($json);
         $formatted = array_map(function($value){
-            return number_format($value, 3, ',','');
+            return number_format($value, 3, '.','');
         }, $arr);
         return json_encode($formatted);
     }

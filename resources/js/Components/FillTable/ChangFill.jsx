@@ -2,9 +2,7 @@ import { usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function ChangFill() {
-    const { changs } = usePage().props;
-
-    console.log(changs);
+    const { changs, tfns, reciprocals } = usePage().props;
 
     return (
         <>
@@ -37,10 +35,10 @@ export default function ChangFill() {
                                 {chang.desc}
                             </td>
                             <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
-                                {chang.tfn}
+                                ({tfns[index].join(', ')})
                             </td>
                             <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold uppercase">
-                                {chang.reciprocal}
+                                ({reciprocals[index].join(', ')})
                             </td>
                         </tr>
                     ))}
