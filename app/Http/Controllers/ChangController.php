@@ -18,7 +18,6 @@ class ChangController extends Controller
             $tfns[]= json_decode($chang->tfn);
             $reciprocals[] = json_decode($chang->reciprocal);
         }
-        // dd($tfns);
         return Inertia::render("Admin/Tables/TablePage", compact('changs', 'tfns', 'reciprocals'));
     }
 }

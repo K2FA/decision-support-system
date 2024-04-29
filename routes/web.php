@@ -8,6 +8,7 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\HoneyController;
 use App\Http\Controllers\NaturalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\WeightController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,10 @@ Route::prefix('bobot')->group(function(){
 
 Route::prefix('tfn')->group(function(){
     Route::resource('chang', ChangController::class)->only('index');
+});
+
+Route::prefix('user')->group(function(){
+    Route::resource('test', TestController::class)->only('index');
 });
 
 

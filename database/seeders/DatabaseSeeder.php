@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             AlternativeSeeder::class,
             WeightSeeder::class,
             ChangSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }
