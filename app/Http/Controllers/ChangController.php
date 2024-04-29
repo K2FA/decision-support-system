@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use app\Helper\AuthCheck;
 use App\Models\Chang;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ChangController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $check = AuthCheck::adminCheck($request); 
+
+        if(!blank($check)) {return to_route($check);}
+    }
+    
     public function index()
     {
         $changs = Chang::all();

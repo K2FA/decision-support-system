@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use app\Helper\AuthCheck;
 use App\Models\Criteria;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,6 +11,12 @@ use function Termwind\render;
 
 class CriteriaController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $check = AuthCheck::adminCheck($request); 
+
+        if(!blank($check)) {return to_route($check);}
+    }
     /**
      * Display a listing of the resource.
      */

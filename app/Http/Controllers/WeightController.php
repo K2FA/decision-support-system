@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use app\Helper\AuthCheck;
 use App\Models\FullWash;
 use App\Models\Honey;
 use App\Models\Natural;
@@ -11,6 +12,13 @@ use Inertia\Inertia;
 
 class WeightController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $check = AuthCheck::adminCheck($request); 
+
+        if(!blank($check)) {return to_route($check);}
+    }
+    
     public function index()
     {   
         $naturals = Natural::with('criteria')->get();
