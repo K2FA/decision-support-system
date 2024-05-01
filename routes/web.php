@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AhpController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
@@ -57,7 +58,7 @@ Route::prefix('tfn')->group(function(){
 });
 
 Route::prefix('user')->group(function(){
-    Route::resource('test', TestController::class)->only('index');
+    Route::resource('perhitungan', AhpController::class)->only('index');
 });
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import FormAdminLayout from "@/Layouts/Form/FormAdminLayout";
+import FormAdminLayout from "@/Layouts/FormLayout/FormAdminLayout";
 
 export default function Add({auth}){
     return(

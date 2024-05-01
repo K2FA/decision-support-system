@@ -1,7 +1,7 @@
 import React from "react";
 
-import AdminNavbar from "@/Components/Navbars/AdminNavbar";
-import Header from "@/Components/Header/Header";
+import AdminNavbar from "@/Components/Navbars/Navbar";
+import Header from "@/Components/Header/HeaderAdmin";
 import Sidebar from "@/Components/Sidebars/Sidebar";
 import FooterAdmin from "@/Components/Footers/FooterAdmin";
 import CardAddForm from "@/Components/Cards/CardAddForm";

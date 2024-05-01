@@ -9,12 +9,12 @@ use Inertia\Inertia;
 
 class AlternativeController extends Controller
 {
-    public function __construct(Request $request)
-    {
-        $check = AuthCheck::adminCheck($request); 
+    // public function _construct(Request $request)
+    // {
+    //     $check = AuthCheck::adminCheck($request); 
 
-        if(!blank($check)) {return to_route($check);}
-    }
+    //     if(!blank($check)) {return to_route($check);}
+    // }
     /**
      * Display a listing of the resource.
      */

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { Head, Link, useForm } from "@inertiajs/react";
-import Auth from "@/Layouts/Auth/Auth";
+import Auth from "@/Layouts/AuthLayout/Auth";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Helper\AuthCheck;
-use app\Helper\AuthChecker;
+use App\Helper\AuthCheck;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -12,12 +11,12 @@ use function Termwind\render;
 
 class GoalController extends Controller
 {
-    public function __construct(Request $request)
-    {
-        $check = AuthCheck::adminCheck($request); 
+    // public function __construct(Request $request)
+    // {   
+    //     $check = AuthCheck::adminCheck($request); 
 
-        if(!blank($check)) {return to_route($check);}
-    }
+    //     if(!blank($check)) {return to_route($check);}
+    // }
 
     /**
      * Display a listing of the resource.

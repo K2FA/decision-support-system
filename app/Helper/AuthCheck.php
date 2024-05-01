@@ -1,8 +1,7 @@
 <?php
 
-namespace app\Helper;
+namespace App\Helper;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthCheck 

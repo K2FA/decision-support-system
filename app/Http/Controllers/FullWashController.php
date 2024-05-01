@@ -9,12 +9,12 @@ use Inertia\Inertia;
 
 class FullWashController extends Controller
 {
-    public function __construct(Request $request)
-    {
-        $check = AuthCheck::adminCheck($request); 
+    // public function __construct(Request $request)
+    // {
+    //     $check = AuthCheck::adminCheck($request); 
 
-        if(!blank($check)) {return to_route($check);}
-    }
+    //     if(!blank($check)) {return to_route($check);}
+    // }
 
     public function index()
     {

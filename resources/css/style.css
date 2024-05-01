@@ -4,3 +4,15 @@
 .table-title{
     font-family: "Montserrat", serif;
 }
+
+.header-user{
+    background-color: #bd8462;
+}
+
+.btn-process{
+    background-color: #83413a;
+    transition: all 200ms ease-out;
+}
+.btn-process:hover{
+    transform: scale(1.05);
+}

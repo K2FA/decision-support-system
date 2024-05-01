@@ -1,7 +1,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function Header(){
+export default function HeaderAdmin(){
     return(
         <>
             <div className="relative bg-orange-500 md:pt-32 pb-32 pt-12">

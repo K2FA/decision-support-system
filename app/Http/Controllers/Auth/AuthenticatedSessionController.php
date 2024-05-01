@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
         //     auth()->user()->hasRole('User'),
         // );
         if($request->user()->hasRole("User")){
-            return redirect()->intended('/user/test');
+            return redirect()->intended('/user/perhitungan');
         }
 
 

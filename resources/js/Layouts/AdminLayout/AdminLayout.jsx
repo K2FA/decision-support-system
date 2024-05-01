@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-import AdminNavbar from "@/Components/Navbars/AdminNavbar";
-import Header from "@/Components/Header/Header";
+import Navbar from "@/Components/Navbars/Navbar";
+import HeaderAdmin from "@/Components/Header/HeaderAdmin";
 import Sidebar from "@/Components/Sidebars/Sidebar";
-import FooterAdmin from "@/Components/Footers/FooterAdmin";
+import Footer from "@/Components/Footers/Footer";
 import Table from "@/Components/Table/Table";
 import BobotTable from "@/Components/Table/BobotTable";
 import ChangTable from "@/Components/Table/ChangTable";
@@ -39,9 +39,9 @@ export default function AdminLayout({ user }) {
 
             <Sidebar user={user} />
             <div className="relative md:ml-64 bg-blueGray-100">
-                <AdminNavbar user={user} />
+                <Navbar user={user} />
 
-                <Header />
+                <HeaderAdmin />
 
                 <div className="px-4 md:px-10 mx-auto w-full -m-24">
                     {window.location.href.includes("/bobot") ? (
@@ -51,7 +51,7 @@ export default function AdminLayout({ user }) {
                     ) : (
                         <ChangTable />
                     )}
-                    <FooterAdmin />
+                    <Footer />
                 </div>
             </div>
         </>
