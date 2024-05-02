@@ -6,7 +6,7 @@ import Footer from "@/Components/Footers/Footer";
 import HeaderUser from "@/Components/Header/HeaderUser";
 import Calculation from "@/Components/Table/Calculation";
 
-
+import "../../../css/style.css";
 import "@/../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 export default function UserLayout({ user }) {

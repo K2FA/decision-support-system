@@ -16,3 +16,12 @@
 .btn-process:hover{
     transform: scale(1.05);
 }
+
+.input-number[type=number]::-webkit-inner-spin-button,
+.input-number[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-number[type=number]:focus{
+    box-shadow: none;
+}
