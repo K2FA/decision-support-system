@@ -1,7 +1,11 @@
 import React from "react";
+
+
 import CalculationInput from "../FillTable/CalculationInput";
+import Priority from "../Modal/Priority";
 
 export default function CalculationTable() {
+    
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -12,8 +16,14 @@ export default function CalculationTable() {
                                 Tabel Perbandingan Berpasangan
                             </h3>
                         </div>
+                        <div className="relative ml-4 mt-4 sm:mr-8">
+                            <Priority/>
+                        </div>
                     </div>
                 </div>
+
+                
+
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
                     <CalculationInput />
                     <div className="w-full flex justify-center">
