@@ -9,7 +9,8 @@ use Inertia\Inertia;
 
 class AhpController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $criterias = Criteria::all();
         $criteria_input = CriteriaInput::all()->groupBy('kriteria_id');
 
