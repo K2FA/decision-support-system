@@ -29,4 +29,9 @@ class Criteria extends Model
     {
         return $this->hasMany(Honey::class);
     }
+
+    public function CriteriaInput():HasMany
+    {
+        return $this->hasMany(CriteriaInput::class);
+    }
 }

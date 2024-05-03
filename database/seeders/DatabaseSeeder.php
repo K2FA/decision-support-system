@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             WeightSeeder::class,
             ChangSeeder::class,
             RoleSeeder::class,
+            CriteriaInputSeeder::class,
         ]);
     }
 }
