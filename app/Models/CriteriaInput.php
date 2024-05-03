@@ -11,7 +11,7 @@ class CriteriaInput extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kriteria',
+        'kriteria_id',
         'jenis',
     ];
 

@@ -12,6 +12,7 @@ export default function CardBobot() {
     const { naturals, full_washes, honeys } = usePage().props;
     const [criteriaMap, setCriteriaMap] = useState({});
 
+
     useEffect(() => {
         const tempCriteriaMap = {};
 
@@ -27,20 +28,6 @@ export default function CardBobot() {
         });
         setCriteriaMap(tempCriteriaMap);
     }, [naturals, full_washes, honeys]);
-
-    // useEffect(() => {
-    //     const tempCriteriaMap = {};
-    //     weights.forEach(weight => {
-    //         if(weight.natural && weight.natural.criteria){
-    //             tempCriteriaMap[weight.natural.criteria.id] = weight.natural.criteria.name;
-    //         }else if(weight.fullwash && weight.fullwash.criteria){
-    //             tempCriteriaMap[weight.fullwash.criteria.id] = weight.fullwash.criteria.name;
-    //         }else if(weight.honey && weight.honey.criteria){
-    //             tempCriteriaMap[weight.honey.criteria.id] = weight.honey.criteria.name;
-    //         }
-    //     });
-    //     setCriteriaMap(tempCriteriaMap);
-    // },[weights]);
 
     if (window.location.href.includes("/bobot/natural")) {
         TableComponent = NaturalTable;
