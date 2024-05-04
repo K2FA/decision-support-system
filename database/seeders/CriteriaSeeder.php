@@ -14,7 +14,7 @@ class CriteriaSeeder extends Seeder
     public function run(): void
     {
         Criteria::create([
-            'name' => 'Kondisi cuaca ketika panen',
+            'name' => 'Kondisi cuaca ',
             'code' => 'C1',
         ]);
         Criteria::create([

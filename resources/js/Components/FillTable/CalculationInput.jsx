@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import InputAhp from "../Input/InputAhp";
 import { usePage } from "@inertiajs/react";

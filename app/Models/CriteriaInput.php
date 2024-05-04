@@ -15,8 +15,8 @@ class CriteriaInput extends Model
         'jenis',
     ];
 
-    public function Criteria():BelongsTo
+    public function Criteria(): BelongsTo
     {
-        return $this->belongsTo(Criteria::class);
+        return $this->belongsTo(Criteria::class, 'kriteria_id', 'id');
     }
 }

@@ -12,7 +12,7 @@ class AhpController extends Controller
     public function index()
     {
         $criterias = Criteria::all();
-        $criteria_input = CriteriaInput::all()->groupBy('kriteria_id');
+        $criteria_input = CriteriaInput::with('Criteria')->get()->groupBy('kriteria_id');
 
         return Inertia::render('User/User', compact(
             'criterias',
