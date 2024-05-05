@@ -16,12 +16,10 @@ class AhpController extends Controller
     {
         $criterias = Criteria::all();
         $criteria_input = CriteriaInput::with('Criteria')->get()->groupBy('kriteria_id');
-        $goalSelects = GoalSelect::with('Goal')->get();
 
         return Inertia::render('User/User', compact(
             'criterias',
             'criteria_input',
-            'goalSelects'
         ));
     }
 

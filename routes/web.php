@@ -59,7 +59,7 @@ Route::prefix('tfn')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::resource('perhitungan', AhpController::class)->only('index');
-    Route::resource('pilih-tujuan', AhpController::class)->only('selectGoal');
+    Route::get('pilih-tujuan', [AhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
 });
 
 
