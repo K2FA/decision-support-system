@@ -1,8 +1,18 @@
-import { usePage } from "@inertiajs/react";
-import React from "react";
+import { Link, usePage } from "@inertiajs/react";
+import React, { useEffect, useState } from "react";
 
 export default function CardGoalSelect() {
     const { goalSelects } = usePage().props;
+
+    const [selectGoal, setSelectGoal] = useState("");
+
+    const handleSelectGoal = (goalName) => {
+        setSelectGoal(goalName);
+    };
+
+    useEffect(() => {
+        localStorage.setItem("selectedGoal", selectGoal);
+    }, [selectGoal]);
 
     return (
         <>
@@ -24,9 +34,16 @@ export default function CardGoalSelect() {
                             </h2>
 
                             <div className="card-actions justify-center mt-2">
-                                <button className="btn w-5/6 shadow-md text-white">
+                                <Link
+                                    href="/user/perhitungan"
+                                    type="button"
+                                    className="btn w-5/6 shadow-md text-white"
+                                    onClick={() =>
+                                        handleSelectGoal(goalSelect.goal.name)
+                                    }
+                                >
                                     Pilih
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

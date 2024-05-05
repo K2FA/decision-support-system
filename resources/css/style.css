@@ -27,7 +27,7 @@
 }
 
 .natural-goal{
-    background-color: #AF6E46;
+    background-color: #CB997E;
 }
 .fullwash-goal{
     background-color: #6B705C;
@@ -38,9 +38,12 @@
 .card-actions .btn{
     background-color: #C55962;
     border: none;
+    transition: all 200ms ease-out;
 }
 
 .card-actions .btn:hover{
-    transition: all 200ms ease-out;
     transform: scale(1.05);
+}
+.card-actions .btn:active{
+    transform: scale(0.9);
 }
