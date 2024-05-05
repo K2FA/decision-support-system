@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
         //     $request->user()->hasRole('User'),
         //     auth()->user()->hasRole('User'),
         // );
-        if($request->user()->hasRole("User")){
+        if ($request->user()->hasRole("User")) {
             return redirect()->intended('/user/perhitungan');
         }
 

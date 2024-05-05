@@ -41,24 +41,25 @@ use Inertia\Inertia;
 
 Route::permanentRedirect('/', '/login');
 
-Route::prefix('table')->group(function(){
-    Route::resource('goal', GoalController::class)->only('index','create', 'store', 'update', 'destroy');
-    Route::resource('alternative', AlternativeController::class)->only('index','create', 'store', 'update', 'destroy');
-    Route::resource('criteria', CriteriaController::class)->only('index','create', 'store', 'update', 'destroy');
+Route::prefix('table')->group(function () {
+    Route::resource('goal', GoalController::class)->only('index', 'create', 'store', 'update', 'destroy');
+    Route::resource('alternative', AlternativeController::class)->only('index', 'create', 'store', 'update', 'destroy');
+    Route::resource('criteria', CriteriaController::class)->only('index', 'create', 'store', 'update', 'destroy');
 });
 
-Route::prefix('bobot')->group(function(){
+Route::prefix('bobot')->group(function () {
     Route::resource('natural', WeightController::class)->only('index');
     Route::resource('full-wash', WeightController::class)->only('index');
     Route::resource('honey', WeightController::class)->only('index');
 });
 
-Route::prefix('tfn')->group(function(){
+Route::prefix('tfn')->group(function () {
     Route::resource('chang', ChangController::class)->only('index');
 });
 
-Route::prefix('user')->group(function(){
+Route::prefix('user')->group(function () {
     Route::resource('perhitungan', AhpController::class)->only('index');
+    Route::resource('pilih-tujuan', AhpController::class)->only('selectGoal');
 });
 
 
@@ -68,4 +69,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

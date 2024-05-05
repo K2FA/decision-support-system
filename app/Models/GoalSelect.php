@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Goal extends Model
+class GoalSelect extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'goal_id',
     ];
 
-    public function GoalSelect(): HasMany
+    public function Goal(): BelongsTo
     {
-        return $this->hasMany(GoalSelect::class);
+        return $this->belongsTo(Goal::class);
     }
 }

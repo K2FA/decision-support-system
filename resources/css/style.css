@@ -25,3 +25,22 @@
 .input-number[type=number]:focus{
     box-shadow: none;
 }
+
+.natural-goal{
+    background-color: #AF6E46;
+}
+.fullwash-goal{
+    background-color: #6B705C;
+}
+.honey-goal{
+    background-color: #77CFB5;
+}
+.card-actions .btn{
+    background-color: #C55962;
+    border: none;
+}
+
+.card-actions .btn:hover{
+    transition: all 200ms ease-out;
+    transform: scale(1.05);
+}

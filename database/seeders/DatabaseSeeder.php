@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             ChangSeeder::class,
             RoleSeeder::class,
             CriteriaInputSeeder::class,
+            GoalSelectSeeder::class
         ]);
     }
 }
-
