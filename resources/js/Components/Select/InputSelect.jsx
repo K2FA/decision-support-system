@@ -3,9 +3,9 @@ import { React, useCallback } from "react";
 export default function InputSelect({ criteriaName, criteriaId, onChange }) {
     const handleChange = useCallback(
         (event) => {
-            onChange(event.target.value);
+            onChange(event.target.value, criteriaId);
         },
-        [onChange]
+        [onChange, criteriaId]
     );
 
     return (
@@ -16,9 +16,7 @@ export default function InputSelect({ criteriaName, criteriaId, onChange }) {
                 onChange={handleChange}
                 className="select-input py-0 w-full shadow-lg mb-4 border-none bg-blueGray-50 cursor-pointer"
             >
-                <option value="0" defaultValue>
-                    0
-                </option>
+                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

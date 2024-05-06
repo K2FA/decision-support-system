@@ -6,14 +6,15 @@ export default function InputAhp({ criteria, criteriaInput, onChange, name }) {
 
     const handleSelectChange = useCallback(
         (id, value) => {
-            setSelectedValues({
-                ...selectedValues,
+            setSelectedValues((prevValues) => ({
+                ...prevValues,
                 [id]: value,
-            });
-            onChange(selectedValues);
+            }));
+            onChange({ ...selectedValues, [id]: value });
         },
         [selectedValues, onChange]
     );
+
     return (
         <>
             {criteria.map((crit, index) => (
