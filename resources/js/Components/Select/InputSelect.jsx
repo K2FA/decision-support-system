@@ -1,11 +1,19 @@
-import { React } from "react";
+import { React, useCallback } from "react";
 
-export default function InputSelect({ criteriaName, criteriaId }) {
+export default function InputSelect({ criteriaName, criteriaId, onChange }) {
+    const handleChange = useCallback(
+        (event) => {
+            onChange(event.target.value);
+        },
+        [onChange]
+    );
+
     return (
         <>
             <select
                 name={criteriaName}
                 id={criteriaId}
+                onChange={handleChange}
                 className="select-input py-0 w-full shadow-lg mb-4 border-none bg-blueGray-50 cursor-pointer"
             >
                 <option value="0" defaultValue>

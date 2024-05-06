@@ -13,10 +13,17 @@ class ComparisonInput extends Model
     protected $fillable = [
         'criteria_input_id',
         'comparison',
+        'user_id',
+        'random_token'
     ];
 
     public function CriteriaInput(): BelongsTo
     {
         return $this->belongsTo(CriteriaInput::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -2,8 +2,16 @@ import React from "react";
 
 import CalculationInput from "../FillTable/CalculationInput";
 import Priority from "../Modal/Priority";
+import { useForm } from "@inertiajs/react";
 
 export default function CalculationTable() {
+    const { data, setData, post, processing, errors } = useForm();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        post("/user/perhitungan", data);
+    };
+
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -21,12 +29,16 @@ export default function CalculationTable() {
                 </div>
 
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
-                    <form action="">
-                        <CalculationInput />
+                    <form onSubmit={(e) => handleSubmit(e)}>
+                        <CalculationInput onChange={(data) => setData(data)} />
 
                         <div className="w-full flex justify-center">
-                            <button className="btn-process sm:w-32 rounded p-2 mt-8 text-white shadow-lg">
-                                Submit
+                            <button
+                                type="submit"
+                                className="btn-process sm:w-32 rounded p-2 mt-8 text-white shadow-lg"
+                                disabled={processing}
+                            >
+                                {processing ? "Submitting..." : "submit"}
                             </button>
                         </div>
                     </form>

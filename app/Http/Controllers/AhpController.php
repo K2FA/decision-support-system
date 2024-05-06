@@ -11,8 +11,13 @@ use Inertia\Inertia;
 class AhpController extends Controller
 {
 
+    public function selectGoal()
+    {
+        $goalSelects = GoalSelect::with('Goal')->get();
+        return Inertia::render('User/User', compact('goalSelects'));
+    }
 
-    public function index()
+    public function index(Request $request)
     {
         $criterias = Criteria::all();
         $criteria_input = CriteriaInput::with('Criteria')->get()->groupBy('kriteria_id');
@@ -23,9 +28,8 @@ class AhpController extends Controller
         ));
     }
 
-    public function selectGoal()
+    public function store(Request $request)
     {
-        $goalSelects = GoalSelect::with('Goal')->get();
-        return Inertia::render('User/User', compact('goalSelects'));
+        dd($request->all());
     }
 }

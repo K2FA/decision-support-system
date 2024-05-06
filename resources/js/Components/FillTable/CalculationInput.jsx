@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
-import InputAhp from "../Input/InputAhp";
 import { usePage } from "@inertiajs/react";
 
-import InputSelect from "../Select/InputSelect";
+import InputAhp from "../Input/InputAhp";
 
-export default function CalculationInput() {
+export default function CalculationInput({ name, onChange }) {
     const { criterias, criteria_input } = usePage().props;
+
+    const [formData, setFormData] = useState({});
+
+    const handleInputChange = useCallback((data) => {
+        setFormData(data);
+        onChange(data);
+    }, []);
 
     return (
         <>
@@ -26,8 +32,10 @@ export default function CalculationInput() {
                 </thead>
                 <tbody>
                     <InputAhp
+                        name={name}
                         criteria={criterias}
                         criteriaInput={criteria_input}
+                        onChange={handleInputChange}
                     />
                 </tbody>
             </table>

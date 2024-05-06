@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import InputSelect from "../Select/InputSelect";
 
-export default function InputAhp({ criteria, criteriaInput }) {
+export default function InputAhp({ criteria, criteriaInput, onChange, name }) {
+    const [selectedValues, setSelectedValues] = useState({});
+
+    const handleSelectChange = useCallback(
+        (id, value) => {
+            setSelectedValues({
+                ...selectedValues,
+                [id]: value,
+            });
+            onChange(selectedValues);
+        },
+        [selectedValues, onChange]
+    );
     return (
         <>
             {criteria.map((crit, index) => (
@@ -33,6 +45,13 @@ export default function InputAhp({ criteria, criteriaInput }) {
                                     <InputSelect
                                         criteriaName={_criteria.criteria.name}
                                         criteriaId={_criteria.id}
+                                        onChange={(value) =>
+                                            handleSelectChange(
+                                                _criteria.id,
+                                                value
+                                            )
+                                        }
+                                        name={`${name}[${crit.id}][${_criteria.id}]`}
                                     />
                                 </>
                             )}

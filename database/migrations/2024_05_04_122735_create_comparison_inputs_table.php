@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\ComparisonInput;
+use App\Models\CriteriaInput;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('comparison_inputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(ComparisonInput::class);
+            $table->foreignIdFor(CriteriaInput::class);
             $table->double('comparison');
+            $table->foreignIdFor(User::class);
+            $table->string('random_token', 32);
             $table->timestamps();
         });
     }
