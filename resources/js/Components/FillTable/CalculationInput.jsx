@@ -3,6 +3,8 @@ import React from "react";
 import InputAhp from "../Input/InputAhp";
 import { usePage } from "@inertiajs/react";
 
+import InputSelect from "../Select/InputSelect";
+
 export default function CalculationInput() {
     const { criterias, criteria_input } = usePage().props;
 

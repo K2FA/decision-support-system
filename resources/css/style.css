@@ -47,3 +47,9 @@
 .card-actions .btn:active{
     transform: scale(0.9);
 }
+
+.select-input option{
+    background-color: #fff;
+    color: #334155;
+}
+
