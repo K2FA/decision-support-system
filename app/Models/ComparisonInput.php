@@ -12,7 +12,7 @@ class ComparisonInput extends Model
 
     protected $fillable = [
         'criteria_input_id',
-        'comparison',
+        'value',
         'user_id',
         'random_token'
     ];

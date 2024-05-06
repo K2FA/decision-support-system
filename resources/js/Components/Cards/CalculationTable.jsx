@@ -2,9 +2,13 @@ import React from "react";
 
 import CalculationInput from "../FillTable/CalculationInput";
 import Priority from "../Modal/Priority";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 
 export default function CalculationTable() {
+    const { flash } = usePage().props;
+
+    console.log(flash);
+
     const { data, setData, post, processing, errors } = useForm();
 
     const handleSubmit = (event) => {

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('comparison_inputs', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(CriteriaInput::class);
-            $table->double('comparison');
+            $table->double('value');
             $table->foreignIdFor(User::class);
             $table->string('random_token', 32);
             $table->timestamps();
