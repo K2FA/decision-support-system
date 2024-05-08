@@ -32,13 +32,11 @@ export default function InputAhp({ criteria, criteriaInput, onChange, name }) {
                                     <input
                                         id={_criteria.id}
                                         name={_criteria.criteria.name}
-                                        defaultValue={index == idx ? 1 : ""}
-                                        readOnly={
-                                            index == idx ? "readonly" : ""
-                                        }
-                                        disabled={index > idx ? "disabled" : ""}
+                                        value={index === idx ? 1 : ""}
+                                        readOnly={index === idx}
+                                        disabled={index > idx}
                                         type="number"
-                                        className="input-number w-full border-none text-center disabled:bg-slate-200 "
+                                        className="input-number w-full border-none text-center disabled:bg-slate-200"
                                     />
                                 </>
                             ) : (

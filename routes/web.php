@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FullWashController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\HasilAhpController;
 use App\Http\Controllers\HoneyController;
 use App\Http\Controllers\NaturalController;
 use App\Http\Controllers\ProfileController;
@@ -60,6 +61,7 @@ Route::prefix('tfn')->group(function () {
 Route::prefix('user')->group(function () {
     Route::resource('perhitungan', AhpController::class)->only('index', 'create', 'store');
     Route::get('pilih-tujuan', [AhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
+    Route::resource('hasil-ahp', HasilAhpController::class)->only('index', 'store');
 });
 
 

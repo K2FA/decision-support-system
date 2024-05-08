@@ -13,7 +13,6 @@ export default function CalculationInput({ name, onChange }) {
         setFormData(data);
         onChange(data);
     }, []);
-
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">

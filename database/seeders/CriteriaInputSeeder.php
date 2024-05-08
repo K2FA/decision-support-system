@@ -20,7 +20,7 @@ class CriteriaInputSeeder extends Seeder
         $criterias = Criteria::all();
 
         foreach ($criterias as $criteria) {
-            foreach($criterias as $_criteria){
+            foreach ($criterias as $_criteria) {
                 $store[] = [
                     'kriteria_id' => $criteria->id,
                     'jenis' => $_criteria->id,

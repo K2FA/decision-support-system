@@ -25,4 +25,9 @@ class CriteriaInput extends Model
     {
         return $this->hasMany(ComparisonInput::class);
     }
+
+    public function ResultCriteriaInput(): HasMany
+    {
+        return $this->hasMany(ResultCriteriaInput::class);
+    }
 }

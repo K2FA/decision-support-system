@@ -7,14 +7,15 @@ import { useForm, usePage } from "@inertiajs/react";
 export default function CalculationTable() {
     const { flash } = usePage().props;
 
-    console.log(flash);
-
     const { data, setData, post, processing, errors } = useForm();
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         post("/user/perhitungan", data);
     };
+
+    console.log(flash);
 
     return (
         <>

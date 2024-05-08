@@ -36,10 +36,14 @@ class AhpController extends Controller
     {
 
         $status = false;
+
         $req = $request->all();
         $key = array_keys($req);
 
         $query = CriteriaInput::whereIn('id', $key)->get();
+
+        $readonly = DB::table('criteria_inputs')->select('id')->whereRaw('kriteria_id = jenis')->get();
+
 
         if (count($key) != $query->count()) {
             return redirect()->back()->with('failed', 'Key tidak sesuai!');
@@ -52,9 +56,18 @@ class AhpController extends Controller
         try {
             $store = [];
 
-            foreach ($req as $index => $bobot) {
+            foreach ($readonly as $inputID) {
                 $store[] = [
-                    'criteria_input_id' => $index,
+                    'criteria_input_id' => $inputID->id,
+                    'value' => 1,
+                    'random_token' => $random_token,
+                    'user_id' => auth()->user()->id,
+                ];
+            }
+
+            foreach ($req as $criteria_id => $bobot) {
+                $store[] = [
+                    'criteria_input_id' => $criteria_id,
                     'value' => $bobot,
                     'random_token' => $random_token,
                     'user_id' => auth()->user()->id,
@@ -66,13 +79,11 @@ class AhpController extends Controller
             $status = true;
 
             DB::commit();
+
             return redirect()->back()->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Data Gagal Dibuat!');
         }
-
-        // return $status ? to_route('perhitungan.index')->with('message', 'Data Berhasil Dibuat!') : to_route('perhitungan.index')->with('failed', 'Data Gagal Dibuat!');
-
     }
 }
