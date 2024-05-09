@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anhipro;
+use App\Models\ComparisonInput;
 use App\Models\GoalSelect;
 use App\Repositories\AhpRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class HasilAhpController extends Controller
+class ResultInputController extends Controller
 {
     public function index()
     {
-        $goalSelects = GoalSelect::with('Goal')->get();
-        $hasil = AhpRepository::comparison();
+        $comparisons = ComparisonInput::all();
+        // $pairwise = AhpRepository::Calculate();
+        // $cek = Anhipro::all();
+        // dd($cek);
 
-        return Inertia::render('User/User', compact('goalSelects', 'hasil'));
+        return Inertia::render('User/User', compact('comparisons'));
     }
 
     public function store(Request $request)

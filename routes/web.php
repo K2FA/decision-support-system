@@ -1,16 +1,12 @@
 <?php
 
-use App\Http\Controllers\AhpController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
-use App\Http\Controllers\FullWashController;
 use App\Http\Controllers\GoalController;
-use App\Http\Controllers\HasilAhpController;
-use App\Http\Controllers\HoneyController;
-use App\Http\Controllers\NaturalController;
+use App\Http\Controllers\InputAhpController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\ResultInputController;
 use App\Http\Controllers\WeightController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -59,9 +55,9 @@ Route::prefix('tfn')->group(function () {
 });
 
 Route::prefix('user')->group(function () {
-    Route::resource('perhitungan', AhpController::class)->only('index', 'create', 'store');
-    Route::get('pilih-tujuan', [AhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
-    Route::resource('hasil-ahp', HasilAhpController::class)->only('index', 'store');
+    Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store');
+    Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
+    Route::resource('hasil-ahp', ResultInputController::class)->only('index', 'store');
 });
 
 

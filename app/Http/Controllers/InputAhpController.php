@@ -12,7 +12,7 @@ use Inertia\Inertia;
 
 use function Laravel\Prompts\error;
 
-class AhpController extends Controller
+class InputAhpController extends Controller
 {
 
     public function selectGoal()
