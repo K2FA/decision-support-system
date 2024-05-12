@@ -25,8 +25,9 @@ class AhpRepository
 
     DB::beginTransaction();
 
-    $comparison = ComparisonInput::all();
+    $comparison = ComparisonInput::query()->where('random_token', session()->get('random_token')[0])->get();
     $criteria = CriteriaInput::all();
+
 
     $_this = new self();
 
@@ -100,6 +101,7 @@ class AhpRepository
           ->first();
 
         $_compare = $comparison->firstWhere('criteria_input_id', $_criteria_id->id);
+
         $_compare = $_compare->value != 0 ? $_compare->value : 1;
 
         $append_to_pairwise_insert = [
@@ -305,7 +307,7 @@ class AhpRepository
       $ci = ($lambda - $total) / ($total - 1);
 
       // Consistency Ratio
-      $cr = $ci / 1.12;
+      $cr = number_format($ci / 1.12, 3);
 
       ConsistencyRatio::insert(['result' => $cr]);
 

@@ -18,23 +18,8 @@ class ResultInputController extends Controller
 {
     public function index()
     {
+        $consistency_ratio = ConsistencyRatio::all();
 
-        $cek = Anhipro::all();
-        $cek2 = PairwiseComparison::all();
-        $cek3 = PriorityWeight::all();
-        $cek4 = MultiplicationMatrix::all();
-        $cek5 = DevidePw::all();
-        $cek6 = ConsistencyRatio::all();
-
-        dd($cek6);
-
-        return Inertia::render('User/User', compact('cek6'));
-    }
-
-    public function store(Request $request)
-    {
-        AhpRepository::Calculate();
-
-        return redirect()->back()->with('success', 'Data Berhasil Dibuat!');
+        return Inertia::render('User/User', compact('consistency_ratio'));
     }
 }

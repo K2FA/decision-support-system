@@ -52,6 +52,12 @@ class InputAhpController extends Controller
 
         $random_token = bin2hex(random_bytes(16));
 
+        if (session()->get('random_token')) {
+            session()->forget('random_token');
+        }
+
+        session()->push('random_token', $random_token);
+
         DB::beginTransaction();
 
         try {
