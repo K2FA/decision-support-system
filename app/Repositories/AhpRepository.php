@@ -5,7 +5,9 @@ namespace App\Repositories;
 use App\Helpers\MatrixMultiplication;
 use App\Models\Anhipro;
 use App\Models\ComparisonInput;
+use App\Models\ConsistencyRatio;
 use App\Models\CriteriaInput;
+use App\Models\DevidePw;
 use App\Models\MultiplicationMatrix;
 use App\Models\PairwiseComparison;
 use App\Models\PriorityWeight;
@@ -15,35 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class AhpRepository
 {
-
-  // public static function comparison()
-  // {
-  //   $inputValue = ComparisonInput::all();
-
-  //   $status = false;
-
-  //   DB::beginTransaction();
-
-  //   try {
-  //     $store = [];
-
-  //     foreach ($inputValue as $bobot) {
-  //       $store[] = [
-  //         'criteria_input_id' => $bobot->criteria_input_id,
-  //         'result' => 1 / $bobot->value
-  //       ];
-  //     }
-  //     ResultCriteriIanput::insert($store);
-
-  //     $status = true;
-  //   } catch (\Throwable $th) {
-  //     DB::rollBack();
-  //   }
-
-  //   DB::commit();
-  //   dd($store);
-  //   return $status;
-  // }
 
   public static function Calculate(): array
   {
@@ -72,6 +45,14 @@ class AhpRepository
 
       if (!$_this->multiplication_matrix($criteria)) {
         return throw new Error('Menghitung Perkalian Matriks Gagal!');
+      }
+
+      if (!$_this->devide_multiplication_matrix_with_pw($criteria)) {
+        return throw new Error('Membagi Rasio Konsistensi Dengan Pw Gagal!');
+      }
+
+      if (!$_this->consistency_ratio()) {
+        return throw new Error('Menghitung Rasio Konsistensi Konsistensi Gagal!');
       }
 
       $status = true;
@@ -259,6 +240,77 @@ class AhpRepository
       $status = true;
     } catch (\Throwable $th) {
       dd($th);
+    }
+    return $status;
+  }
+
+  protected function devide_multiplication_matrix_with_pw(): bool
+  {
+    $status = false;
+
+    try {
+      // get all perkalian matriks
+      $multiplication = MultiplicationMatrix::all();
+
+      // Delete data from db
+      DevidePw::query()->delete();
+
+      $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->get();
+
+      $store = [];
+
+      foreach ($multiplication as $matrix) {
+        $hasil = $matrix?->result;
+        $pw = $priorityWeight->firstWhere('name', "{$matrix?->name}-pw")?->result;
+
+        $store[] = [
+          'name' => $matrix->name,
+          'result' => number_format($hasil / $pw, 3),
+        ];
+      }
+
+      DevidePw::insert($store);
+
+      $status = true;
+    } catch (\Throwable $th) {
+      // dd($th);
+    }
+    return $status;
+  }
+
+  protected function consistency_ratio(): bool
+  {
+    $status = false;
+
+    // get all data from devide_multiplication_matrix_with_pw
+
+    $devidePw = DevidePw::all();
+    $total = $devidePw->count();
+
+
+    ConsistencyRatio::query()->delete();
+
+    try {
+      $hasil = 0;
+
+      foreach ($devidePw as $_devidePw) {
+        $hasil += $_devidePw->result;
+      }
+
+
+      // counting lambda maks
+      $lambda = $hasil / $total;
+
+      // Consistency Index
+      $ci = ($lambda - $total) / ($total - 1);
+
+      // Consistency Ratio
+      $cr = $ci / 1.12;
+
+      ConsistencyRatio::insert(['result' => $cr]);
+
+      $status = true;
+    } catch (\Throwable $th) {
     }
     return $status;
   }

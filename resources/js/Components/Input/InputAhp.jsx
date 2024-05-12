@@ -50,7 +50,7 @@ export default function InputAhp({ criteria, criteriaInput, onChange, name }) {
                                                 value
                                             )
                                         }
-                                        name={`${name}[${crit.id}][${_criteria.id}]`}
+                                        name={_criteria.criteria.name}
                                     />
                                 </>
                             )}

@@ -6,6 +6,7 @@ use App\Models\ComparisonInput;
 use App\Models\Criteria;
 use App\Models\CriteriaInput;
 use App\Models\GoalSelect;
+use App\Repositories\AhpRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -80,7 +81,10 @@ class InputAhpController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Data Berhasil Dibuat!');
+            // Calculation Algorithm
+            AhpRepository::Calculate();
+
+            return redirect('user/hasil-ahp')->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Data Gagal Dibuat!');

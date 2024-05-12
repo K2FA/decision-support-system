@@ -57,7 +57,7 @@ Route::prefix('tfn')->group(function () {
 Route::prefix('user')->group(function () {
     Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store');
     Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
-    Route::resource('hasil-ahp', ResultInputController::class)->only('index', 'store');
+    Route::resource('hasil-ahp', ResultInputController::class)->only('index');
 });
 
 
