@@ -7,6 +7,7 @@ use App\Models\Criteria;
 use App\Models\CriteriaInput;
 use App\Models\GoalSelect;
 use App\Repositories\AhpRepository;
+use App\Repositories\FahpRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -89,6 +90,7 @@ class InputAhpController extends Controller
 
             // Calculation Algorithm
             AhpRepository::Calculate();
+
 
             return redirect('user/hasil-ahp')->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {

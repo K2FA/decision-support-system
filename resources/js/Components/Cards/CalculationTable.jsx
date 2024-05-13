@@ -5,7 +5,7 @@ import Priority from "../Modal/Priority";
 import { useForm, usePage } from "@inertiajs/react";
 
 export default function CalculationTable() {
-    const { flash } = usePage().props;
+    // const { flash } = usePage().props;
 
     const { data, setData, post, processing, errors } = useForm();
 
@@ -14,8 +14,6 @@ export default function CalculationTable() {
 
         post("/user/perhitungan", data);
     };
-
-    console.log(flash);
 
     return (
         <>

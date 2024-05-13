@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Chang extends Model
 {
@@ -14,4 +15,9 @@ class Chang extends Model
         'desc',
         'tfn',
     ];
+
+    public function TfnInput(): HasMany
+    {
+        return $this->hasMany(TfnInput::class);
+    }
 }

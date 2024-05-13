@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Anhipro extends Model
+class TfnInput extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,9 @@ class Anhipro extends Model
         'criteria_input_id',
         'result',
         'random_token',
+        'tfn',
     ];
+
 
     public function Criteria_Input(): BelongsTo
     {

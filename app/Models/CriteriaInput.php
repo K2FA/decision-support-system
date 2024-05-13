@@ -26,8 +26,8 @@ class CriteriaInput extends Model
         return $this->hasMany(ComparisonInput::class);
     }
 
-    public function Anhipro(): HasMany
+    public function TfnInput(): HasMany
     {
-        return $this->hasMany(Anhipro::class);
+        return $this->hasMany(TfnInput::class);
     }
 }

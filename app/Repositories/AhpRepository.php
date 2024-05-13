@@ -25,14 +25,16 @@ class AhpRepository
 
     DB::beginTransaction();
 
-    $comparison = ComparisonInput::query()->where('random_token', session()->get('random_token')[0])->get();
+    $token = session()->get('random_token')[0];
+
+    $comparison = ComparisonInput::query()->where('random_token', $token)->get();
     $criteria = CriteriaInput::all();
 
 
     $_this = new self();
 
     try {
-      if (!$_this->pairwise($comparison, $criteria)) {
+      if (!$_this->pairwise($comparison, $criteria, $token)) {
         return throw new Error('Matriks Perbandingan Berpasangan Gagal');
       }
 
@@ -68,11 +70,10 @@ class AhpRepository
     return [$status, $message];
   }
 
-  protected function pairwise($comparison, $criteria): bool
+  protected function pairwise($comparison, $criteria, $token): bool
   {
     $status = false;
     try {
-      Anhipro::query()->delete();
 
       $pairwise_insert = [];
 
@@ -80,6 +81,7 @@ class AhpRepository
         $pairwise_insert[] = [
           'criteria_input_id' => $compare->criteria_input_id,
           'result' => $compare->value,
+          'random_token' => $compare->random_token,
         ];
       }
 
@@ -106,6 +108,7 @@ class AhpRepository
 
         $append_to_pairwise_insert = [
           'criteria_input_id' => $cnig->id,
+          'random_token' => $token,
           'result' => number_format(1 / $_compare, 3),
         ];
 
@@ -128,9 +131,6 @@ class AhpRepository
     try {
       $anhipro = Anhipro::all();
       $criteria_jenis = $criteria->groupBy('jenis');
-
-      // Delete fill in the database
-      PairwiseComparison::query()->delete();
 
       foreach ($criteria_jenis as $index => $crit) {
         $criteria_count = 0;
@@ -162,9 +162,6 @@ class AhpRepository
       $pairwiseComparison = PairwiseComparison::all();
       $criteria_gb_name = $criteria->groupBy('kriteria_id');
 
-
-      // clear table from db
-      PriorityWeight::query()->delete();
 
       foreach ($criteria_gb_name as $index => $criteria) {
         $amount = 0;
@@ -207,8 +204,6 @@ class AhpRepository
       $anhipro = Anhipro::all();
       $criteria_gb_name = $criteria->groupBy('kriteria_id');
 
-      // clear db
-      MultiplicationMatrix::query()->delete();
 
       $ratio = [];
       $matrix1 = [];
@@ -254,9 +249,6 @@ class AhpRepository
       // get all perkalian matriks
       $multiplication = MultiplicationMatrix::all();
 
-      // Delete data from db
-      DevidePw::query()->delete();
-
       $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->get();
 
       $store = [];
@@ -289,8 +281,6 @@ class AhpRepository
     $devidePw = DevidePw::all();
     $total = $devidePw->count();
 
-
-    ConsistencyRatio::query()->delete();
 
     try {
       $hasil = 0;

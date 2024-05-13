@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Chang;
 use App\Models\CriteriaInput;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,11 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anhipros', function (Blueprint $table) {
+        Schema::create('tfn_inputs', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(CriteriaInput::class);
             $table->double('result');
-            $table->string('random_token', 32);
+            $table->string('random_token');
+            $table->json('tfn');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('anhipros');
+        Schema::dropIfExists('tfn_inputs');
     }
 };
