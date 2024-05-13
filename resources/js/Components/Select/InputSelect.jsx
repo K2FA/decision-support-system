@@ -26,8 +26,8 @@ export default function InputSelect({ criteriaName, criteriaId, onChange }) {
                 <option value="7">7</option>
                 <option value="8">8</option>
                 <option value="9">9</option>
-                <option value="0.50">0.50</option>
-                <option value="0.33">0.33 </option>
+                <option value="0.50">0.500</option>
+                <option value="0.33">0.33</option>
                 <option value="0.25">0.25</option>
                 <option value="0.20">0.20</option>
                 <option value="0.17">0.17</option>

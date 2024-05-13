@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('changs', function (Blueprint $table) {
             $table->id();
-            $table->integer('importance');
+            $table->double('importance');
             $table->string('desc');
             $table->json('tfn');
-            $table->json('reciprocal');
             $table->timestamps();
         });
     }

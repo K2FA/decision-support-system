@@ -13,6 +13,5 @@ class Chang extends Model
         'importance',
         'desc',
         'tfn',
-        'reciprocal',
     ];
 }
