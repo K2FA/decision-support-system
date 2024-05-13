@@ -27,11 +27,11 @@ export default function CardConsistencyRatio() {
                         </p>
 
                         {consistency_ratio[0].result < 0.1 ? (
-                            <span className="text-green-500 ">
+                            <span className="text-green-500 font-medium">
                                 Nilai sudah konsisten!
                             </span>
                         ) : (
-                            <span className="text-red-400">
+                            <span className="text-red-400 font-medium">
                                 Nilai belum konsisten!
                             </span>
                         )}
@@ -40,6 +40,7 @@ export default function CardConsistencyRatio() {
                         <div className="flex w-full justify-center mt-4">
                             <button className="bg-blueGray-600 py-2 px-4 text-white rounded hover:bg-blueGray-400">
                                 Lanjutkan
+                                <i class="fa-solid fa-arrow-right pl-2"></i>
                             </button>
                         </div>
                     ) : (
@@ -48,6 +49,7 @@ export default function CardConsistencyRatio() {
                                 onClick={handleBack}
                                 className="bg-red-600 py-2 px-4 text-white rounded hover:bg-red-400"
                             >
+                                <i className="fa-solid fa-arrow-left pr-2"></i>
                                 Kembali
                             </button>
                         </div>
