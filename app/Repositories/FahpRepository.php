@@ -67,7 +67,7 @@ class FahpRepository
 
             TfnInput::insert($tfn_chang);
 
-            // dd(TfnInput::all());
+            dd($tfn_chang);
             $status = true;
         } catch (\Throwable $th) {
         }

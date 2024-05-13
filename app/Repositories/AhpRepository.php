@@ -109,7 +109,7 @@ class AhpRepository
         $append_to_pairwise_insert = [
           'criteria_input_id' => $cnig->id,
           'random_token' => $token,
-          'result' => number_format(1 / $_compare, 3),
+          'result' => number_format(1 / $_compare, 2),
         ];
 
         $pairwise_insert[] = $append_to_pairwise_insert;
@@ -143,7 +143,7 @@ class AhpRepository
         // insert to DB
         PairwiseComparison::insert([
           'name' => $index,
-          'result' => number_format($criteria_count, 3),
+          'result' => number_format($criteria_count, 2),
           'random_token' => $token
         ]);
       }
@@ -213,7 +213,7 @@ class AhpRepository
       $matrix1 = [];
       $matrix2 = [];
 
-      $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->get();
+      $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->where('random_token', $token)->get();
 
       foreach ($priorityWeight as $pw) {
         $matrix2[] = $pw->result;
@@ -253,7 +253,7 @@ class AhpRepository
       // get all perkalian matriks
       $multiplication = MultiplicationMatrix::query()->where('random_token', $token)->get();
 
-      $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->get();
+      $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->where('random_token', $token)->get();
 
       $store = [];
 
