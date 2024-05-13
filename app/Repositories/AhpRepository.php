@@ -38,23 +38,23 @@ class AhpRepository
         return throw new Error('Matriks Perbandingan Berpasangan Gagal');
       }
 
-      if (!$_this->pairwise_result($criteria)) {
+      if (!$_this->pairwise_result($criteria, $token)) {
         return throw new Error('Hasil Matriks Perbandingan Pasangan Gagal!');
       }
 
-      if (!$_this->priority_weight($criteria)) {
+      if (!$_this->priority_weight($criteria, $token)) {
         return throw new Error('Menghitung Bobot Prioritas Gagal!');
       }
 
-      if (!$_this->multiplication_matrix($criteria)) {
+      if (!$_this->multiplication_matrix($criteria, $token)) {
         return throw new Error('Menghitung Perkalian Matriks Gagal!');
       }
 
-      if (!$_this->devide_multiplication_matrix_with_pw($criteria)) {
+      if (!$_this->devide_multiplication_matrix_with_pw($criteria, $token)) {
         return throw new Error('Membagi Rasio Konsistensi Dengan Pw Gagal!');
       }
 
-      if (!$_this->consistency_ratio()) {
+      if (!$_this->consistency_ratio($token)) {
         return throw new Error('Menghitung Rasio Konsistensi Konsistensi Gagal!');
       }
 
@@ -124,12 +124,13 @@ class AhpRepository
     return $status;
   }
 
-  protected function pairwise_result($criteria): bool
+  protected function pairwise_result($criteria, $token): bool
   {
     $status = false;
 
     try {
-      $anhipro = Anhipro::all();
+      $anhipro = Anhipro::query()->where('random_token', $token)->get();
+
       $criteria_jenis = $criteria->groupBy('jenis');
 
       foreach ($criteria_jenis as $index => $crit) {
@@ -143,25 +144,27 @@ class AhpRepository
         PairwiseComparison::insert([
           'name' => $index,
           'result' => number_format($criteria_count, 3),
+          'random_token' => $token
         ]);
       }
+
       $status = true;
     } catch (\Throwable $th) {
     }
     return $status;
   }
 
-  protected function priority_weight($criteria): bool
+  protected function priority_weight($criteria, $token): bool
   {
     $status = false;
 
     try {
       // get duplicate from matrix pairwise data and result
 
-      $anhipro = Anhipro::all();
-      $pairwiseComparison = PairwiseComparison::all();
-      $criteria_gb_name = $criteria->groupBy('kriteria_id');
+      $anhipro = Anhipro::query()->where('random_token', $token)->get();
+      $pairwiseComparison = PairwiseComparison::query()->where('random_token', $token)->get();
 
+      $criteria_gb_name = $criteria->groupBy('kriteria_id');
 
       foreach ($criteria_gb_name as $index => $criteria) {
         $amount = 0;
@@ -180,10 +183,12 @@ class AhpRepository
           [
             'name' => "{$index}-jumlah",
             'result' => $amounts,
+            'random_token' => $token,
           ],
           [
             'name' => "{$index}-pw",
             'result' => $pw,
+            'random_token' => $token,
           ],
         ];
 
@@ -196,14 +201,13 @@ class AhpRepository
     return $status;
   }
 
-  protected function multiplication_matrix($criteria): bool
+  protected function multiplication_matrix($criteria, $token): bool
   {
     $status = false;
 
     try {
-      $anhipro = Anhipro::all();
+      $anhipro = Anhipro::query()->where('random_token', $token)->get();
       $criteria_gb_name = $criteria->groupBy('kriteria_id');
-
 
       $ratio = [];
       $matrix1 = [];
@@ -229,6 +233,7 @@ class AhpRepository
         $store[] = [
           'name' => $index,
           'result' => number_format($_ratio, 3),
+          'random_token' => $token,
         ];
       }
 
@@ -236,18 +241,17 @@ class AhpRepository
 
       $status = true;
     } catch (\Throwable $th) {
-      dd($th);
     }
     return $status;
   }
 
-  protected function devide_multiplication_matrix_with_pw(): bool
+  protected function devide_multiplication_matrix_with_pw($criteria, $token): bool
   {
     $status = false;
 
     try {
       // get all perkalian matriks
-      $multiplication = MultiplicationMatrix::all();
+      $multiplication = MultiplicationMatrix::query()->where('random_token', $token)->get();
 
       $priorityWeight = PriorityWeight::query()->where('name', 'like', '%-pw')->get();
 
@@ -260,9 +264,9 @@ class AhpRepository
         $store[] = [
           'name' => $matrix->name,
           'result' => number_format($hasil / $pw, 3),
+          'random_token' => $token,
         ];
       }
-
       DevidePw::insert($store);
 
       $status = true;
@@ -272,13 +276,13 @@ class AhpRepository
     return $status;
   }
 
-  protected function consistency_ratio(): bool
+  protected function consistency_ratio($token): bool
   {
     $status = false;
 
     // get all data from devide_multiplication_matrix_with_pw
 
-    $devidePw = DevidePw::all();
+    $devidePw = DevidePw::query()->where('random_token', $token)->get();
     $total = $devidePw->count();
 
 
@@ -299,7 +303,10 @@ class AhpRepository
       // Consistency Ratio
       $cr = number_format($ci / 1.12, 3);
 
-      ConsistencyRatio::insert(['result' => $cr]);
+      ConsistencyRatio::insert([
+        'result' => $cr,
+        'random_token' => $token,
+      ]);
 
       $status = true;
     } catch (\Throwable $th) {

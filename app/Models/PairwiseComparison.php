@@ -12,5 +12,6 @@ class PairwiseComparison extends Model
     protected $fillable = [
         'name',
         'result',
+        'random_token'
     ];
 }

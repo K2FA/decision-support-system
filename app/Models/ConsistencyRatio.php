@@ -11,5 +11,6 @@ class ConsistencyRatio extends Model
 
     protected $fillable = [
         'result',
+        'random_token',
     ];
 }

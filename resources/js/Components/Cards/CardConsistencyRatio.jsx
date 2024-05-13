@@ -7,6 +7,9 @@ export default function CardConsistencyRatio() {
     const handleBack = () => {
         window.history.back();
     };
+    const CR =
+        consistency_ratio.length > 0 &&
+        consistency_ratio[consistency_ratio.length - 1].result;
 
     return (
         <>
@@ -23,10 +26,10 @@ export default function CardConsistencyRatio() {
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
                     <div className="text-center">
                         <p className="text-blueGray-600 text-xl font-semibold mb-2 border border-solid border-black rounded">
-                            {consistency_ratio[0].result} &lt; 0,1
+                            {CR} &lt; 0,1
                         </p>
 
-                        {consistency_ratio[0].result < 0.1 ? (
+                        {CR < 0.1 ? (
                             <span className="text-green-500 font-medium">
                                 Nilai sudah konsisten!
                             </span>
@@ -36,11 +39,11 @@ export default function CardConsistencyRatio() {
                             </span>
                         )}
                     </div>
-                    {consistency_ratio[0].result < 0.1 ? (
+                    {CR < 0.1 ? (
                         <div className="flex w-full justify-center mt-4">
                             <button className="bg-blueGray-600 py-2 px-4 text-white rounded hover:bg-blueGray-400">
                                 Lanjutkan
-                                <i class="fa-solid fa-arrow-right pl-2"></i>
+                                <i className="fa-solid fa-arrow-right pl-2"></i>
                             </button>
                         </div>
                     ) : (

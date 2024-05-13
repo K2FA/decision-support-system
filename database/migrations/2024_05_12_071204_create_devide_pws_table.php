@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('result');
+            $table->string('random_token', 32);
             $table->timestamps();
         });
     }

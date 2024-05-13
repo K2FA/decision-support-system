@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('consistency_ratios', function (Blueprint $table) {
             $table->id();
             $table->double('result');
+            $table->string('random_token', 32);
             $table->timestamps();
         });
     }
