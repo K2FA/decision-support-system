@@ -106,10 +106,18 @@ class AhpRepository
 
         $_compare = $_compare->value != 0 ? $_compare->value : 1;
 
+        $compare_value = 1 / $_compare;
+        $result = 0;
+        if ($compare_value > 1) {
+          $result = round($compare_value);
+        } else {
+          $result = $compare_value;
+        }
+
         $append_to_pairwise_insert = [
           'criteria_input_id' => $cnig->id,
           'random_token' => $token,
-          'result' => number_format(1 / $_compare, 2),
+          'result' => number_format($result, 2),
         ];
 
         $pairwise_insert[] = $append_to_pairwise_insert;
