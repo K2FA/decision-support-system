@@ -18,7 +18,15 @@ class ResultInputController extends Controller
 {
     public function index()
     {
-        $consistency_ratio = ConsistencyRatio::all();
+        $token = session()->get('random_token')[0];
+        $consistency_ratio = ConsistencyRatio::where('random_token', $token)->get();
+        if ($consistency_ratio->first()->result > 0.1) {
+            Anhipro::where('random_token', $token)->delete();
+            PairwiseComparison::where('random_token', $token)->delete();
+            PriorityWeight::where('random_token', $token)->delete();
+            MultiplicationMatrix::where('random_token', $token)->delete();
+            DevidePw::where('random_token', $token)->delete();
+        }
 
         return Inertia::render('User/User', compact('consistency_ratio'));
     }

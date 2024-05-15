@@ -18,7 +18,8 @@ class TfnInput extends Model
     ];
 
 
-    public function Criteria_Input(): BelongsTo
+    // public function Criteria_Input(): BelongsTo
+    public function criteria_input(): BelongsTo
     {
         return $this->belongsTo(CriteriaInput::class);
     }

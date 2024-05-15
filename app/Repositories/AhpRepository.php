@@ -70,6 +70,8 @@ class AhpRepository
     return [$status, $message];
   }
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Pairwise Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   protected function pairwise($comparison, $criteria, $token): bool
   {
     $status = false;
@@ -132,6 +134,8 @@ class AhpRepository
     return $status;
   }
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Pairwise Matrix Amount ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   protected function pairwise_result($criteria, $token): bool
   {
     $status = false;
@@ -161,6 +165,8 @@ class AhpRepository
     }
     return $status;
   }
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set PW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   protected function priority_weight($criteria, $token): bool
   {
@@ -209,6 +215,8 @@ class AhpRepository
     return $status;
   }
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  Divide Multiplication Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   protected function multiplication_matrix($criteria, $token): bool
   {
     $status = false;
@@ -253,6 +261,8 @@ class AhpRepository
     return $status;
   }
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Divide Multiplication Matrix with PW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   protected function devide_multiplication_matrix_with_pw($criteria, $token): bool
   {
     $status = false;
@@ -283,6 +293,8 @@ class AhpRepository
     }
     return $status;
   }
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Consistency Ratio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   protected function consistency_ratio($token): bool
   {
