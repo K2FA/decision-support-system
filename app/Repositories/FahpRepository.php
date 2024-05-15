@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\AmountSintesis;
 use App\Models\Anhipro;
 use App\Models\Chang;
 use App\Models\ConsistencyRatio;
@@ -32,6 +33,10 @@ class FahpRepository
 
             if (!$_this->sintesis_fuzzy($token)) {
                 return throw new Error('Matriks Gagal di sintesis!');
+            }
+
+            if (!$_this->amount_sintesis_fuzzy($token)) {
+                return throw new Error('Matriks Gagal Dijumlahkan');
             }
 
             $status = true;
@@ -91,6 +96,7 @@ class FahpRepository
 
         try {
             $dataTfn = [];
+            $store = [];
 
             foreach ($tfn as $criteria) {
                 $tfn_decode = json_decode($criteria->tfn);
@@ -106,10 +112,47 @@ class FahpRepository
                 }
             }
 
-            foreach ($dataTfn as $kriteria_id => $tfn_value) {
-                Sintesis::insert([
-                    'name' => $kriteria_id,
-                    'tfn' => json_encode($tfn_value),
+
+            foreach ($dataTfn as $index => $value) {
+                $store[] = [
+                    'name' => $index,
+                    'tfn' => json_encode($value),
+                    'random_token' => $token,
+                ];
+            }
+
+            // dd($dataTfn, $store);
+
+            Sintesis::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function amount_sintesis_fuzzy($token): bool
+    {
+        $status = false;
+
+        $sintesis = Sintesis::where('random_token', $token)->get();
+
+        try {
+            $datas = [0, 0, 0];
+
+            foreach ($sintesis as $index => $tfn_value) {
+                $tfn_decode = json_decode($tfn_value->tfn);
+
+                $datas[0] += $tfn_decode[0];
+                $datas[1] += $tfn_decode[1];
+                $datas[2] += $tfn_decode[2];
+            }
+
+            foreach ($datas as $index => $result) {
+                AmountSintesis::insert([
+                    'name' =>  $index + 1,
+                    'result' => $result,
+                    'random_token' => $token,
                 ]);
             }
 

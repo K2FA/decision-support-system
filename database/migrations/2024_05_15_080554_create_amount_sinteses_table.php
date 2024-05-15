@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sinteses', function (Blueprint $table) {
+        Schema::create('amount_sinteses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('tfn');
+            $table->double('result');
             $table->string('random_token');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sinteses');
+        Schema::dropIfExists('amount_sinteses');
     }
 };
