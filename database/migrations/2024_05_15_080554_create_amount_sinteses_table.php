@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('amount_sinteses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->double('result');
+            $table->json('result');
             $table->string('random_token');
             $table->timestamps();
         });

@@ -148,13 +148,11 @@ class FahpRepository
                 $datas[2] += $tfn_decode[2];
             }
 
-            foreach ($datas as $index => $result) {
-                AmountSintesis::insert([
-                    'name' =>  $index + 1,
-                    'result' => $result,
-                    'random_token' => $token,
-                ]);
-            }
+
+            AmountSintesis::insert([
+                'result' => json_encode($datas),
+                'random_token' => $token,
+            ]);
 
             $status = true;
         } catch (\Throwable $th) {

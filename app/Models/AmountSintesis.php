@@ -10,7 +10,6 @@ class AmountSintesis extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'result',
         'random_token',
     ];
