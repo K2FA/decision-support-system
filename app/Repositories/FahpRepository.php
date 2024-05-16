@@ -5,9 +5,11 @@ namespace App\Repositories;
 use App\Models\AmountSintesis;
 use App\Models\Anhipro;
 use App\Models\Chang;
+use App\Models\ComparisonMultiplication;
 use App\Models\ConsistencyRatio;
 use App\Models\CriteriaInput;
 use App\Models\CrossMultiplication;
+use App\Models\MinValue;
 use App\Models\Sintesis;
 use App\Models\TfnInput;
 use Error;
@@ -42,6 +44,14 @@ class FahpRepository
 
             if (!$_this->cross_multiplication_sintesis_fuzzy($token)) {
                 return throw new Error('Perkalian Silang Gagal Dilakukan');
+            }
+
+            if (!$_this->comparison_of_probability($token)) {
+                return throw new Error('Perbandingan Tingkat Kemungkinan Gagal Dilakukan');
+            }
+
+            if (!$_this->minimum_value($token)) {
+                return throw new Error('Pencarian nilai minimum gagal');
             }
 
             $status = true;
@@ -201,6 +211,105 @@ class FahpRepository
             }
 
             CrossMultiplication::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function comparison_of_probability($token): bool
+    {
+        $status = false;
+
+        $cross_multiplication = CrossMultiplication::where('random_token', $token)->get();
+
+        try {
+            $hasil = [];
+            $store = [];
+
+            foreach ($cross_multiplication as $c1) {
+
+                foreach ($cross_multiplication as $c2) {
+                    if ($c1->id == $c2->id) {
+                        continue;
+                    }
+
+                    $c1_lmu = json_decode($c1->result);
+                    $c2_lmu = json_decode($c2->result);
+
+                    /**
+                     * =
+                     * IF(D22 >= D21;1;
+                     *     IF(C21>=E22;0;
+                     *         (C21-E22)/(D22-E22)-(D21-C21)
+                     *     )
+                     * )
+                     * 
+                     * c = 0
+                     * d = 1
+                     * e = 2
+                     * 
+                     * 21 = c1
+                     * 22 = c2
+                     */
+                    $result = $c2_lmu[1] >= $c1_lmu[1] ? 1 : ($c1_lmu[0] >= $c2_lmu[2] ? 0 : (($c1_lmu[0] - $c2_lmu[2]) / ($c2_lmu[1] - $c2_lmu[2]) - ($c1_lmu[1] - $c1_lmu[0])));
+
+                    $hasil["{$c1->name}_{$c2->name}"] = $result;
+                }
+            }
+
+            foreach ($hasil as $index => $value) {
+                $store[] = [
+                    'name' => $index,
+                    'result' => $value,
+                    'random_token' => $token,
+                ];
+            }
+
+            ComparisonMultiplication::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function minimum_value($token): bool
+    {
+        $status = false;
+
+        $comparison = ComparisonMultiplication::where('random_token', $token)->get();
+
+        try {
+
+            $min = [];
+            $grouped = [];
+            $store = [];
+
+            foreach ($comparison as $item) {
+                $prefix = explode('_', $item->name)[0];
+
+                if (!isset($grouped[$prefix])) {
+                    $grouped[$prefix] = [];
+                }
+
+                $grouped[$prefix][] = $item;
+            }
+
+            foreach ($grouped as $prefix => $min_value) {
+                $min[$prefix] = collect($min_value)->min('result');
+            }
+
+            foreach ($min as $index => $value) {
+                $store[] = [
+                    'name' => $index,
+                    'result' => $value,
+                    'random_token' => $token,
+                ];
+            }
+
+            MinValue::insert($store);
 
             $status = true;
         } catch (\Throwable $th) {
