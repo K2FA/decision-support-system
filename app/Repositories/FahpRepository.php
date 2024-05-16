@@ -7,6 +7,7 @@ use App\Models\Anhipro;
 use App\Models\Chang;
 use App\Models\ConsistencyRatio;
 use App\Models\CriteriaInput;
+use App\Models\CrossMultiplication;
 use App\Models\Sintesis;
 use App\Models\TfnInput;
 use Error;
@@ -37,6 +38,10 @@ class FahpRepository
 
             if (!$_this->amount_sintesis_fuzzy($token)) {
                 return throw new Error('Matriks Gagal Dijumlahkan');
+            }
+
+            if (!$_this->cross_multiplication_sintesis_fuzzy($token)) {
+                return throw new Error('Perkalian Silang Gagal Dilakukan');
             }
 
             $status = true;
@@ -153,6 +158,49 @@ class FahpRepository
                 'result' => json_encode($datas),
                 'random_token' => $token,
             ]);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function cross_multiplication_sintesis_fuzzy($token): bool
+    {
+        $status = false;
+
+        $sintesis = Sintesis::where('random_token', $token)->get();
+        $amount_sintesis = AmountSintesis::where('random_token', $token)->get();
+
+
+        try {
+
+            $datas = [];
+            $store = [];
+
+            foreach ($amount_sintesis as $amount_value) {
+                $amount_sintesis_decode = json_decode($amount_value->result);
+            }
+
+            foreach ($sintesis as $_sintesis) {
+                $tfn_decode = json_decode($_sintesis->tfn);
+
+                $datas[] = [
+                    number_format($tfn_decode[0] * (1 / $amount_sintesis_decode[2]), 3),
+                    number_format($tfn_decode[1] * (1 / $amount_sintesis_decode[1]), 3),
+                    number_format($tfn_decode[2] * (1 / $amount_sintesis_decode[0]), 3),
+                ];
+            }
+
+            foreach ($datas as $index => $data) {
+                $store[] = [
+                    'name' => $sintesis[$index]->name,
+                    'result' => json_encode($data),
+                    'random_token' => $token,
+                ];
+            }
+
+            CrossMultiplication::insert($store);
 
             $status = true;
         } catch (\Throwable $th) {
