@@ -12,6 +12,7 @@ use App\Models\CrossMultiplication;
 use App\Models\MinValue;
 use App\Models\Sintesis;
 use App\Models\TfnInput;
+use App\Models\VektorNormalization;
 use Error;
 use Illuminate\Support\Facades\DB;
 
@@ -52,6 +53,10 @@ class FahpRepository
 
             if (!$_this->minimum_value($token)) {
                 return throw new Error('Pencarian nilai minimum gagal');
+            }
+
+            if (!$_this->normalization($token)) {
+                return throw new Error('Normalisasi Gagal dilakukan');
             }
 
             $status = true;
@@ -262,7 +267,7 @@ class FahpRepository
             foreach ($hasil as $index => $value) {
                 $store[] = [
                     'name' => $index,
-                    'result' => $value,
+                    'result' => number_format($value, 3),
                     'random_token' => $token,
                 ];
             }
@@ -304,7 +309,7 @@ class FahpRepository
             foreach ($min as $index => $value) {
                 $store[] = [
                     'name' => $index,
-                    'result' => $value,
+                    'result' => number_format($value, 3),
                     'random_token' => $token,
                 ];
             }
@@ -314,6 +319,45 @@ class FahpRepository
             $status = true;
         } catch (\Throwable $th) {
         }
+        return $status;
+    }
+
+    protected function normalization($token): bool
+    {
+        $status = false;
+
+        $min_value = MinValue::where('random_token', $token)->get();
+
+        try {
+            $amount = 0;
+            $result = [];
+            $total_result = 0;
+            $store = [];
+
+            foreach ($min_value as $min) {
+                $amount += $min->result;
+            }
+
+            foreach ($min_value as $min) {
+                $normalized = $min->result / $amount;
+                $result[] = number_format($normalized, 3);
+            }
+
+            foreach ($result as $data) {
+                $total_result += $data;
+
+                $store[] = [
+                    'normalized' => $data,
+                    'random_token' => $token,
+                ];
+            }
+
+            VektorNormalization::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+
         return $status;
     }
 }
