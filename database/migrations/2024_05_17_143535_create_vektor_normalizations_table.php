@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vektor_normalizations', function (Blueprint $table) {
             $table->id();
             $table->double('normalized');
+            $table->double('total');
             $table->string('random_token');
             $table->timestamps();
         });

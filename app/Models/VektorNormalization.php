@@ -11,6 +11,7 @@ class VektorNormalization extends Model
 
     protected $fillable = [
         'result',
+        'total',
         'random_token',
     ];
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@inertiajs/react";
 
 import NormalizedFuzzy from "../FillTable/NormalizedFuzzy";
 
@@ -16,8 +17,19 @@ export default function CardNormalizedFuzzy() {
                     </div>
                 </div>
 
-                <div className="blockw-full overflow-x-auto p-2 sm:p-4 mb-4">
+                <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
                     <NormalizedFuzzy />
+
+                    <div className="w-full flex justify-center mt-8">
+                        <Link
+                            type="button"
+                            href=""
+                            className="bg-blueGray-600 px-4 py-2 text-white rounded hover:bg-blueGray-500"
+                        >
+                            Hasil
+                            <i className="fa-solid fa-arrow-right pl-2"></i>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>

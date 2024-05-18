@@ -15,12 +15,15 @@ class FahpController extends Controller
 
     public function index()
     {
-        // FahpRepository::Calculate();
+        FahpRepository::Calculate();
 
         $criterias = Criteria::all();
 
         $token = session()->get('random_token')[0];
-        $normalization_fuzzy = VektorNormalization::where('random_token', $token)->get();
+        $normalization_fuzzy = VektorNormalization::where('random_token', $token)
+            ->latest()
+            ->take(5)
+            ->get();
 
         return Inertia::render('User/User', compact('normalization_fuzzy', 'criterias'));
     }

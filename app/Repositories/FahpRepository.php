@@ -346,6 +346,7 @@ class FahpRepository
 
                 $store[] = [
                     'normalized' => $data,
+                    'total' => $total_result,
                     'random_token' => $token,
                 ];
             }

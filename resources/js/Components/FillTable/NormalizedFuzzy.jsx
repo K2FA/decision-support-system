@@ -4,6 +4,10 @@ import React from "react";
 export default function NormalizedFuzzy() {
     const { criterias, normalization_fuzzy } = usePage().props;
 
+    const lastIndex = normalization_fuzzy.length - 1;
+
+    console.log(normalization_fuzzy);
+
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -18,6 +22,9 @@ export default function NormalizedFuzzy() {
                                 {criteria.name}
                             </th>
                         ))}
+                        <th className="px-4 sm:px-6  sm:w-4 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-center text-blueGray-700">
+                            Total
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +40,9 @@ export default function NormalizedFuzzy() {
                                 {weight.normalized}
                             </td>
                         ))}
+                        <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 font-semibold whitespace-nowrap text-center">
+                            {normalization_fuzzy[lastIndex].total}
+                        </td>
                     </tr>
                 </tbody>
             </table>
