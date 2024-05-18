@@ -6,8 +6,6 @@ use App\Models\AmountSintesis;
 use App\Models\Anhipro;
 use App\Models\Chang;
 use App\Models\ComparisonMultiplication;
-use App\Models\ConsistencyRatio;
-use App\Models\CriteriaInput;
 use App\Models\CrossMultiplication;
 use App\Models\MinValue;
 use App\Models\Sintesis;

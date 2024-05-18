@@ -7,6 +7,7 @@ import HeaderUser from "@/Components/Header/HeaderUser";
 import Calculation from "@/Components/Table/Calculation";
 import ResultAhp from "@/Components/Table/ResultAhp";
 import CardGoalSelect from "@/Components/Cards/CardGoalSelect";
+import ResultFahp from "@/Components/Table/ResultFahp";
 
 import "../../../css/style.css";
 import "@/../../node_modules/@fortawesome/fontawesome-free/css/all.css";
@@ -27,8 +28,14 @@ export default function UserLayout({ user }) {
                                 <CardGoalSelect />
                             </div>
                         </>
+                    ) : window.location.href.includes("/user/hasil-ahp") ? (
+                        <>
+                            <ResultAhp />
+                        </>
                     ) : (
-                        <ResultAhp />
+                        <>
+                            <ResultFahp />
+                        </>
                     )}
                 </div>
                 <Footer />
