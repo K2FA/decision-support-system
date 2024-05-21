@@ -18,15 +18,15 @@ class WeightController extends Controller
 
     //     if(!blank($check)) {return to_route($check);}
     // }
-    
+
     public function index()
-    {   
-        $naturals = Natural::with('criteria')->get();
-        $full_washes = FullWash::with('criteria')->get();
-        $honeys = Honey::with('criteria')->get();
+    {
+        $naturals = Natural::with('criteria')->get()->groupBy('criteria_id');
+        $full_washes = FullWash::with('criteria')->get()->groupBy('criteria_id');
+        $honeys = Honey::with('criteria')->get()->groupBy('criteria_id');
 
         // $weights = Weight::with('natural','fullwash', 'honey')->get();
-        // dd($weights);
-        return Inertia::render('Admin/Tables/TablePage', compact( 'naturals', 'full_washes', 'honeys'));
+        // dd($naturals);
+        return Inertia::render('Admin/Tables/TablePage', compact('naturals', 'full_washes', 'honeys'));
     }
 }

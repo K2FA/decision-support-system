@@ -23,7 +23,6 @@ class InputAhpController extends Controller
         return Inertia::render('User/User', compact('goalSelects'));
     }
 
-
     public function index(Request $request)
     {
 

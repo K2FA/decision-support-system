@@ -10,28 +10,33 @@ class Criteria extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'name',
         'code',
     ];
 
-    public function Natural():HasMany
+    public function Natural(): HasMany
     {
         return $this->hasMany(Natural::class);
     }
 
-    public function FullWash():HasMany
+    public function FullWash(): HasMany
     {
         return $this->hasMany(FullWash::class);
     }
 
-    public function Honey():HasMany
+    public function Honey(): HasMany
     {
         return $this->hasMany(Honey::class);
     }
 
-    public function CriteriaInput():HasMany
+    public function CriteriaInput(): HasMany
     {
         return $this->hasMany(CriteriaInput::class);
+    }
+
+    public function rank_input(): HasMany
+    {
+        return $this->hasMany(RankInput::class);
     }
 }

@@ -6,8 +6,6 @@ export default function NormalizedFuzzy() {
 
     const lastIndex = normalization_fuzzy.length - 1;
 
-    console.log(normalization_fuzzy);
-
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">

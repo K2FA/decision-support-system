@@ -7,6 +7,7 @@ use App\Http\Controllers\FahpController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\InputAhpController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RankController;
 use App\Http\Controllers\ResultInputController;
 use App\Http\Controllers\WeightController;
 use Illuminate\Foundation\Application;
@@ -60,6 +61,7 @@ Route::prefix('user')->group(function () {
     Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
     Route::resource('hasil-ahp', ResultInputController::class)->only('index');
     Route::resource('hasil-fahp', FahpController::class)->only('index');
+    Route::resource('rangking', RankController::class)->only('index');
 });
 
 

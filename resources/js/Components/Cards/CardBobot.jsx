@@ -12,19 +12,19 @@ export default function CardBobot() {
     const { naturals, full_washes, honeys } = usePage().props;
     const [criteriaMap, setCriteriaMap] = useState({});
 
-
     useEffect(() => {
         const tempCriteriaMap = {};
 
-        naturals.forEach((criterion) => {
-            tempCriteriaMap[criterion.criteria.id] = criterion.criteria.name;
+        Object.values(naturals).forEach(([key, value], index) => {
+            // console.log(criterion);
+            tempCriteriaMap[index] = value.criteria.name;
         });
 
-        full_washes.forEach((criterion) => {
-            tempCriteriaMap[criterion.criteria.id] = criterion.criteria.name;
+        Object.values(full_washes).forEach(([key, value], index) => {
+            tempCriteriaMap[index] = value.criteria.name;
         });
-        honeys.forEach((criterion) => {
-            tempCriteriaMap[criterion.criteria.id] = criterion.criteria.name;
+        Object.values(honeys).forEach(([key, value], index) => {
+            tempCriteriaMap[index] = value.criteria.name;
         });
         setCriteriaMap(tempCriteriaMap);
     }, [naturals, full_washes, honeys]);
@@ -41,8 +41,8 @@ export default function CardBobot() {
         <>
             {Object.keys(criteriaMap).map((index) => (
                 <div
-                key={index}
-                className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+                    key={index}
+                    className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
                 >
                     <div className="rounded-t mb-0 px-4 py-3 border-0">
                         <div className="block sm:flex flex-wrap items-center">
@@ -54,7 +54,9 @@ export default function CardBobot() {
                         </div>
                     </div>
                     <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
-                        {TableComponent && <TableComponent criteriaId ={index} />}
+                        {/* {TableComponent && (
+                            <TableComponent criteriaId={index} />
+                        )} */}
                     </div>
                 </div>
             ))}

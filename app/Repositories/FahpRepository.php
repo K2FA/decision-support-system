@@ -124,13 +124,13 @@ class FahpRepository
                 $tfn_decode = json_decode($criteria->tfn);
 
                 if (array_key_exists($criteria->criteria_input->kriteria_id, $dataTfn)) {
-                    $dataTfn[$criteria->criteria_input->kriteria_id][0] += doubleval($tfn_decode[0]);
-                    $dataTfn[$criteria->criteria_input->kriteria_id][1] += doubleval($tfn_decode[1]);
-                    $dataTfn[$criteria->criteria_input->kriteria_id][2] += doubleval($tfn_decode[2]);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][0] += doubleval($tfn_decode[0]), 3);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][1] += doubleval($tfn_decode[1]), 3);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][2] += doubleval($tfn_decode[2]), 3);
                 } else {
-                    $dataTfn[$criteria->criteria_input->kriteria_id][0] = doubleval($tfn_decode);
-                    $dataTfn[$criteria->criteria_input->kriteria_id][1] = doubleval($tfn_decode);
-                    $dataTfn[$criteria->criteria_input->kriteria_id][2] = doubleval($tfn_decode);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][0] = doubleval($tfn_decode), 3);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][1] = doubleval($tfn_decode), 3);
+                    number_format($dataTfn[$criteria->criteria_input->kriteria_id][2] = doubleval($tfn_decode), 3);
                 }
             }
 
@@ -248,8 +248,8 @@ class FahpRepository
 
                     /**
                      * =
-                     * IF(D22 >= D21;1;
-                     *     IF(C21>=E22;0;
+                     * IF(D21 >= D22;1;
+                     *     IF(C22>=E21;0;
                      *         (C21-E22)/(D22-E22)-(D21-C21)
                      *     )
                      * )
