@@ -22,6 +22,11 @@
     -webkit-appearance: none;
     margin: 0;
 }
+.input-number[type=number]{
+    appearance: none;
+    -moz-appearance: textfield;
+
+}
 .input-number[type=number]:focus{
     box-shadow: none;
 }

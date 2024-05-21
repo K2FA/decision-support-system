@@ -23,8 +23,10 @@ class InputAhpController extends Controller
         return Inertia::render('User/User', compact('goalSelects'));
     }
 
+
     public function index(Request $request)
     {
+
         $criterias = Criteria::all();
         $criteria_input = CriteriaInput::with('Criteria')->get()->groupBy('kriteria_id');
 

@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { usePage, Link } from "@inertiajs/react";
 import React from "react";
 
 export default function CardConsistencyRatio() {
@@ -38,10 +38,13 @@ export default function CardConsistencyRatio() {
                     </div>
                     {consistency_ratio[0].result < 0.1 ? (
                         <div className="flex w-full justify-center mt-4">
-                            <button className="bg-blueGray-600 py-2 px-4 text-white rounded hover:bg-blueGray-400">
+                            <Link
+                                href="/user/hasil-fahp"
+                                className="bg-blueGray-600 py-2 px-4 text-white rounded hover:bg-blueGray-400"
+                            >
                                 Lanjutkan
                                 <i className="fa-solid fa-arrow-right pl-2"></i>
-                            </button>
+                            </Link>
                         </div>
                     ) : (
                         <div className="flex w-full justify-center mt-8">

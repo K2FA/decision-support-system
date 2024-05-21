@@ -71,13 +71,15 @@ class FahpRepository
         return [$status, $message];
     }
 
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Change data to TFN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     protected function triangular_fuzzy_number($anhipro): bool
     {
         $status = false;
 
-        $chang = Chang::all();
 
         try {
+            $chang = Chang::all();
 
             $tfn_chang = [];
 
@@ -106,13 +108,15 @@ class FahpRepository
         return $status;
     }
 
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sintesis data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     protected function sintesis_fuzzy($token): bool
     {
         $status = false;
 
-        $tfn = TfnInput::with('criteria_input')->where('random_token', $token)->get();
-
         try {
+            $tfn = TfnInput::with('criteria_input')->where('random_token', $token)->get();
+
             $dataTfn = [];
             $store = [];
 
@@ -152,10 +156,10 @@ class FahpRepository
     protected function amount_sintesis_fuzzy($token): bool
     {
         $status = false;
-
-        $sintesis = Sintesis::where('random_token', $token)->get();
-
         try {
+
+            $sintesis = Sintesis::where('random_token', $token)->get();
+
             $datas = [0, 0, 0];
 
             foreach ($sintesis as $index => $tfn_value) {
@@ -182,11 +186,10 @@ class FahpRepository
     {
         $status = false;
 
-        $sintesis = Sintesis::where('random_token', $token)->get();
-        $amount_sintesis = AmountSintesis::where('random_token', $token)->get();
-
-
         try {
+
+            $sintesis = Sintesis::where('random_token', $token)->get();
+            $amount_sintesis = AmountSintesis::where('random_token', $token)->get();
 
             $datas = [];
             $store = [];
@@ -221,13 +224,15 @@ class FahpRepository
         return $status;
     }
 
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comparison of probability criteria ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     protected function comparison_of_probability($token): bool
     {
         $status = false;
 
-        $cross_multiplication = CrossMultiplication::where('random_token', $token)->get();
-
         try {
+            $cross_multiplication = CrossMultiplication::where('random_token', $token)->get();
+
             $hasil = [];
             $store = [];
 
@@ -256,7 +261,7 @@ class FahpRepository
                      * 21 = c1
                      * 22 = c2
                      */
-                    $result = $c2_lmu[1] >= $c1_lmu[1] ? 1 : ($c1_lmu[0] >= $c2_lmu[2] ? 0 : (($c1_lmu[0] - $c2_lmu[2]) / ($c2_lmu[1] - $c2_lmu[2]) - ($c1_lmu[1] - $c1_lmu[0])));
+                    $result = $c1_lmu[1] >= $c2_lmu[1] ? 1 : ($c2_lmu[0] >= $c1_lmu[2] ? 0 : (($c2_lmu[0] - $c1_lmu[2]) / (($c1_lmu[1] - $c1_lmu[2]) - ($c2_lmu[1] - $c2_lmu[0]))));
 
                     $hasil["{$c1->name}_{$c2->name}"] = $result;
                 }
@@ -278,13 +283,13 @@ class FahpRepository
         return $status;
     }
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ choose min value from comparison ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     protected function minimum_value($token): bool
     {
         $status = false;
 
-        $comparison = ComparisonMultiplication::where('random_token', $token)->get();
-
         try {
+            $comparison = ComparisonMultiplication::where('random_token', $token)->get();
 
             $min = [];
             $grouped = [];
@@ -320,13 +325,14 @@ class FahpRepository
         return $status;
     }
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Normlization ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     protected function normalization($token): bool
     {
         $status = false;
 
-        $min_value = MinValue::where('random_token', $token)->get();
-
         try {
+            $min_value = MinValue::where('random_token', $token)->get();
+
             $amount = 0;
             $result = [];
             $total_result = 0;

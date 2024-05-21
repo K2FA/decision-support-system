@@ -119,7 +119,7 @@ class AhpRepository
         $append_to_pairwise_insert = [
           'criteria_input_id' => $cnig->id,
           'random_token' => $token,
-          'result' => number_format($result, 2),
+          'result' => number_format($result, 3),
         ];
 
         $pairwise_insert[] = $append_to_pairwise_insert;
@@ -155,7 +155,7 @@ class AhpRepository
         // insert to DB
         PairwiseComparison::insert([
           'name' => $index,
-          'result' => number_format($criteria_count, 2),
+          'result' => number_format($criteria_count, 3),
           'random_token' => $token
         ]);
       }
@@ -184,10 +184,13 @@ class AhpRepository
         $amount = 0;
 
         foreach ($criteria as $idx => $crit) {
-          $hasil = $anhipro->firstWhere('criteria_input_id', $crit->id)?->result /
-            $pairwiseComparison->firstWhere('name', $crit->jenis)?->result;
+          $anhipro_result = $anhipro->firstWhere('criteria_input_id', $crit->id)?->result;
+          $pairwise_comparison_result = $pairwiseComparison->firstWhere('name', $crit->jenis)?->result;
 
-          $amount += $hasil;
+          if ($anhipro_result !== null && $pairwise_comparison_result !== null) {
+            $hasil = $anhipro_result / $pairwise_comparison_result;
+            $amount += $hasil;
+          }
         }
 
         $pw = number_format($amount / 5, 3);

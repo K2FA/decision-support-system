@@ -103,7 +103,7 @@ class ChangSeeder extends Seeder
 
         foreach ($changs as $chang) {
             Chang::create([
-                'importance' => number_format($chang['importance'], 2),
+                'importance' => number_format($chang['importance'], 3),
                 'desc' => $chang['desc'],
                 'tfn' => $this->formatJson($chang['tfn']),
             ]);
