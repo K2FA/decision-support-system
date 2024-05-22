@@ -12,7 +12,6 @@ class Alternative extends Model
 
     protected $fillable = [
         'name',
-        'code',
     ];
 
     public function rank_input(): HasMany

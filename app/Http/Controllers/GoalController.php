@@ -24,7 +24,7 @@ class GoalController extends Controller
     public function index()
     {
         $goals = Goal::all();
-        
+
         return Inertia::render('Admin/Tables/TablePage', compact('goals'));
     }
 
@@ -60,17 +60,23 @@ class GoalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Goal $goal, Request $request)
     {
-        //
+        $goals = $goal->find($request->id);
+        return Inertia::render('Admin/Form/Add', compact('goals'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Goal $goal)
     {
-        //
+        $valid = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $goal->update($valid);
+        return redirect()->route('goal.index')->with('message', 'Data Berhasil Diperbarui');
     }
 
     /**

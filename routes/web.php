@@ -41,9 +41,9 @@ use Inertia\Inertia;
 Route::permanentRedirect('/', '/login');
 
 Route::prefix('table')->group(function () {
-    Route::resource('goal', GoalController::class)->only('index', 'create', 'store', 'update', 'destroy');
-    Route::resource('alternative', AlternativeController::class)->only('index', 'create', 'store', 'update', 'destroy');
-    Route::resource('criteria', CriteriaController::class)->only('index', 'create', 'store', 'update', 'destroy');
+    Route::resource('goal', GoalController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
+    Route::resource('alternative', AlternativeController::class)->only('index', 'create', 'edit', 'store', 'update', 'destroy');
+    Route::resource('criteria', CriteriaController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
 });
 
 Route::prefix('bobot')->group(function () {

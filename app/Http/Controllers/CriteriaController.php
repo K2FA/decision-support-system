@@ -41,7 +41,6 @@ class CriteriaController extends Controller
     {
         $valid = $request->validate([
             'name' => ['required', 'string'],
-            'code' => ['required', 'string']
         ]);
         Criteria::create($valid);
         return redirect()->route('criteria.index');
@@ -58,17 +57,24 @@ class CriteriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Criteria $criteria, Request $request)
     {
-        //
+        $criterias = $criteria->find($request->id);
+        return Inertia::render('Admin/Form/Add', compact('criterias'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Criteria $criterion)
     {
-        //
+        $valid = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $criterion->update($valid);
+
+        return redirect()->route('criteria.index')->with('message', 'Data Berhasil Diperbarui');
     }
 
     /**
@@ -76,7 +82,7 @@ class CriteriaController extends Controller
      */
     public function destroy(Criteria $criterion)
     {
-        $criterion -> delete();
+        $criterion->delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

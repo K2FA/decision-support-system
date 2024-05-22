@@ -15,23 +15,18 @@ class CriteriaSeeder extends Seeder
     {
         Criteria::create([
             'name' => 'Kondisi cuaca ',
-            'code' => 'C1',
         ]);
         Criteria::create([
             'name' => 'Tingkat kematangan',
-            'code' => 'C2',
         ]);
         Criteria::create([
             'name' => 'Kadar gula',
-            'code' => 'C3',
         ]);
         Criteria::create([
             'name' => 'Ukuran buah',
-            'code' => 'C4',
         ]);
         Criteria::create([
             'name' => 'Kapasitas penjemuran',
-            'code' => 'C5',
         ]);
     }
 }

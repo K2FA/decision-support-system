@@ -39,7 +39,6 @@ class AlternativeController extends Controller
     {
         $valid =  $request->validate([
             'name' => ['required', 'string'],
-            'code' => ['required', 'string']
         ]);
 
         Alternative::create($valid);
@@ -57,17 +56,23 @@ class AlternativeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Alternative $alternative, Request $request)
     {
-        //
+        $alternatives = $alternative->find($request->id);
+        return Inertia::render('Admin/Form/Add', compact('alternatives'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Alternative $alternative)
     {
-        //
+        $valid = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $alternative->update($valid);
+        return redirect()->route('alternative.index')->with('message', 'Data Berhasil Diperbarui');
     }
 
     /**
@@ -75,7 +80,7 @@ class AlternativeController extends Controller
      */
     public function destroy(Alternative $alternative)
     {
-        $alternative -> delete();
+        $alternative->delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }
