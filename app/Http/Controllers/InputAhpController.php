@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ComparisonInput;
 use App\Models\Criteria;
 use App\Models\CriteriaInput;
+use App\Models\Goal;
 use App\Models\GoalSelect;
 use App\Repositories\AhpRepository;
 use App\Repositories\FahpRepository;
@@ -19,7 +20,7 @@ class InputAhpController extends Controller
 
     public function selectGoal()
     {
-        $goalSelects = GoalSelect::with('Goal')->get();
+        $goalSelects = Goal::all();
         return Inertia::render('User/User', compact('goalSelects'));
     }
 

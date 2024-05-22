@@ -14,23 +14,22 @@ export default function CardGoalSelect() {
         localStorage.setItem("selectedGoal", selectGoal);
     }, [selectGoal]);
 
+    console.log(goalSelects);
     return (
         <>
-            <div className="flex w-full justify-center gap-8">
+            <div className="flex w-full justify-center gap-4 flex-wrap">
                 {goalSelects.map((goalSelect) => (
                     <div
                         className={
-                            goalSelect.id == 1
+                            goalSelect.id % 2 == 0
                                 ? "natural-goal card w-96 bg-base-100 shadow-xl"
-                                : goalSelect.id == 2
-                                ? "fullwash-goal card w-96 bg-base-100 shadow-xl"
-                                : "honey-goal  card w-96 bg-base-100 shadow-xl"
+                                : "fullwash-goal card w-96 bg-base-100 shadow-xl"
                         }
                         key={goalSelect.id}
                     >
                         <div className="card-body w-full ">
                             <h2 className="card-title justify-center text-white">
-                                Proses {goalSelect.goal.name}
+                                Proses {goalSelect.name}
                             </h2>
 
                             <div className="card-actions justify-center mt-2">
