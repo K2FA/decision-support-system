@@ -1,6 +1,8 @@
 import { usePage } from "@inertiajs/react";
 import React from "react";
 
+import RankSelect from "../Select/RankSelect";
+
 export default function RankInputTable() {
     const { rankInputs, criterias, alternatives } = usePage().props;
 
@@ -31,7 +33,9 @@ export default function RankInputTable() {
                                 <td
                                     key={rank.id}
                                     className=" w-1/6 align-middle border border-solid  text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold"
-                                ></td>
+                                >
+                                    <RankSelect />
+                                </td>
                             ))}
                         </tr>
                     ))}

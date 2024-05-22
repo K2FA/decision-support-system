@@ -4,9 +4,11 @@ import React from "react";
 export default function NaturalTable({ criteriaId }) {
     const { naturals } = usePage().props;
 
-    const filterNaturals = naturals.filter(
-        (natural) => natural.criteria_id == criteriaId
-    );
+    // const filterNaturals = naturals.filter(
+    //     (natural) => natural.criteria_id == criteriaId
+    // );
+
+    const filterNaturals = naturals[criteriaId] || [];
 
     return (
         <>

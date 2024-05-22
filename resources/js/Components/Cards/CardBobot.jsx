@@ -4,59 +4,58 @@ import { usePage } from "@inertiajs/react";
 import NaturalTable from "../FillTable/NaturalTable";
 import FullWashTable from "../FillTable/FullWashTable";
 import HoneyTable from "../FillTable/HoneyTable";
-import CriteriaTable from "../FillTable/CriteriaTable";
 
 export default function CardBobot() {
-    let TableComponent;
-
     const { naturals, full_washes, honeys } = usePage().props;
     const [criteriaMap, setCriteriaMap] = useState({});
 
     useEffect(() => {
         const tempCriteriaMap = {};
 
-        Object.values(naturals).forEach(([key, value], index) => {
-            // console.log(criterion);
-            tempCriteriaMap[index] = value.criteria.name;
-        });
+        const grouping = (group) => {
+            Object.values(group).forEach((items) => {
+                items.forEach((item) => {
+                    tempCriteriaMap[item.criteria_id] = item.criteria.name;
+                });
+            });
+        };
 
-        Object.values(full_washes).forEach(([key, value], index) => {
-            tempCriteriaMap[index] = value.criteria.name;
-        });
-        Object.values(honeys).forEach(([key, value], index) => {
-            tempCriteriaMap[index] = value.criteria.name;
-        });
+        grouping(naturals);
+        grouping(full_washes);
+        grouping(honeys);
+
         setCriteriaMap(tempCriteriaMap);
     }, [naturals, full_washes, honeys]);
 
-    if (window.location.href.includes("/bobot/natural")) {
-        TableComponent = NaturalTable;
-    } else if (window.location.href.includes("/bobot/full-wash")) {
-        TableComponent = FullWashTable;
-    } else if (window.location.href.includes("/bobot/honey")) {
-        TableComponent = HoneyTable;
-    }
+    const TableComponent = ({ criteriaId }) => {
+        if (window.location.href.includes("/bobot/natural")) {
+            return <NaturalTable criteriaId={criteriaId} />;
+        } else if (window.location.href.includes("/bobot/full-wash")) {
+            return <FullWashTable criteriaId={criteriaId} />;
+        } else if (window.location.href.includes("/bobot/honey")) {
+            return <HoneyTable criteriaId={criteriaId} />;
+        }
+        return null;
+    };
 
     return (
         <>
-            {Object.keys(criteriaMap).map((index) => (
+            {Object.keys(criteriaMap).map((criteriaId) => (
                 <div
-                    key={index}
+                    key={criteriaId}
                     className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
                 >
                     <div className="rounded-t mb-0 px-4 py-3 border-0">
                         <div className="block sm:flex flex-wrap items-center">
                             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
                                 <h3 className="table-title font-bold text-2xl text-black uppercase pt-2">
-                                    {criteriaMap[index]}
+                                    {criteriaMap[criteriaId]}
                                 </h3>
                             </div>
                         </div>
                     </div>
                     <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
-                        {/* {TableComponent && (
-                            <TableComponent criteriaId={index} />
-                        )} */}
+                        <TableComponent criteriaId={criteriaId} />
                     </div>
                 </div>
             ))}

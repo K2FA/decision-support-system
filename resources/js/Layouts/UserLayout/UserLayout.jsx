@@ -25,7 +25,7 @@ export default function UserLayout({ user }) {
                         <Calculation />
                     ) : window.location.href.includes("/user/pilih-tujuan") ? (
                         <>
-                            <div className="h-96">
+                            <div className="h-96 m-24 mt-36">
                                 <CardGoalSelect />
                             </div>
                         </>

@@ -4,9 +4,11 @@ import React from "react";
 export default function FullWashTable({ criteriaId }) {
     const { full_washes } = usePage().props;
 
-    const filterFullWash = full_washes.filter(
-        (fullWash) => fullWash.criteria_id == criteriaId
-    );
+    // const filterFullWash = full_washes.filter(
+    //     (fullWash) => fullWash.criteria_id == criteriaId
+    // );
+
+    const filterFullWash = full_washes[criteriaId] || [];
 
     return (
         <>

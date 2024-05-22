@@ -4,9 +4,11 @@ import React from "react";
 export default function HoneyTable({ criteriaId }) {
     const { honeys } = usePage().props;
 
-    const filterHoney = honeys.filter(
-        (honey) => honey.criteria_id == criteriaId
-    );
+    // const filterHoney = honeys.filter(
+    //     (honey) => honey.criteria_id == criteriaId
+    // );
+
+    const filterHoney = honeys[criteriaId] || [];
 
     return (
         <>

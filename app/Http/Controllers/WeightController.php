@@ -25,8 +25,10 @@ class WeightController extends Controller
         $full_washes = FullWash::with('criteria')->get()->groupBy('criteria_id');
         $honeys = Honey::with('criteria')->get()->groupBy('criteria_id');
 
-        // $weights = Weight::with('natural','fullwash', 'honey')->get();
+        // $merged = array_merge_recursive($naturals, $full_washes, $honeys);
         // dd($naturals);
+
+        // $weights = Weight::with('natural','fullwash', 'honey')->get();
         return Inertia::render('Admin/Tables/TablePage', compact('naturals', 'full_washes', 'honeys'));
     }
 }
