@@ -20,7 +20,7 @@ export default function UserLayout({ user }) {
             <div className="relative bg-blueGray-100">
                 <Navbar user={user} />
                 <HeaderUser />
-                <div className="px-4 md:px-10 mx-auto w-full -m-24">
+                <div className="px-4 md:px-10 mx-auto w-full -m-24 ">
                     {window.location.href.includes("/user/perhitungan") ? (
                         <Calculation />
                     ) : window.location.href.includes("/user/pilih-tujuan") ? (
@@ -31,7 +31,9 @@ export default function UserLayout({ user }) {
                         </>
                     ) : window.location.href.includes("/user/hasil-ahp") ? (
                         <>
-                            <ResultAhp />
+                            <div className=" m-24 mt-36">
+                                <ResultAhp />
+                            </div>
                         </>
                     ) : window.location.href.includes("/user/rangking") ? (
                         <>
@@ -42,8 +44,8 @@ export default function UserLayout({ user }) {
                             <ResultFahp />
                         </>
                     )}
+                    <Footer />
                 </div>
-                <Footer />
             </div>
         </>
     );

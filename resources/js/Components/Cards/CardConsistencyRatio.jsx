@@ -4,10 +4,6 @@ import React from "react";
 export default function CardConsistencyRatio() {
     const { consistency_ratio } = usePage().props;
 
-    const handleBack = () => {
-        window.history.back();
-    };
-
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white ">
@@ -48,13 +44,14 @@ export default function CardConsistencyRatio() {
                         </div>
                     ) : (
                         <div className="flex w-full justify-center mt-8">
-                            <button
-                                onClick={handleBack}
+                            <Link
+                                href="/user/pilih-tujuan"
+                                as="button"
                                 className="bg-red-600 py-2 px-4 text-white rounded hover:bg-red-400"
                             >
                                 <i className="fa-solid fa-arrow-left pr-2"></i>
                                 Kembali
-                            </button>
+                            </Link>
                         </div>
                     )}
                 </div>

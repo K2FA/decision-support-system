@@ -46,7 +46,11 @@ class InputAhpController extends Controller
 
         $status = false;
 
+        $goalSelect = $request?->goal;
+
+
         $req = $request->all();
+        unset($req["goal"]);
         $key = array_keys($req);
 
         $query = CriteriaInput::whereIn('id', $key)->get();
@@ -67,6 +71,12 @@ class InputAhpController extends Controller
         session()->push('random_token', $random_token);
 
         DB::beginTransaction();
+
+        /** start store goal selection */
+        GoalSelect::create([
+            'choice' => $goalSelect,
+            'random_token' => $random_token,
+        ]);
 
         try {
             $store = [];

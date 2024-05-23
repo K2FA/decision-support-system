@@ -5,6 +5,7 @@ use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FahpController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\GoalSelectController;
 use App\Http\Controllers\InputAhpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankController;
@@ -57,8 +58,8 @@ Route::prefix('tfn')->group(function () {
 });
 
 Route::prefix('user')->group(function () {
+    Route::resource('pilih-tujuan', GoalSelectController::class)->only('index', 'store')->middleware('auth', 'user');
     Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store')->middleware('auth', 'user');
-    Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal')->middleware('auth', 'user');
     Route::resource('hasil-ahp', ResultInputController::class)->only('index')->middleware('auth', 'user');
     Route::resource('hasil-fahp', FahpController::class)->only('index')->middleware('auth', 'user');
     Route::resource('rangking', RankController::class)->only('index')->middleware('auth', 'user');

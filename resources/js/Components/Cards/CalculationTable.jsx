@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import CalculationInput from "../FillTable/CalculationInput";
 import Priority from "../Modal/Priority";
@@ -12,7 +12,9 @@ export default function CalculationTable() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        post("/user/perhitungan", data);
+        const goalName = new URL(window.location).searchParams.get("goal");
+
+        post(`/user/perhitungan?goal=${goalName}`);
     };
 
     return (
