@@ -41,27 +41,27 @@ use Inertia\Inertia;
 Route::permanentRedirect('/', '/login');
 
 Route::prefix('table')->group(function () {
-    Route::resource('goal', GoalController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
-    Route::resource('alternative', AlternativeController::class)->only('index', 'create', 'edit', 'store', 'update', 'destroy');
-    Route::resource('criteria', CriteriaController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
+    Route::resource('goal', GoalController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('auth', 'admin');
+    Route::resource('alternative', AlternativeController::class)->only('index', 'create', 'edit', 'store', 'update', 'destroy')->middleware('auth', 'admin');
+    Route::resource('criteria', CriteriaController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('auth', 'admin');
 });
 
 Route::prefix('bobot')->group(function () {
-    Route::resource('natural', WeightController::class)->only('index');
-    Route::resource('full-wash', WeightController::class)->only('index');
-    Route::resource('honey', WeightController::class)->only('index');
+    Route::resource('natural', WeightController::class)->only('index')->middleware('auth', 'admin');
+    Route::resource('full-wash', WeightController::class)->only('index')->middleware('auth', 'admin');
+    Route::resource('honey', WeightController::class)->only('index')->middleware('auth', 'admin');
 });
 
 Route::prefix('tfn')->group(function () {
-    Route::resource('chang', ChangController::class)->only('index');
+    Route::resource('chang', ChangController::class)->only('index')->middleware('auth', 'admin');
 });
 
 Route::prefix('user')->group(function () {
-    Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store');
-    Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal');
-    Route::resource('hasil-ahp', ResultInputController::class)->only('index');
-    Route::resource('hasil-fahp', FahpController::class)->only('index');
-    Route::resource('rangking', RankController::class)->only('index');
+    Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store')->middleware('auth', 'user');
+    Route::get('pilih-tujuan', [InputAhpController::class, 'selectGoal'])->name('pilih-tujuan.select-goal')->middleware('auth', 'user');
+    Route::resource('hasil-ahp', ResultInputController::class)->only('index')->middleware('auth', 'user');
+    Route::resource('hasil-fahp', FahpController::class)->only('index')->middleware('auth', 'user');
+    Route::resource('rangking', RankController::class)->only('index')->middleware('auth', 'user');
 });
 
 

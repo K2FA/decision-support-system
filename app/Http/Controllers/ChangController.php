@@ -9,21 +9,19 @@ use Inertia\Inertia;
 
 class ChangController extends Controller
 {
-    // public function __construct(Request $request)
-    // {
-    //     $check = AuthCheck::adminCheck($request); 
+    public function __construct(Request $request)
+    {
+        $this->middleware('admin');
+    }
 
-    //     if(!blank($check)) {return to_route($check);}
-    // }
-    
     public function index()
     {
         $changs = Chang::all();
         $tfns = [];
         $reciprocals = [];
 
-        foreach($changs as $chang){
-            $tfns[]= json_decode($chang->tfn);
+        foreach ($changs as $chang) {
+            $tfns[] = json_decode($chang->tfn);
             $reciprocals[] = json_decode($chang->reciprocal);
         }
         return Inertia::render("Admin/Tables/TablePage", compact('changs', 'tfns', 'reciprocals'));

@@ -11,7 +11,10 @@ use Inertia\Inertia;
 
 class FahpController extends Controller
 {
-    //
+    public function __construct(Request $request)
+    {
+        $this->middleware('user');
+    }
 
     public function index()
     {

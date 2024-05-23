@@ -18,6 +18,11 @@ use function Laravel\Prompts\error;
 class InputAhpController extends Controller
 {
 
+    public function __construct(Request $request)
+    {
+        $this->middleware('user');
+    }
+
     public function selectGoal()
     {
         $goalSelects = Goal::all();

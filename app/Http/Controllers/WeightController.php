@@ -12,12 +12,10 @@ use Inertia\Inertia;
 
 class WeightController extends Controller
 {
-    // public function __construct(Request $request)
-    // {
-    //     $check = AuthCheck::adminCheck($request); 
-
-    //     if(!blank($check)) {return to_route($check);}
-    // }
+    public function __construct(Request $request)
+    {
+        $this->middleware('admin');
+    }
 
     public function index()
     {

@@ -11,6 +11,11 @@ use Inertia\Inertia;
 class RankController extends Controller
 {
 
+    public function __construct(Request $request)
+    {
+        $this->middleware('user');
+    }
+
     public function index()
     {
         $criterias = Criteria::all();

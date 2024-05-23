@@ -9,12 +9,10 @@ use Inertia\Inertia;
 
 class AlternativeController extends Controller
 {
-    // public function _construct(Request $request)
-    // {
-    //     $check = AuthCheck::adminCheck($request); 
-
-    //     if(!blank($check)) {return to_route($check);}
-    // }
+    public function __construct(Request $request)
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      */

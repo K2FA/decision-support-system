@@ -16,6 +16,11 @@ use Inertia\Inertia;
 
 class ResultInputController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware('user');
+    }
+
     public function index()
     {
         $token = session()->get('random_token')[0];
