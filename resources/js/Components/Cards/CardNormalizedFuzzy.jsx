@@ -26,7 +26,7 @@ export default function CardNormalizedFuzzy() {
                             href=""
                             className="bg-blueGray-600 px-4 py-2 text-white rounded hover:bg-blueGray-500"
                         >
-                            Hasil
+                            Hasil Rangking
                             <i className="fa-solid fa-arrow-right pl-2"></i>
                         </Link>
                     </div>

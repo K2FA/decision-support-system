@@ -2,6 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React from "react";
 
 import RankInputTable from "../FillTable/RankInputTable";
+import Information from "../Modal/Information";
 
 export default function CardRankInput() {
     const { data, setData, post, processing, errors } = useForm();
@@ -15,6 +16,9 @@ export default function CardRankInput() {
                             <h3 className="table-title font-bold tracking-widest text-2xl text-black uppercase pt-2">
                                 Input Bobot Perangkingan
                             </h3>
+                        </div>
+                        <div className="relative ml-4 mt-4 sm:mr-8">
+                            <Information />
                         </div>
                     </div>
                 </div>
