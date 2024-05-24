@@ -7,6 +7,12 @@ import Information from "../Modal/Information";
 export default function CardRankInput() {
     const { data, setData, post, processing, errors } = useForm();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        post("/user/rangking");
+    };
+
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -23,8 +29,8 @@ export default function CardRankInput() {
                     </div>
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
-                    <form>
-                        <RankInputTable />
+                    <form onSubmit={handleSubmit}>
+                        <RankInputTable onChange={(data) => setData(data)} />
 
                         <div className="w-full flex justify-center">
                             <button

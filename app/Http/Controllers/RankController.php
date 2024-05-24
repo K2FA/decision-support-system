@@ -10,7 +10,9 @@ use App\Models\GoalSelect;
 use App\Models\Honey;
 use App\Models\Natural;
 use App\Models\RankInput;
+use App\Models\RankInputData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class RankController extends Controller
@@ -67,5 +69,46 @@ class RankController extends Controller
                 'information'
             )
         );
+    }
+
+    public function store(Request $request)
+    {
+        $status = false;
+
+        $req = $request->all();
+        $key = array_keys($req);
+
+        $query = RankInput::whereIn('id', $key)->get();
+
+        if (count($key) != $query->count()) {
+            return redirect()->back()->with('failed', 'Key tidak sesuai!');
+        }
+
+        $token = session()->get('random_token')[0];
+
+        DB::beginTransaction();
+
+        try {
+            $store = [];
+
+            foreach ($req as $alternative_id => $bobot) {
+                $store[] = [
+                    'rank_input_id' => $alternative_id,
+                    'value' => $bobot,
+                    'random_token' => $token,
+                ];
+            }
+
+            RankInputData::insert($store);
+
+            $status = true;
+
+            DB::commit();
+
+            return redirect('user/rangking')->with('success', 'Data Berhasil Dibuat!');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('failed', 'Data Gagal Dibuat!');
+        }
     }
 }

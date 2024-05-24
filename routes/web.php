@@ -62,7 +62,7 @@ Route::prefix('user')->group(function () {
     Route::resource('perhitungan', InputAhpController::class)->only('index', 'create', 'store')->middleware('auth', 'user');
     Route::resource('hasil-ahp', ResultInputController::class)->only('index')->middleware('auth', 'user');
     Route::resource('hasil-fahp', FahpController::class)->only('index')->middleware('auth', 'user');
-    Route::resource('rangking', RankController::class)->only('index')->middleware('auth', 'user');
+    Route::resource('rangking', RankController::class)->only('index', 'store')->middleware('auth', 'user');
 });
 
 
