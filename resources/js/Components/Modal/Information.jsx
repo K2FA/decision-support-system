@@ -57,37 +57,99 @@ export default function Information() {
                                     <div className="mt-2">
                                         <Tab.Group>
                                             <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+                                                {Object.values(information).map(
+                                                    (infor, index) => (
+                                                        <Tab
+                                                            key={index}
+                                                            className={({
+                                                                selected,
+                                                            }) =>
+                                                                classNames(
+                                                                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 ",
+                                                                    "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 ",
+                                                                    selected
+                                                                        ? "bg-white text-blue-700 shadow"
+                                                                        : "text-blueGray-500 hover:bg-white/[0.12] hover:text-white"
+                                                                )
+                                                            }
+                                                        >
+                                                            {
+                                                                infor[0]
+                                                                    .criteria
+                                                                    .name
+                                                            }
+                                                        </Tab>
+                                                    )
+                                                )}
+                                            </Tab.List>
+                                            <Tab.Panels>
                                                 {Object.keys(information).map(
                                                     (infoKey, index) => {
-                                                        const info =
+                                                        const filterInfo =
                                                             information[
                                                                 infoKey
-                                                            ][0];
+                                                            ] || [];
                                                         return (
-                                                            <Tab
+                                                            <Tab.Panel
                                                                 key={index}
-                                                                className={({
-                                                                    selected,
-                                                                }) =>
-                                                                    classNames(
-                                                                        "w-full rounded-lg py-2.5 text-sm font-medium leading-5 ",
-                                                                        "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 ",
-                                                                        selected
-                                                                            ? "bg-white text-blue-700 shadow"
-                                                                            : "text-blueGray-500 hover:bg-white/[0.12] hover:text-white"
-                                                                    )
-                                                                }
+                                                                className={classNames(
+                                                                    "rounded-xl bg-white p-3",
+                                                                    "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
+                                                                )}
                                                             >
-                                                                {
-                                                                    info
-                                                                        .criteria
-                                                                        .name
-                                                                }
-                                                            </Tab>
+                                                                <div className="mt-2 ">
+                                                                    <table className="items-center w-full bg-transparent border-collapse">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th className="px-4 sm:px-6  sm:w-4 align-middle border border-solid py-3 text-sm sm:text-base  border-slate-300 whitespace-nowrap font-semibold text-center text-blueGray-700">
+                                                                                    No
+                                                                                </th>
+                                                                                <th className="px-4 align-middle border border-solid py-3 text-sm sm:text-base border-slate-300 whitespace-nowrap font-semibold text-center text-blueGray-700">
+                                                                                    Sub
+                                                                                    Kriteria
+                                                                                </th>
+                                                                                <th className="px-4 sm:px-6 sm:w-2/3 align-middle border border-solid py-3 text-sm sm:text-base border-slate-300 whitespace-nowrap font-semibold text-center text-blueGray-700">
+                                                                                    Bobot
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {filterInfo.map(
+                                                                                (
+                                                                                    info,
+                                                                                    idx
+                                                                                ) => (
+                                                                                    <tr
+                                                                                        key={
+                                                                                            idx
+                                                                                        }
+                                                                                    >
+                                                                                        <td className="px-4 w-16 sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base text-blueGray-700 border-slate-300 whitespace-nowrap text-center font-bold">
+                                                                                            {
+                                                                                                ++idx
+                                                                                            }
+                                                                                        </td>
+                                                                                        <td className="px-4 w-16 text-wrap sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base text-blueGray-700 border-slate-300 whitespace-nowrap text-center font-bold">
+                                                                                            {
+                                                                                                info.subcriteria
+                                                                                            }
+                                                                                        </td>
+                                                                                        <td className="px-4 w-16 text-wrap sm:px-6 align-middle border border-solid py-3 text-sm sm:text-base text-blueGray-700 border-slate-300 whitespace-nowrap text-center font-bold">
+                                                                                            {
+                                                                                                info.weight
+                                                                                            }
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                )
+                                                                            )}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </Tab.Panel>
                                                         );
                                                     }
                                                 )}
-                                            </Tab.List>
+                                            </Tab.Panels>
                                         </Tab.Group>
                                     </div>
                                     {/* End of Modal Box fill */}
