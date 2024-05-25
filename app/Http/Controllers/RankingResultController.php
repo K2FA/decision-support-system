@@ -15,8 +15,7 @@ class RankingResultController extends Controller
 
     public function index()
     {
-        $rank_repo = RankRepository::calculate();
 
-        return Inertia::render('User/User', compact('rank_repo'));
+        return Inertia::render('User/User');
     }
 }

@@ -11,6 +11,7 @@ use App\Models\Honey;
 use App\Models\Natural;
 use App\Models\RankInput;
 use App\Models\RankInputData;
+use App\Repositories\RankRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -101,11 +102,15 @@ class RankController extends Controller
 
             RankInputData::insert($store);
 
+
             $status = true;
 
             DB::commit();
 
-            return redirect('user/rangking')->with('success', 'Data Berhasil Dibuat!');
+            // Algorithm Ranking
+            RankRepository::calculate();
+
+            return redirect('user/hasil-rangking')->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Data Gagal Dibuat!');

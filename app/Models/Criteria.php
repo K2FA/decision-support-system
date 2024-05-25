@@ -38,4 +38,9 @@ class Criteria extends Model
     {
         return $this->hasMany(RankInput::class);
     }
+
+    public function DevideRank(): HasMany
+    {
+        return $this->hasMany(DevideRank::class);
+    }
 }

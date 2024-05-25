@@ -23,10 +23,10 @@ export default function CardNormalizedFuzzy() {
                     <div className="w-full flex justify-center mt-8">
                         <Link
                             type="button"
-                            href=""
+                            href={"/user/rangking"}
                             className="bg-blueGray-600 px-4 py-2 text-white rounded hover:bg-blueGray-500"
                         >
-                            Hasil Rangking
+                            Perangkingan
                             <i className="fa-solid fa-arrow-right pl-2"></i>
                         </Link>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\DevideRank;
+use App\Models\RankAmount;
 use App\Models\RankInput;
 use App\Models\RankInputData;
 use App\Models\VektorNormalization;
@@ -25,7 +26,10 @@ class RankRepository
 
         try {
             if (!$_this->devide_alternative_with_nomalization_fuzzy($token, $rank_inputs)) {
-                return throw new Error("Perkalian gagal dilakukan");
+                return throw new Error("Perkalian gagal dilakukan!");
+            }
+            if (!$_this->amount_of_result_devide_alternative($token, $rank_inputs)) {
+                return throw new Error('Penjumlahan gagal dilakukan!');
             }
 
             $status = true;
@@ -59,18 +63,56 @@ class RankRepository
                     $_rank_inputs_value = $rank_inputs_value->firstWhere('rank_input_id', $rank->id)?->value;
                     $_normalization = $normalization->firstWhere('id', $rank->criteria_id)?->normalized;
 
-                    $devide[] =  $_normalization * $_rank_inputs_value;
+                    $devide_result =  $_normalization * $_rank_inputs_value;
+
+                    $store[] = [
+                        'result' => $devide_result,
+                        'criteria_id' => $rank->criteria_id,
+                        'alternative_id' => $rank->alternative_id,
+                        'random_token' => $token,
+                    ];
                 }
             }
 
-            foreach ($devide as $dvd) {
+            DevideRank::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function amount_of_result_devide_alternative($token, $rank_inputs): bool
+    {
+        $status = false;
+
+        try {
+            $devide_rank = DevideRank::where('random_token', $token)->get();
+            $rank_index = $rank_inputs->groupBy('alternative_id');
+
+            $result = [];
+            $store = [];
+
+            foreach ($rank_index as $key => $alternatives) {
+                $result[$key] = 0;
+                foreach ($alternatives as $alternative) {
+                    $rank = $devide_rank
+                        ->where('alternative_id', $alternative->alternative_id)
+                        ->where('criteria_id', $alternative->criteria_id)
+                        ->first();
+
+                    $result[$key] += $rank->result;
+                }
+            }
+
+            foreach ($result as $_result) {
                 $store[] = [
-                    'result' => number_format($dvd, 3),
+                    'result' => $_result,
                     'random_token' => $token,
                 ];
             }
 
-            DevideRank::insert($store);
+            RankAmount::insert($store);
 
             $status = true;
         } catch (\Throwable $th) {
