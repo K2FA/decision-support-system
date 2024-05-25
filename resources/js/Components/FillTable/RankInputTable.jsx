@@ -55,6 +55,8 @@ export default function RankInputTable({ onChange }) {
                                         }
                                         name={rank.alternative.name}
                                     />
+
+                                    {/* {`${alternative.id}_${rank.criteria.id}`} */}
                                 </td>
                             ))}
                         </tr>

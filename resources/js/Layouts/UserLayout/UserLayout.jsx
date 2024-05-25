@@ -8,7 +8,8 @@ import Calculation from "@/Components/Table/Calculation";
 import ResultAhp from "@/Components/Table/ResultAhp";
 import CardGoalSelect from "@/Components/Cards/CardGoalSelect";
 import ResultFahp from "@/Components/Table/ResultFahp";
-import Rangking from "@/Components/Table/Ranking";
+import Ranking from "@/Components/Table/Ranking";
+import RankingResult from "@/Components/Table/RankingResult";
 
 import "../../../css/style.css";
 import "@/../../node_modules/@fortawesome/fontawesome-free/css/all.css";
@@ -37,11 +38,15 @@ export default function UserLayout({ user }) {
                         </>
                     ) : window.location.href.includes("/user/rangking") ? (
                         <>
-                            <Rangking />
+                            <Ranking />
+                        </>
+                    ) : window.location.href.includes("/user/hasil-fahp") ? (
+                        <>
+                            <ResultFahp />
                         </>
                     ) : (
                         <>
-                            <ResultFahp />
+                            <RankingResult />
                         </>
                     )}
                     <Footer />

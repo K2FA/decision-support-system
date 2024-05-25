@@ -19,7 +19,7 @@ class FahpRepository
     public static function Calculate(): array
     {
         $status = false;
-        $message = 'Tidak dapat menghitung AHP saat ini. Silakan coba lagi nanti';
+        $message = 'Tidak dapat menghitung FAHP saat ini. Silakan coba lagi nanti';
 
         DB::beginTransaction();
 
@@ -58,7 +58,7 @@ class FahpRepository
             }
 
             $status = true;
-            $message = 'Perhitungan AHP berhasil diselesaikan';
+            $message = 'Perhitungan FAHP berhasil diselesaikan';
 
             DB::commit();
         } catch (\Throwable $th) {
