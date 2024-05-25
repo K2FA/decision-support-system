@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\DevideRank;
+use App\Models\FinalRank;
 use App\Models\RankAmount;
 use App\Models\RankInput;
 use App\Models\RankInputData;
@@ -30,6 +31,9 @@ class RankRepository
             }
             if (!$_this->amount_of_result_devide_alternative($token, $rank_inputs)) {
                 return throw new Error('Penjumlahan gagal dilakukan!');
+            }
+            if (!$_this->determine_rank($token)) {
+                return throw new Error('Penentuan Peringkat Gagal!');
             }
 
             $status = true;
@@ -116,6 +120,43 @@ class RankRepository
 
             $status = true;
         } catch (\Throwable $th) {
+        }
+        return $status;
+    }
+
+    protected function determine_rank($token): bool
+    {
+        $status = false;
+
+        try {
+            $result = RankAmount::where('random_token', $token)->orderBy('result', 'desc')->get();
+
+            $store = [];
+            $rank = 1;
+            $prev_result = null;
+            $tieCounter = 0;
+
+            foreach ($result as $rank_item) {
+                if ($prev_result !== $rank_item->result) {
+                    $rank += $tieCounter;
+                    $tieCounter = 1;
+                    $prev_result = $rank_item->result;
+                } else {
+                    $tieCounter++;
+                }
+
+                $store[$rank_item->id] = [
+                    'rank' => $rank,
+                    'result' => $rank_item->result,
+                    'random_token' => $token,
+                ];
+            }
+
+            FinalRank::insert($store);
+
+            $status = true;
+        } catch (\Throwable $th) {
+            dd($th);
         }
         return $status;
     }

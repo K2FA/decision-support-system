@@ -19,15 +19,15 @@ class FullWashSeeder extends Seeder
                 'subcriteria' => [
                     [
                         'name' => 'hujan',
-                        'weight' => 2,
+                        'weight' => 1,
                     ],
                     [
                         'name' => 'mendung',
-                        'weight' => 2,
+                        'weight' => 1,
                     ],
                     [
                         'name' => 'cerah',
-                        'weight' => 2,
+                        'weight' => 1,
                     ],
                 ]
             ],
@@ -105,8 +105,8 @@ class FullWashSeeder extends Seeder
             ],
         ];
 
-        foreach ($fullwash as $_fullwash){
-            foreach($_fullwash['subcriteria'] as $subcriteria){
+        foreach ($fullwash as $_fullwash) {
+            foreach ($_fullwash['subcriteria'] as $subcriteria) {
                 FullWash::create([
                     'criteria_id' => $_fullwash['criteria_id'],
                     'subcriteria' => $subcriteria['name'],
