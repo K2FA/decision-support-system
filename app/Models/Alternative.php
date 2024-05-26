@@ -23,4 +23,14 @@ class Alternative extends Model
     {
         return $this->hasMany(DevideRank::class);
     }
+
+    public function RankAmount(): HasMany
+    {
+        return $this->hasMany(RankAmount::class);
+    }
+
+    public function FinalRank(): HasMany
+    {
+        return $this->hasMany(FinalRank::class);
+    }
 }

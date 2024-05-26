@@ -1,4 +1,5 @@
 import React from "react";
+import RankResultTable from "../FillTable/RankResultTable";
 
 export default function CardRankingResult() {
     return (
@@ -11,7 +12,18 @@ export default function CardRankingResult() {
                                 Hasil Perangkingan
                             </h3>
                         </div>
+                        <div className="relative ml-4 mt-4 sm:mr-8">
+                            <button
+                                as="button"
+                                className="border-2 border-blueGray-700 rounded px-4 text-blueGray-700 font-semibold uppercase hover:bg-blueGray-700 hover:text-white"
+                            >
+                                Unduh
+                            </button>
+                        </div>
                     </div>
+                </div>
+                <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
+                    <RankResultTable />
                 </div>
             </div>
         </>

@@ -64,7 +64,7 @@ Route::prefix('user')->group(function () {
     Route::resource('hasil-ahp', ResultInputController::class)->only('index')->middleware('auth', 'user');
     Route::resource('hasil-fahp', FahpController::class)->only('index')->middleware('auth', 'user');
     Route::resource('rangking', RankController::class)->only('index', 'store')->middleware('auth', 'user');
-    Route::resource('hasil-rangking', RankingResultController::class)->only('index')->middleware('auth', 'user');
+    Route::resource('hasil-perangkingan', RankingResultController::class)->only('index')->middleware('auth', 'user');
 });
 
 

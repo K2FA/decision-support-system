@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FinalRank;
 use App\Models\RankAmount;
 use App\Repositories\RankRepository;
 use Illuminate\Http\Request;
@@ -16,7 +17,12 @@ class RankingResultController extends Controller
 
     public function index()
     {
+        $token = session()->get('random_token')[0];
+        $rank_results = FinalRank::with("Alternative")->where('random_token', $token)
+            ->latest()
+            ->take(7)
+            ->get();
 
-        return Inertia::render('User/User');
+        return Inertia::render('User/User', compact('rank_results'));
     }
 }

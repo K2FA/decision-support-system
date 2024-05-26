@@ -110,7 +110,7 @@ class RankController extends Controller
             // Algorithm Ranking
             RankRepository::calculate();
 
-            return redirect('user/hasil-rangking')->with('success', 'Data Berhasil Dibuat!');
+            return redirect('user/hasil-perangkingan')->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Data Gagal Dibuat!');

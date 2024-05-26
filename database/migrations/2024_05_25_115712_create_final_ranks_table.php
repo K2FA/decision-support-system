@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Alternative;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ return new class extends Migration
         Schema::create('final_ranks', function (Blueprint $table) {
             $table->id();
             $table->integer('rank');
+            $table->foreignIdFor(Alternative::class);
             $table->double('result');
             $table->string('random_token');
             $table->timestamps();

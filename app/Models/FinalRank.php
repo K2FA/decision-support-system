@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FinalRank extends Model
 {
@@ -11,7 +12,13 @@ class FinalRank extends Model
 
     protected $fillable = [
         'rank',
+        'alternative_id',
         'result',
         'random_token',
     ];
+
+    public function Alternative(): BelongsTo
+    {
+        return $this->belongsTo(Alternative::class);
+    }
 }

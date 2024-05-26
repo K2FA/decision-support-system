@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Alternative;
 use App\Models\DevideRank;
 use App\Models\FinalRank;
 use App\Models\RankAmount;
@@ -107,11 +108,9 @@ class RankRepository
 
                     $result[$key] += $rank->result;
                 }
-            }
-
-            foreach ($result as $_result) {
                 $store[] = [
-                    'result' => $_result,
+                    'result' => $result[$key],
+                    'alternative_id' => $key,
                     'random_token' => $token,
                 ];
             }
@@ -147,6 +146,7 @@ class RankRepository
 
                 $store[$rank_item->id] = [
                     'rank' => $rank,
+                    'alternative_id' => $rank_item->alternative_id,
                     'result' => $rank_item->result,
                     'random_token' => $token,
                 ];
@@ -156,7 +156,6 @@ class RankRepository
 
             $status = true;
         } catch (\Throwable $th) {
-            dd($th);
         }
         return $status;
     }
