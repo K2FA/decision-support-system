@@ -1,10 +1,14 @@
-import { usePage } from "@inertiajs/react";
+import { usePage, router } from "@inertiajs/react";
 import React from "react";
 
 export default function HasilPeringkatTable() {
     const { final_rank } = usePage().props;
 
     const rank = final_rank.data;
+
+    const handlePageChange = (url) => {
+        router.visit(url);
+    };
 
     return (
         <>
@@ -35,7 +39,10 @@ export default function HasilPeringkatTable() {
                     {rank.map((finalRank, index) => (
                         <tr key={finalRank.id}>
                             <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 font-semibold whitespace-nowrap text-center">
-                                {++index}
+                                {index +
+                                    1 +
+                                    (final_rank.current_page - 1) *
+                                        final_rank.per_page}
                             </td>
                             <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 font-semibold whitespace-nowrap text-left">
                                 {finalRank.alternative.name}
@@ -56,6 +63,35 @@ export default function HasilPeringkatTable() {
                     ))}
                 </tbody>
             </table>
+            <div className="w-24 mt-4 flex justify-between h-8 shadow-lg">
+                <button
+                    as="btn"
+                    className={`border border-blueGray-400 px-4 rounded  ${
+                        final_rank.prev_page_url
+                            ? "bg-white text-blueGray-500 hover:bg-orange-400 hover:text-white"
+                            : "bg-gray-300 text-gray-500"
+                    } `}
+                    disabled={!final_rank.prev_page_url}
+                    onClick={() => handlePageChange(final_rank.prev_page_url)}
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <span className="pt-1 border px-4 h-full bg-orange-400 text-white border-blueGray-400 ">
+                    {final_rank.current_page}
+                </span>
+                <button
+                    as="btn"
+                    className={`border border-blueGray-400 px-4 rounded  ${
+                        final_rank.next_page_url
+                            ? "bg-white text-blueGray-500 hover:bg-orange-400 hover:text-white"
+                            : "bg-gray-300 text-gray-500"
+                    } `}
+                    disabled={!final_rank.next_page_url}
+                    onClick={() => handlePageChange(final_rank.next_page_url)}
+                >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
         </>
     );
 }
