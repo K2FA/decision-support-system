@@ -13,6 +13,8 @@ class FinalRank extends Model
     protected $fillable = [
         'rank',
         'alternative_id',
+        'goal_select_id',
+        'comparison_input_id',
         'result',
         'random_token',
     ];
@@ -20,5 +22,15 @@ class FinalRank extends Model
     public function Alternative(): BelongsTo
     {
         return $this->belongsTo(Alternative::class);
+    }
+
+    public function GoalSelect(): BelongsTo
+    {
+        return $this->belongsTo(GoalSelect::class);
+    }
+
+    public function ComparisonInput(): BelongsTo
+    {
+        return $this->belongsTo(ComparisonInput::class);
     }
 }

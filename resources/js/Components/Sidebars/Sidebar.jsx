@@ -5,6 +5,7 @@ import UserDropdown from "../Dropdowns/UserDropdown";
 import TableSideBar from "../Navigation Sidebar/TableSidebar";
 import BobotSideBar from "../Navigation Sidebar/BobotSidebar";
 import ChangSidebar from "../Navigation Sidebar/ChangSidebar";
+import RankSidebar from "../Navigation Sidebar/RankSidebar";
 
 export default function Sidebar({ user }) {
     const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -109,7 +110,19 @@ export default function Sidebar({ user }) {
                                 Data TFN Chang 1996
                             </h6>
                             {/* End of Heading*/}
-                            <ChangSidebar/>
+                            <ChangSidebar />
+                        </span>
+
+                        <span>
+                            <hr className="my-4 md:min-w-full mt-4" />
+                            {/* End of Divider*/}
+                            {/* Heading*/}
+                            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-2 no-underline ">
+                                Data Hasil Perangkingan
+                            </h6>
+                            {/* End of Heading*/}
+
+                            <RankSidebar />
                         </span>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminRankResultController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;
@@ -57,6 +58,11 @@ Route::prefix('bobot')->group(function () {
 Route::prefix('tfn')->group(function () {
     Route::resource('chang', ChangController::class)->only('index')->middleware('auth', 'admin');
 });
+
+Route::prefix('rank')->group(function () {
+    Route::resource('hasil-peringkat', AdminRankResultController::class)->only('index')->middleware('auth', 'admin');
+});
+
 
 Route::prefix('user')->group(function () {
     Route::resource('pilih-tujuan', GoalSelectController::class)->only('index', 'store')->middleware('auth', 'user');

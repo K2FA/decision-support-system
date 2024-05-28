@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use App\Models\Alternative;
+use App\Models\ComparisonInput;
 use App\Models\DevideRank;
 use App\Models\FinalRank;
+use App\Models\GoalSelect;
 use App\Models\RankAmount;
 use App\Models\RankInput;
 use App\Models\RankInputData;
@@ -59,14 +61,13 @@ class RankRepository
             $normalization = VektorNormalization::where('random_token', $token)->get();
             $rank_inputs_index = $rank_inputs->groupBy('criteria_id');
 
-            $devide = [];
             $store = [];
 
             foreach ($rank_inputs_index as $index => $rank_index) {
 
                 foreach ($rank_index as $idx => $rank) {
                     $_rank_inputs_value = $rank_inputs_value->firstWhere('rank_input_id', $rank->id)?->value;
-                    $_normalization = $normalization->firstWhere('id', $rank->criteria_id)?->normalized;
+                    $_normalization = $normalization->firstWhere('criteria_id', $rank->criteria_id)?->normalized;
 
                     $devide_result =  $_normalization * $_rank_inputs_value;
 
@@ -129,6 +130,8 @@ class RankRepository
 
         try {
             $result = RankAmount::where('random_token', $token)->orderBy('result', 'desc')->get();
+            $goal_select = GoalSelect::where('random_token', $token)->get();
+            $comparison_input = ComparisonInput::where('random_token', $token)->get();
 
             $store = [];
             $rank = 1;
@@ -147,6 +150,8 @@ class RankRepository
                 $store[$rank_item->id] = [
                     'rank' => $rank,
                     'alternative_id' => $rank_item->alternative_id,
+                    'goal_select_id' => $goal_select[0]->id,
+                    'comparison_input_id' => $comparison_input[0]->id,
                     'result' => $rank_item->result,
                     'random_token' => $token,
                 ];
@@ -156,6 +161,7 @@ class RankRepository
 
             $status = true;
         } catch (\Throwable $th) {
+            dd($th);
         }
         return $status;
     }

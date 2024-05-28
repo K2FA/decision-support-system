@@ -43,4 +43,8 @@ class Criteria extends Model
     {
         return $this->hasMany(DevideRank::class);
     }
+    public function VektorNormalization(): HasMany
+    {
+        return $this->hasMany(VektorNormalization::class);
+    }
 }

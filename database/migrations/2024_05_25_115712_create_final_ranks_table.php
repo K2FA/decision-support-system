@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Alternative;
+use App\Models\ComparisonInput;
+use App\Models\GoalSelect;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->integer('rank');
             $table->foreignIdFor(Alternative::class);
+            $table->foreignIdFor(GoalSelect::class);
+            $table->foreignIdFor(ComparisonInput::class);
             $table->double('result');
             $table->string('random_token');
             $table->timestamps();

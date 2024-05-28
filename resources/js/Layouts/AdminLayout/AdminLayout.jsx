@@ -7,6 +7,7 @@ import Footer from "@/Components/Footers/Footer";
 import Table from "@/Components/Table/Table";
 import BobotTable from "@/Components/Table/BobotTable";
 import ChangTable from "@/Components/Table/ChangTable";
+import HasilPeringkat from "@/Components/Table/HasilPeringkat";
 
 import { Head } from "@inertiajs/react";
 
@@ -48,8 +49,10 @@ export default function AdminLayout({ user }) {
                         <BobotTable />
                     ) : window.location.href.includes("/table") ? (
                         <Table />
-                    ) : (
+                    ) : window.location.href.includes("/tfn") ? (
                         <ChangTable />
+                    ) : (
+                        <HasilPeringkat />
                     )}
                     <Footer />
                 </div>

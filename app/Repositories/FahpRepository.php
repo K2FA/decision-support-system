@@ -6,6 +6,7 @@ use App\Models\AmountSintesis;
 use App\Models\Anhipro;
 use App\Models\Chang;
 use App\Models\ComparisonMultiplication;
+use App\Models\Criteria;
 use App\Models\CrossMultiplication;
 use App\Models\MinValue;
 use App\Models\Sintesis;
@@ -332,29 +333,35 @@ class FahpRepository
 
         try {
             $min_value = MinValue::where('random_token', $token)->get();
+            $criteria = Criteria::all();
 
             $amount = 0;
             $result = [];
             $total_result = 0;
             $store = [];
 
+            // total
             foreach ($min_value as $min) {
                 $amount += $min->result;
             }
 
+            // untuk data normalized
             foreach ($min_value as $min) {
                 $normalized = $min->result / $amount;
                 $result[] = number_format($normalized, 3);
             }
 
             foreach ($result as $data) {
-                $total_result += $data;
+                foreach ($criteria as $crit) {
+                    $total_result += $data;
 
-                $store[] = [
-                    'normalized' => $data,
-                    'total' => $total_result,
-                    'random_token' => $token,
-                ];
+                    $store[] = [
+                        'normalized' => $data,
+                        'total' => $total_result,
+                        'criteria_id' => $crit->id,
+                        'random_token' => $token,
+                    ];
+                }
             }
 
             VektorNormalization::insert($store);
