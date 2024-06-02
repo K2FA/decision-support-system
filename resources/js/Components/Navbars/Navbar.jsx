@@ -1,6 +1,7 @@
 import React from "react";
 
 import UserDropdown from "../Dropdowns/UserDropdown";
+import { Link } from "@inertiajs/react";
 
 export default function Navbar({ user }) {
     const logo = "/assets/img/logo.png";
@@ -11,20 +12,19 @@ export default function Navbar({ user }) {
                 <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
                     {/* Brand */}
                     <div className="">
-                        <a
+                        <Link
                             className="text-white text-xl uppercase hidden lg:flex font-bold items-center gap-2"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
+                            href="/user/pilih-tujuan"
                         >
                             {user == "User" ? (
                                 <>
                                     <img src={logo} alt="" className="w-16" />
-                                    Menu Perhitungan
+                                    Sistem Pendukung Keputusan
                                 </>
                             ) : (
                                 ""
                             )}
-                        </a>
+                        </Link>
                     </div>
                     {/* Form */}
 

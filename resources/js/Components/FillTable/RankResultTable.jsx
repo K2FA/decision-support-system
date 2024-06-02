@@ -1,10 +1,7 @@
 import { usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function RankResultTable() {
-    const { rank_results } = usePage().props;
-
-    console.log(rank_results);
+export default function RankResultTable({ RankResult }) {
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">
@@ -25,7 +22,7 @@ export default function RankResultTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {rank_results.map((rank, index) => (
+                    {RankResult.map((rank, index) => (
                         <tr key={rank.id}>
                             <td className="px-4 sm:px-6 align-middle border border-solid py-3 text-sm text-blueGray-500 border-slate-300 whitespace-nowrap text-center font-semibold">
                                 {++index}

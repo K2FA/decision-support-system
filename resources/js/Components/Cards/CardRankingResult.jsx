@@ -1,7 +1,9 @@
 import React from "react";
 import RankResultTable from "../FillTable/RankResultTable";
+import { usePage } from "@inertiajs/react";
 
 export default function CardRankingResult() {
+    const { rank_results } = usePage().props;
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -9,7 +11,7 @@ export default function CardRankingResult() {
                     <div className="block sm:flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
                             <h3 className="table-title font-bold tracking-widest text-2xl text-black uppercase pt-2">
-                                Hasil Perangkingan
+                                {`Hasil Perangkingan  (${rank_results[0].goal_select.choice})`}
                             </h3>
                         </div>
                         <div className="relative ml-4 mt-4 sm:mr-8">
@@ -23,7 +25,7 @@ export default function CardRankingResult() {
                     </div>
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
-                    <RankResultTable />
+                    <RankResultTable RankResult={rank_results} />
                 </div>
             </div>
         </>

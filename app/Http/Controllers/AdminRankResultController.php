@@ -8,6 +8,10 @@ use Inertia\Inertia;
 
 class AdminRankResultController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
 
     public function index()

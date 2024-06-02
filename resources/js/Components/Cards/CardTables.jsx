@@ -7,26 +7,26 @@ import CriteriaTable from "../FillTable/CriteriaTable";
 
 import "../../../css/style.css";
 
-export default function CardTable(){
+export default function CardTable() {
     let headerText;
     let TableComponent;
     let link;
 
-    if(window.location.href.includes('/table/goal')  ){
-        headerText = 'Tujuan';
+    if (window.location.href.includes("/table/goal")) {
+        headerText = "Tujuan";
         TableComponent = GoalTable;
-        link = '/table/goal/create';
-    }else if(window.location.href.includes('/table/alternative')  ){
+        link = "/table/goal/create";
+    } else if (window.location.href.includes("/table/alternative")) {
         headerText = "Alternatif";
         TableComponent = AlternativeTable;
-        link = '/table/alternative/create';
-    }else if(window.location.href.includes('/table/criteria')  ){
+        link = "/table/alternative/create";
+    } else if (window.location.href.includes("/table/criteria")) {
         headerText = "Kriteria";
         TableComponent = CriteriaTable;
-        link = '/table/criteria/create';
+        link = "/table/criteria/create";
     }
 
-    return(
+    return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -37,14 +37,20 @@ export default function CardTable(){
                             </h3>
                         </div>
                         <div className="relative ml-4 mt-4 sm:mr-8">
-                            <Link className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700" href={link}><i className="fa-solid fa-plus mr-2 text-xs"></i>Add</Link>
+                            <Link
+                                className="bg-blueGray-500 py-2 px-4 text-white rounded text-sm hover:bg-blueGray-700"
+                                href={link}
+                            >
+                                <i className="fa-solid fa-plus mr-2 text-xs"></i>
+                                Tambahkan Data
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4">
-                    {TableComponent && <TableComponent/>}
+                    {TableComponent && <TableComponent />}
                 </div>
             </div>
         </>
-    )
+    );
 }

@@ -18,7 +18,7 @@ class RankingResultController extends Controller
     public function index()
     {
         $token = session()->get('random_token')[0];
-        $rank_results = FinalRank::with("Alternative")->where('random_token', $token)
+        $rank_results = FinalRank::with("Alternative", 'GoalSelect')->where('random_token', $token)
             ->latest()
             ->take(7)
             ->get();
