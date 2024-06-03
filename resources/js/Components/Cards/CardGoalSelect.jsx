@@ -1,14 +1,15 @@
 import { Link, router, usePage } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function CardGoalSelect() {
-    const { goalSelects } = usePage().props;
+    const { goalSelects, flash } = usePage().props;
 
-    const handleOnClick = (e, goalName) => {
-        e.prevenDefault();
-
-        router.post("", { choice: goalName });
-    };
+    useEffect(() => {
+        if (flash.success) {
+            toast.success(flash.success);
+        }
+    }, [flash.success]);
 
     return (
         <>

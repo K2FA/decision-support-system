@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,22 +32,28 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        /** TODO: if user role == user redirect to site '/user/dashboard' */
-        // dd(
-        //     $request->user(),
-        //     $request->user()->hasRole('User'),
-        //     auth()->user()->hasRole('User'),
-        // );
-        if ($request->user()->hasRole("User")) {
-            return redirect()->intended('/user/pilih-tujuan');
+            /** TODO: if user role == user redirect to site '/user/dashboard' */
+            // dd(
+            //     $request->user(),
+            //     $request->user()->hasRole('User'),
+            //     auth()->user()->hasRole('User'),
+            // );
+            if ($request->user()->hasRole("User")) {
+                return redirect()->intended('/user/pilih-tujuan')->with('success', 'Login berhasil Dilakukan');
+            }
+
+
+            return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Login berhasil Dilakukan');
+        } catch (ValidationException $error) {
+            return back()->withErrors([
+                'general' => 'Email atau Password Salah!!!',
+            ])->withInput();
         }
-
-
-        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

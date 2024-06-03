@@ -42,6 +42,13 @@ export default function Login({ status, canResetPassword }) {
                                     </h6>
                                 </div>
                                 <hr className="mt-6 border-b-1 border-blueGray-300" />
+                                {errors.general && (
+                                    <div className="text-center bg-red-200 py-2">
+                                        <span className="text-red-600">
+                                            Email atau Password Salah !!!
+                                        </span>
+                                    </div>
+                                )}
                             </div>
                             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                                 <form onSubmit={submit}>
@@ -90,18 +97,6 @@ export default function Login({ status, canResetPassword }) {
                                             }
                                         />
                                     </div>
-                                    {/* <div>
-                                        <label className="inline-flex items-center cursor-pointer">
-                                            <input
-                                                id="customCheckLogin"
-                                                type="checkbox"
-                                                className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
-                                            />
-                                            <span className="ml-2 text-sm font-semibold text-blueGray-600">
-                                                Remember me
-                                            </span>
-                                        </label>
-                                    </div> */}
 
                                     <div className="text-center mt-6">
                                         <button
@@ -115,15 +110,7 @@ export default function Login({ status, canResetPassword }) {
                             </div>
                         </div>
                         <div className="flex flex-wrap mt-6 relative">
-                            <div className="w-1/2">
-                                <a
-                                    href="#pablo"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-blueGray-200"
-                                >
-                                    {/* <small>Forgot password?</small> */}
-                                </a>
-                            </div>
+                            <div className="w-1/2"></div>
                             <div className="w-1/2 text-right">
                                 <Link
                                     href="/register"
