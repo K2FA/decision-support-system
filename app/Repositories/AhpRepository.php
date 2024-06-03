@@ -11,7 +11,6 @@ use App\Models\DevidePw;
 use App\Models\MultiplicationMatrix;
 use App\Models\PairwiseComparison;
 use App\Models\PriorityWeight;
-use App\Models\ResultCriteriaInput;
 use Error;
 use Illuminate\Support\Facades\DB;
 

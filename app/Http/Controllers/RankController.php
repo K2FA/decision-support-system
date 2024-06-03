@@ -11,6 +11,7 @@ use App\Models\Honey;
 use App\Models\Natural;
 use App\Models\RankInput;
 use App\Models\RankInputData;
+use App\Repositories\FahpRepository;
 use App\Repositories\RankRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -100,12 +101,16 @@ class RankController extends Controller
                 ];
             }
 
+
             RankInputData::insert($store);
 
 
             $status = true;
 
             DB::commit();
+
+            // Algoritma FAHP
+            FahpRepository::Calculate();
 
             // Algorithm Ranking
             RankRepository::calculate();

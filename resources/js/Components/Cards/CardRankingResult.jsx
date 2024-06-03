@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RankResultTable from "../FillTable/RankResultTable";
 import { usePage } from "@inertiajs/react";
+import toast from "react-hot-toast";
 
 export default function CardRankingResult() {
-    const { rank_results } = usePage().props;
+    const { rank_results, flash } = usePage().props;
+
+    useEffect(() => {
+        if (flash.success) {
+            toast.success(flash.success);
+        }
+    }, [flash.success]);
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">

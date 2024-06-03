@@ -1,16 +1,29 @@
-import { useForm } from "@inertiajs/react";
-import React from "react";
+import { useForm, usePage } from "@inertiajs/react";
+import React, { useEffect } from "react";
 
 import RankInputTable from "../FillTable/RankInputTable";
 import Information from "../Modal/Information";
+import toast from "react-hot-toast";
 
 export default function CardRankInput() {
+    const { flash } = usePage().props;
+
     const { data, setData, post, processing, errors } = useForm();
+
+    useEffect(() => {
+        if (flash.failed) {
+            toast.error(flash.failed);
+        }
+    }, [flash.failed]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        post("/user/rangking");
+        post("/user/rangking", {
+            onError: () => {
+                toast.error(flash.failed);
+            },
+        });
     };
 
     return (

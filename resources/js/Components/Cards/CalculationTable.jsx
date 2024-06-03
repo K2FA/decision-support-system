@@ -3,18 +3,28 @@ import React, { useEffect } from "react";
 import CalculationInput from "../FillTable/CalculationInput";
 import Priority from "../Modal/Priority";
 import { useForm, usePage } from "@inertiajs/react";
+import toast from "react-hot-toast";
 
 export default function CalculationTable() {
-    // const { flash } = usePage().props;
-
+    const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm();
+
+    useEffect(() => {
+        if (flash.failed) {
+            toast.error(flash.failed);
+        }
+    }, [flash.failed]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const goalName = new URL(window.location).searchParams.get("goal");
 
-        post(`/user/perhitungan?goal=${goalName}`);
+        post(`/user/perhitungan?goal=${goalName}`, {
+            onError: () => {
+                toast.error(flash.failed);
+            },
+        });
     };
 
     return (

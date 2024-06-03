@@ -1,9 +1,15 @@
 import { usePage, Link } from "@inertiajs/react";
-import React from "react";
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function CardConsistencyRatio() {
-    const { consistency_ratio } = usePage().props;
+    const { consistency_ratio, flash } = usePage().props;
 
+    useEffect(() => {
+        if (flash.success) {
+            toast.success(flash.success);
+        }
+    }, [flash.success]);
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white ">
@@ -35,7 +41,7 @@ export default function CardConsistencyRatio() {
                     {consistency_ratio[0].result < 0.1 ? (
                         <div className="flex w-full justify-center mt-4">
                             <Link
-                                href="/user/hasil-fahp"
+                                href="/user/rangking"
                                 className="bg-blueGray-600 py-2 px-4 text-white rounded hover:bg-blueGray-400"
                             >
                                 Lanjutkan
