@@ -11,6 +11,10 @@ export default function CardRankingResult() {
             toast.success(flash.success);
         }
     }, [flash.success]);
+
+    const handlePdf = () => {
+        window.location.href = "/user/generate-pdf";
+    };
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -24,6 +28,7 @@ export default function CardRankingResult() {
                         <div className="relative ml-4 mt-4 sm:mr-8">
                             <button
                                 as="button"
+                                onClick={handlePdf}
                                 className="border-2 border-blueGray-700 rounded px-4 text-blueGray-700 font-semibold uppercase hover:bg-blueGray-700 hover:text-white"
                             >
                                 Unduh

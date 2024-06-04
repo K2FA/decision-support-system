@@ -69,7 +69,7 @@ class RankRepository
                     $_rank_inputs_value = $rank_inputs_value->firstWhere('rank_input_id', $rank->id)?->value;
                     $_normalization = $normalization->firstWhere('criteria_id', $rank->criteria_id)?->normalized;
 
-                    $devide_result =  $_normalization * $_rank_inputs_value;
+                    $devide_result =    $_rank_inputs_value * $_normalization;
 
                     $store[] = [
                         'result' => $devide_result,

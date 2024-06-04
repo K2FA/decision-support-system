@@ -21,6 +21,11 @@ class CriteriaInput extends Model
         return $this->belongsTo(Criteria::class, 'kriteria_id', 'id');
     }
 
+    public function Anhipro(): HasMany
+    {
+        return $this->hasMany(Anhipro::class);
+    }
+
     public function ComparisonInput(): HasMany
     {
         return $this->hasMany(ComparisonInput::class);

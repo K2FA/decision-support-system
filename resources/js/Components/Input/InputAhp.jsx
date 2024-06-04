@@ -22,6 +22,7 @@ export default function InputAhp({ criteria, criteriaInput, onChange, name }) {
                     <td className="text-wrap px-4 w-1/6 sm:px-4 align-middle border border-solid py-3 text-sm sm:text-base text-blueGray-700 border-slate-300 whitespace-nowrap text-center font-bold">
                         {crit.name}
                     </td>
+
                     {criteriaInput[crit.id].map((_criteria, idx) => (
                         <td
                             key={_criteria.id}

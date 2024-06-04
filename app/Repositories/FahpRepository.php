@@ -351,23 +351,21 @@ class FahpRepository
                 $result[] = number_format($normalized, 3);
             }
 
-            foreach ($result as $data) {
-                foreach ($criteria as $crit) {
-                    $total_result += $data;
-
-                    $store[] = [
-                        'normalized' => $data,
-                        'total' => $total_result,
-                        'criteria_id' => $crit->id,
-                        'random_token' => $token,
-                    ];
-                }
+            foreach ($result as $index => $data) {
+                $total_result += $data;
+                $store[] = [
+                    'normalized' => $data,
+                    'total' => $total_result,
+                    'criteria_id' => $criteria[$index]->id,
+                    'random_token' => $token,
+                ];
             }
 
             VektorNormalization::insert($store);
 
             $status = true;
         } catch (\Throwable $th) {
+            dd($th);
         }
 
         return $status;

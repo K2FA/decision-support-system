@@ -8,6 +8,7 @@ use App\Http\Controllers\FahpController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\GoalSelectController;
 use App\Http\Controllers\InputAhpController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\RankingResultController;
@@ -71,6 +72,7 @@ Route::prefix('user')->group(function () {
     Route::resource('hasil-fahp', FahpController::class)->only('index')->middleware('auth', 'user');
     Route::resource('rangking', RankController::class)->only('index', 'store')->middleware('auth', 'user');
     Route::resource('hasil-perangkingan', RankingResultController::class)->only('index')->middleware('auth', 'user');
+    Route::get('/generate-pdf', [PdfController::class, 'generatePdf']);
 });
 
 

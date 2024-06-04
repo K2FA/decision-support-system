@@ -16,7 +16,7 @@ class Anhipro extends Model
         'random_token',
     ];
 
-    public function Criteria_Input(): BelongsTo
+    public function CriteriaInput(): BelongsTo
     {
         return $this->belongsTo(CriteriaInput::class);
     }
