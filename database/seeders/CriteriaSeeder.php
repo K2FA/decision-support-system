@@ -20,10 +20,10 @@ class CriteriaSeeder extends Seeder
             'name' => 'Tingkat kematangan',
         ]);
         Criteria::create([
-            'name' => 'Kadar gula',
+            'name' => 'Ukuran Buah',
         ]);
         Criteria::create([
-            'name' => 'Ukuran buah',
+            'name' => 'Kadar Gula',
         ]);
         Criteria::create([
             'name' => 'Kapasitas penjemuran',

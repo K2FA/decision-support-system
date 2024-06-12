@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminRankResultController;
+use App\Http\Controllers\AlternativeComparison2Controller;
+use App\Http\Controllers\AlternativeComparison3Controller;
+use App\Http\Controllers\AlternativeComparison4Controller;
+use App\Http\Controllers\AlternativeComparison5Controller;
+use App\Http\Controllers\AlternativeComparisonController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\ChangController;
 use App\Http\Controllers\CriteriaController;

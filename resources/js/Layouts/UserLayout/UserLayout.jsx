@@ -49,14 +49,9 @@ export default function UserLayout({ user }) {
                       ) ? (
                         <>
                             <RankingResult />
-                            {/* <h1 className="text-black text-center text-7xl">
-                                URL Salah
-                            </h1> */}
                         </>
                     ) : (
-                        <h1 className="text-black text-center text-7xl">
-                            URL Salah
-                        </h1>
+                        <h1>URL Salah</h1>
                     )}
                     <Footer />
                 </div>

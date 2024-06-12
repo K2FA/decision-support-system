@@ -13,21 +13,21 @@ class FullWashSeeder extends Seeder
      */
     public function run(): void
     {
-        $fullwash = [
+        $full_washes = [
             [
                 'criteria_id' => 1,
                 'subcriteria' => [
                     [
-                        'name' => 'hujan',
-                        'weight' => 1,
+                        'name' => 'Hujan',
+                        'weight' => 3
                     ],
                     [
-                        'name' => 'mendung',
-                        'weight' => 1,
+                        'name' => 'Mendung',
+                        'weight' => 3
                     ],
                     [
-                        'name' => 'cerah',
-                        'weight' => 1,
+                        'name' => 'Cerah',
+                        'weight' => 3
                     ],
                 ]
             ],
@@ -35,80 +35,80 @@ class FullWashSeeder extends Seeder
                 'criteria_id' => 2,
                 'subcriteria' => [
                     [
-                        'name' => 'tidak matang',
+                        'name' => 'Tidak Matang',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'kurang matang',
+                        'name' => 'Kurang Matang',
+                        'weight' => 2
+                    ],
+                    [
+                        'name' => 'Matang',
                         'weight' => 3
                     ],
                     [
-                        'name' => 'matang',
-                        'weight' => 5
+                        'name' => 'Matang Menuju Busuk',
+                        'weight' => 4
                     ],
-                    [
-                        'name' => 'matang menuju busuk',
-                        'weight' => 7
-                    ],
-                ],
+                ]
             ],
             [
                 'criteria_id' => 3,
                 'subcriteria' => [
                     [
-                        'name' => 'kecil',
+                        'name' => 'Kecil',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'besar',
-                        'weight' => 3
+                        'name' => 'Besar',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'sedang',
-                        'weight' => 5
+                        'name' => 'Sedang',
+                        'weight' => 3
                     ],
-                ],
+                ]
             ],
             [
                 'criteria_id' => 4,
                 'subcriteria' => [
                     [
-                        'name' => 'rendah (10% - 13%)',
+                        'name' => 'Rendah (10% - 13%)',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'sedang (14$ - 17%)',
-                        'weight' => 3
+                        'name' => 'Sedang (14% - 17%)',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'tinggi (18% - 21%)',
-                        'weight' => 5
+                        'name' => 'Sedang (18% - 21%)',
+                        'weight' => 3
                     ],
-                ],
+                ]
             ],
             [
                 'criteria_id' => 5,
                 'subcriteria' => [
                     [
-                        'name' => 'lengang',
+                        'name' => 'Lengang',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'sedang',
-                        'weight' => 3
+                        'name' => 'Sedang',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'hampir penuh',
-                        'weight' => 5
+                        'name' => 'Hampir Penuh',
+                        'weight' => 3
                     ],
-                ],
+                ]
             ],
         ];
 
-        foreach ($fullwash as $_fullwash) {
-            foreach ($_fullwash['subcriteria'] as $subcriteria) {
+        foreach ($full_washes as $full_wash) {
+            foreach ($full_wash['subcriteria'] as $subcriteria) {
                 FullWash::create([
-                    'criteria_id' => $_fullwash['criteria_id'],
+                    'criteria_id' => $full_wash['criteria_id'],
                     'subcriteria' => $subcriteria['name'],
                     'weight'      => $subcriteria['weight'],
                 ]);

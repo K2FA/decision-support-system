@@ -110,7 +110,7 @@ class RankRepository
                     $result[$key] += $rank->result;
                 }
                 $store[] = [
-                    'result' => $result[$key],
+                    'result' => number_format($result[$key], 3),
                     'alternative_id' => $key,
                     'random_token' => $token,
                 ];
@@ -161,7 +161,6 @@ class RankRepository
 
             $status = true;
         } catch (\Throwable $th) {
-            dd($th);
         }
         return $status;
     }

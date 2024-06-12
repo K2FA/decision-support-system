@@ -18,16 +18,16 @@ class HoneySeeder extends Seeder
                 'criteria_id' => 1,
                 'subcriteria' => [
                     [
-                        'name' => 'hujan',
+                        'name' => 'Hujan',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'mendung',
-                        'weight' => 3
+                        'name' => 'Mendung',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'cerah',
-                        'weight' => 5
+                        'name' => 'Cerah',
+                        'weight' => 3
                     ],
                 ],
             ],
@@ -35,20 +35,20 @@ class HoneySeeder extends Seeder
                 'criteria_id' => 2,
                 'subcriteria' => [
                     [
-                        'name' => 'tidak matang',
+                        'name' => 'Tidak Matang',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'kurang matang',
+                        'name' => 'Kurang Matang',
+                        'weight' => 2
+                    ],
+                    [
+                        'name' => 'Matang',
                         'weight' => 3
                     ],
                     [
-                        'name' => 'matang',
-                        'weight' => 5
-                    ],
-                    [
-                        'name' => 'matang menuju busuk',
-                        'weight' => 7
+                        'name' => 'Matang Menuju Busuk',
+                        'weight' => 4
                     ],
                 ],
             ],
@@ -56,16 +56,16 @@ class HoneySeeder extends Seeder
                 'criteria_id' => 3,
                 'subcriteria' => [
                     [
-                        'name' => 'kecil',
+                        'name' => 'Kecil',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'besar',
-                        'weight' => 3
+                        'name' => 'Besar',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'sedang',
-                        'weight' => 5
+                        'name' => 'Sedang',
+                        'weight' => 3
                     ],
                 ],
             ],
@@ -73,16 +73,16 @@ class HoneySeeder extends Seeder
                 'criteria_id' => 4,
                 'subcriteria' => [
                     [
-                        'name' => 'rendah (10% - 13%)',
+                        'name' => 'Rendah (10% - 13%)',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'sedang (14$ - 17%)',
-                        'weight' => 3
+                        'name' => 'Sedang (14$ - 17%)',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'tinggi (18% - 21%)',
-                        'weight' => 5
+                        'name' => 'Tinggi (18% - 21%)',
+                        'weight' => 3
                     ],
                 ],
             ],
@@ -90,23 +90,23 @@ class HoneySeeder extends Seeder
                 'criteria_id' => 5,
                 'subcriteria' => [
                     [
-                        'name' => 'hampir penuh',
+                        'name' => 'Hampir Penuh',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'sedang',
-                        'weight' => 3
+                        'name' => 'Sedang',
+                        'weight' => 2
                     ],
                     [
-                        'name' => 'lengang',
-                        'weight' => 5
+                        'name' => 'Lengang',
+                        'weight' => 3
                     ],
                 ],
             ],
         ];
 
-        foreach($honey as $_honey){
-            foreach($_honey['subcriteria'] as $subcriteria){
+        foreach ($honey as $_honey) {
+            foreach ($_honey['subcriteria'] as $subcriteria) {
                 Honey::create([
                     'criteria_id' => $_honey['criteria_id'],
                     'subcriteria' => $subcriteria['name'],
