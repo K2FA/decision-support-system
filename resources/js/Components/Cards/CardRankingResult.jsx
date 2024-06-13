@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import RankResultTable from "../FillTable/RankResultTable";
-import { usePage } from "@inertiajs/react";
+import { usePage, Link } from "@inertiajs/react";
 import toast from "react-hot-toast";
 
 export default function CardRankingResult() {
@@ -38,6 +38,15 @@ export default function CardRankingResult() {
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
                     <RankResultTable RankResult={rank_results} />
+
+                    <div className="w-full flex justify-center mt-4">
+                        <Link
+                            href="/user/pilih-tujuan"
+                            className="bg-blueGray-700 text-white px-4 py-2 rounded hover:bg-blueGray-500"
+                        >
+                            Pilih Tujuan
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>
