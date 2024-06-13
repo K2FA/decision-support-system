@@ -27,6 +27,7 @@ class RankController extends Controller
 
     public function index()
     {
+        FahpRepository::Calculate();
         $criterias = Criteria::all();
         $alternatives = Alternative::all();
         $rankInputs = RankInput::with('criteria', 'alternative')->get()->groupBy('alternative_id');
@@ -110,7 +111,7 @@ class RankController extends Controller
             DB::commit();
 
             // Algoritma FAHP
-            FahpRepository::Calculate();
+
 
             // Algorithm Ranking
             RankRepository::calculate();

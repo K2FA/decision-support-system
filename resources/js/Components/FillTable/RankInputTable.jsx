@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 
 import RankSelect from "../Select/RankSelect";
 
-export default function RankInputTable({ onChange }) {
+export default function RankInputTable({ onChange, Information }) {
     const { rankInputs, criterias, alternatives } = usePage().props;
 
     const [formRankData, setFormRankData] = useState({});
@@ -54,6 +54,7 @@ export default function RankInputTable({ onChange }) {
                                             handleSelectChange(rank.id, value)
                                         }
                                         name={rank.alternative.name}
+                                        Information={Information}
                                     />
 
                                     {/* {`${alternative.id}_${rank.criteria.id}`} */}

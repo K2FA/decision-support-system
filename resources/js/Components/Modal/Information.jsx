@@ -6,8 +6,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-export default function Information() {
-    const { information } = usePage().props;
+export default function Information({ Information }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -57,7 +56,7 @@ export default function Information() {
                                     <div className="mt-2">
                                         <Tab.Group>
                                             <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
-                                                {Object.values(information).map(
+                                                {Object.values(Information).map(
                                                     (infor, index) => (
                                                         <Tab
                                                             key={index}
@@ -83,10 +82,10 @@ export default function Information() {
                                                 )}
                                             </Tab.List>
                                             <Tab.Panels>
-                                                {Object.keys(information).map(
+                                                {Object.keys(Information).map(
                                                     (infoKey, index) => {
                                                         const filterInfo =
-                                                            information[
+                                                            Information[
                                                                 infoKey
                                                             ] || [];
                                                         return (

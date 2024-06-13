@@ -92,7 +92,7 @@ class ChangSeeder extends Seeder
             [
                 'importance' => 1 / 8,
                 'desc' => "Kebalikan dari intensitas kepentingan 8",
-                'tfn' => json_encode([2 / 9, 1 / 4, 2 / 9]),
+                'tfn' => json_encode([2 / 9, 1 / 4, 2 / 7]),
             ],
             [
                 'importance' => 1 / 9,

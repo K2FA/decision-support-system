@@ -6,7 +6,7 @@ import Information from "../Modal/Information";
 import toast from "react-hot-toast";
 
 export default function CardRankInput() {
-    const { flash } = usePage().props;
+    const { flash, information } = usePage().props;
 
     const { data, setData, post, processing, errors } = useForm();
 
@@ -37,13 +37,16 @@ export default function CardRankInput() {
                             </h3>
                         </div>
                         <div className="relative ml-4 mt-4 sm:mr-8">
-                            <Information />
+                            <Information Information={information} />
                         </div>
                     </div>
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 mb-4">
                     <form onSubmit={handleSubmit}>
-                        <RankInputTable onChange={(data) => setData(data)} />
+                        <RankInputTable
+                            onChange={(data) => setData(data)}
+                            Information={information}
+                        />
 
                         <div className="w-full flex justify-center">
                             <button

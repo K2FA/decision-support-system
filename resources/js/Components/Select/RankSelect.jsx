@@ -4,6 +4,7 @@ export default function RankSelect({
     onChange,
     alternativeName,
     alternativeId,
+    Information,
 }) {
     const handleChange = useCallback(
         (e) => {
@@ -11,6 +12,8 @@ export default function RankSelect({
         },
         [onChange, alternativeId]
     );
+
+    // console.log(Information);
 
     return (
         <>
@@ -22,9 +25,9 @@ export default function RankSelect({
             >
                 <option value="0">0</option>
                 <option value="1">1</option>
+                <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="7">7</option>
+                <option value="4">4</option>
             </select>
         </>
     );

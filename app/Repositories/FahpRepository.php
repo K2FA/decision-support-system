@@ -118,6 +118,7 @@ class FahpRepository
         try {
             $tfn = TfnInput::with('criteria_input')->where('random_token', $token)->get();
 
+
             $dataTfn = [];
             $store = [];
 
@@ -135,7 +136,6 @@ class FahpRepository
                 }
             }
 
-
             foreach ($dataTfn as $index => $value) {
                 $store[] = [
                     'name' => $index,
@@ -143,8 +143,6 @@ class FahpRepository
                     'random_token' => $token,
                 ];
             }
-
-            // dd($dataTfn, $store);
 
             Sintesis::insert($store);
 
