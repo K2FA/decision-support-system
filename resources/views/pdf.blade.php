@@ -60,7 +60,7 @@
     </table>
 
     {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Data Perangkingan ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-    <h3>Data Input Perangkingan:</h3>
+    <h3>Data Input Bobot Alternatif:</h3>
     <table>
         <thead>
             <tr>

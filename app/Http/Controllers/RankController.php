@@ -36,8 +36,6 @@ class RankController extends Controller
 
         $goals = Goal::all();
 
-        // dd($goal_selects);
-
         $naturals = Natural::with('criteria')->get()->groupBy('criteria_id');
         $full_washes = FullWash::with('criteria')->get()->groupBy('criteria_id');
         $honeys = Honey::with('criteria')->get()->groupBy('criteria_id');
@@ -99,9 +97,7 @@ class RankController extends Controller
                 ];
             }
 
-
             RankInputData::insert($store);
-
 
             $status = true;
 
