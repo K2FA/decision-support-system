@@ -54,10 +54,10 @@ export default function RankInputTable({ onChange, Information }) {
                                             handleSelectChange(rank.id, value)
                                         }
                                         name={rank.alternative.name}
+                                        criteriaId={rank.criteria_id}
                                         Information={Information}
+                                        RankInputs={rankInputs}
                                     />
-
-                                    {/* {`${alternative.id}_${rank.criteria.id}`} */}
                                 </td>
                             ))}
                         </tr>

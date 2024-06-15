@@ -1,11 +1,14 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function RankSelect({
     onChange,
     alternativeName,
     alternativeId,
+    criteriaId,
     Information,
 }) {
+    const [option, setOption] = useState([]);
+
     const handleChange = useCallback(
         (e) => {
             onChange(e.target.value, alternativeId);
@@ -13,7 +16,16 @@ export default function RankSelect({
         [onChange, alternativeId]
     );
 
-    // console.log(Information);
+    useEffect(() => {
+        const filteredOptions = Information[criteriaId] || [];
+
+        const formattedOptions = filteredOptions.map((opt) => ({
+            value: opt.weight,
+            label: opt.subcriteria,
+        }));
+
+        setOption(formattedOptions);
+    }, [criteriaId, Information]);
 
     return (
         <>
@@ -23,11 +35,12 @@ export default function RankSelect({
                 onChange={handleChange}
                 className="select-input py-0 w-full shadow mb-4 border-none bg-blueGray-50 cursor-pointer"
             >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="">Pilih</option>
+                {option.map((opsi, index) => (
+                    <option key={index} value={opsi.value}>
+                        {opsi.label}
+                    </option>
+                ))}
             </select>
         </>
     );
