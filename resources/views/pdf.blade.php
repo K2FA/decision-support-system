@@ -76,7 +76,6 @@
                     <td>{{ $alter->name }}</td>
                     @foreach ($rankInputs[$alter->id] as $rank_input)
                         @foreach ($rank_datas[$rank_input->id] as $rank)
-                            <td>{{ $rank->value }}</td>
                         @endforeach
                     @endforeach
                 </tr>

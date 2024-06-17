@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('rank_input_data', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(RankInput::class);
+            $table->string('subcriteria');
             $table->double('value');
             $table->string('random_token');
             $table->timestamps();

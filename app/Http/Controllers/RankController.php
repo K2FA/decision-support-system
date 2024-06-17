@@ -74,6 +74,7 @@ class RankController extends Controller
         $status = false;
 
         $req = $request->all();
+
         $key = array_keys($req);
 
         $query = RankInput::whereIn('id', $key)->get();
@@ -92,7 +93,8 @@ class RankController extends Controller
             foreach ($req as $alternative_id => $bobot) {
                 $store[] = [
                     'rank_input_id' => $alternative_id,
-                    'value' => $bobot,
+                    'subcriteria' => $bobot['label'],
+                    'value' => $bobot['value'],
                     'random_token' => $token,
                 ];
             }
@@ -111,6 +113,7 @@ class RankController extends Controller
 
             return redirect('user/hasil-perangkingan')->with('success', 'Data Berhasil Dibuat!');
         } catch (\Throwable $th) {
+            dd($th);
             DB::rollBack();
             return redirect()->back()->with('failed', 'Data Gagal Dibuat!');
         }

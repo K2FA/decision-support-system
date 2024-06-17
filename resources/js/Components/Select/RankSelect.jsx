@@ -11,9 +11,16 @@ export default function RankSelect({
 
     const handleChange = useCallback(
         (e) => {
-            onChange(e.target.value, alternativeId);
+            const selectedValue = e.target.value;
+            const selectedOption = option.find(
+                (opt) => opt.value == selectedValue
+            );
+
+            if (selectedOption) {
+                onChange(selectedOption, alternativeId);
+            }
         },
-        [onChange, alternativeId]
+        [onChange, option, alternativeId]
     );
 
     useEffect(() => {

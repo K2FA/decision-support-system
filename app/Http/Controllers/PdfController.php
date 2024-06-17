@@ -33,44 +33,21 @@ class PdfController extends Controller
         $anhipros = Anhipro::with('CriteriaInput')->where('random_token', $token)->get()->groupBy('criteria_input_id');
         $rankInputs = RankInput::with('criteria', 'alternative')->get()->groupBy('alternative_id');
         $rank_datas = RankInputData::with('RankInput')->where('random_token', $token)->get()->groupBy('rank_input_id');
-        $goal_selects = GoalSelect::where('random_token', $token)->get();
 
-        $naturals = Natural::with('criteria')->get()->groupBy('criteria_id');
-        $full_washes = FullWash::with('criteria')->get()->groupBy('criteria_id');
-        $honeys = Honey::with('criteria')->get()->groupBy('criteria_id');
-
-        $goals = Goal::all();
-
-        $subcriteria = collect();
-
-        foreach ($goal_selects as $goal_select) {
-            foreach ($goals as $goal) {
-                if ($goal_select->choice == 'Natural' && $goal->name == 'Natural') {
-                    $subcriteria = $naturals;
-                } else if ($goal_select->choice == 'Full Wash' && $goal->name == 'Full Wash') {
-                    $subcriteria = $full_washes;
-                } else if ($goal_select->choice == 'Honey' && $goal->name == 'Honey') {
-                    $subcriteria = $honeys;
-                }
-            }
-        }
-
-        // dd($rank_datas);
 
         if ($rank_results->isEmpty()) {
             return response()->json(['error' => 'No data found'], 404);
         }
 
         $html = view('pdf', compact(
-            '
-            rank_results',
+            'rank_results',
             'anhipros',
             'criterias',
             'criteria_input',
             'alternative',
             'rankInputs',
             'rank_datas',
-            'subcriteria'
+
         ))
             ->render();
 
@@ -78,7 +55,7 @@ class PdfController extends Controller
         $mpdf->WriteHTML($html);
         $pdfOutput = $mpdf->Output('', 'S');
 
-        // dd($html);
+        dd($rank_datas, $html);
 
         return response($pdfOutput, 200)
             ->header('Content-Type', 'application/pdf')

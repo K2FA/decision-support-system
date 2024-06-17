@@ -12,6 +12,7 @@ class RankInputData extends Model
 
     protected $fillable = [
         'rank_input_id',
+        'subcriteria',
         'value',
         'random_token',
     ];
