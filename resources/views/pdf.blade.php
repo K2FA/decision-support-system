@@ -27,6 +27,15 @@
             padding: 8px;
             text-align: left;
         }
+
+        .criteria-name,
+        .alternative-name {
+            font-weight: bold
+        }
+
+        .alternative-weight {
+            font-size: 12px
+        }
     </style>
 </head>
 
@@ -47,7 +56,7 @@
         <tbody>
             @foreach ($criterias as $criteria)
                 <tr>
-                    <td>{{ $criteria->name }}</td>
+                    <td class="criteria-name">{{ $criteria->name }}</td>
                     @foreach ($criteria_input[$criteria->id] as $crit)
                         @foreach ($anhipros[$crit->id] as $anhipro)
                             <td>{{ $anhipro->result }}</td>
@@ -73,9 +82,10 @@
         <tbody>
             @foreach ($alternative as $alter)
                 <tr>
-                    <td>{{ $alter->name }}</td>
+                    <td class="alternative-name">{{ $alter->name }}</td>
                     @foreach ($rankInputs[$alter->id] as $rank_input)
                         @foreach ($rank_datas[$rank_input->id] as $rank)
+                            <td class="alternative-weight">{{ $rank->subcriteria }}</td>
                         @endforeach
                     @endforeach
                 </tr>

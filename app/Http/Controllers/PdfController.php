@@ -55,7 +55,7 @@ class PdfController extends Controller
         $mpdf->WriteHTML($html);
         $pdfOutput = $mpdf->Output('', 'S');
 
-        dd($rank_datas, $html);
+        // dd($rank_datas, $html);
 
         return response($pdfOutput, 200)
             ->header('Content-Type', 'application/pdf')
