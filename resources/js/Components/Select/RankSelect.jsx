@@ -11,13 +11,17 @@ export default function RankSelect({
 
     const handleChange = useCallback(
         (e) => {
-            const selectedValue = e.target.value;
-            const selectedOption = option.find(
-                (opt) => opt.value == selectedValue
-            );
+            // const selectedValue = e.target.value;
+            const selectedIndex = e.target.selectedIndex;
+            const selectedOption = e.target.options[selectedIndex];
+
+            // const selectedOption = options.find(
+            //     (opt) => opt.value == selectedValue
+            // );
 
             if (selectedOption) {
-                onChange(selectedOption, alternativeId);
+                const { value, label } = selectedOption;
+                onChange({ value, label }, alternativeId);
             }
         },
         [onChange, option, alternativeId]
@@ -42,9 +46,11 @@ export default function RankSelect({
                 onChange={handleChange}
                 className="select-input py-0 w-full shadow mb-4 border-none bg-blueGray-50 cursor-pointer"
             >
-                <option value="">Pilih</option>
+                <option value="" className="font-bold bg-gray-300">
+                    Pilih
+                </option>
                 {option.map((opsi, index) => (
-                    <option key={index} value={opsi.value}>
+                    <option key={index} value={opsi.value} label={opsi.label}>
                         {opsi.label}
                     </option>
                 ))}

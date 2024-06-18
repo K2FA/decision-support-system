@@ -81,7 +81,7 @@ class FullWashSeeder extends Seeder
                         'weight' => 2
                     ],
                     [
-                        'name' => 'Sedang (18% - 21%)',
+                        'name' => 'Tinggi (18% - 21%)',
                         'weight' => 3
                     ],
                 ]
