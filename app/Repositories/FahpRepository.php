@@ -164,9 +164,9 @@ class FahpRepository
             foreach ($sintesis as $index => $tfn_value) {
                 $tfn_decode = json_decode($tfn_value->tfn);
 
-                $datas[0] += $tfn_decode[0];
-                $datas[1] += $tfn_decode[1];
-                $datas[2] += $tfn_decode[2];
+                number_format($datas[0] += $tfn_decode[0], 3);
+                number_format($datas[1] += $tfn_decode[1], 3);
+                number_format($datas[2] += $tfn_decode[2], 3);
             }
 
 
