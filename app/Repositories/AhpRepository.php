@@ -154,7 +154,7 @@ class AhpRepository
         // insert to DB
         PairwiseComparison::insert([
           'name' => $index,
-          'result' => number_format($criteria_count, 3),
+          'result' => $criteria_count,
           'random_token' => $token
         ]);
       }
@@ -192,8 +192,8 @@ class AhpRepository
           }
         }
 
-        $pw = number_format($amount / 5, 3);
-        $amounts = number_format($amount, 3);
+        $pw = $amount / 5;
+        $amounts = $amount;
 
         $store = [
           [
@@ -250,7 +250,7 @@ class AhpRepository
       foreach ($ratio as $index => $_ratio) {
         $store[] = [
           'name' => $index,
-          'result' => number_format($_ratio, 3),
+          'result' => $_ratio,
           'random_token' => $token,
         ];
       }
@@ -283,7 +283,7 @@ class AhpRepository
 
         $store[] = [
           'name' => $matrix->name,
-          'result' => number_format($hasil / $pw, 3),
+          'result' => $hasil / $pw,
           'random_token' => $token,
         ];
       }
