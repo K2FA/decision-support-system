@@ -16,15 +16,11 @@ export default function CardGoalSelect() {
             <div className="flex w-full justify-center gap-8 flex-wrap">
                 {goalSelects.map((goalSelect) => (
                     <div
-                        className={
-                            goalSelect.id % 2 == 0
-                                ? "natural-goal card w-1/4 bg-base-100 shadow-xl"
-                                : "honey-goal card w-1/4 bg-base-100 shadow-xl"
-                        }
+                        className="natural-goal card w-1/4 bg-base-100 shadow-xl"
                         key={goalSelect.id}
                     >
                         <div className="card-body w-full ">
-                            <h2 className="card-title justify-center text-white">
+                            <h2 className="card-title justify-center text-white border-b-2 pb-2">
                                 Proses {goalSelect.name}
                             </h2>
 
