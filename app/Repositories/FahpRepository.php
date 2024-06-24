@@ -201,9 +201,9 @@ class FahpRepository
                 $tfn_decode = json_decode($_sintesis->tfn);
 
                 $datas[] = [
-                    $tfn_decode[0] * (1 / $amount_sintesis_decode[2]),
-                    $tfn_decode[1] * (1 / $amount_sintesis_decode[1]),
-                    $tfn_decode[2] * (1 / $amount_sintesis_decode[0]),
+                    number_format($tfn_decode[0] * (1 / $amount_sintesis_decode[2]), 3),
+                    number_format($tfn_decode[1] * (1 / $amount_sintesis_decode[1]), 3),
+                    number_format($tfn_decode[2] * (1 / $amount_sintesis_decode[0]), 3),
                 ];
             }
 
@@ -269,7 +269,7 @@ class FahpRepository
             foreach ($hasil as $index => $value) {
                 $store[] = [
                     'name' => $index,
-                    'result' => $value,
+                    'result' => number_format($value, 3),
                     'random_token' => $token,
                 ];
             }
@@ -311,7 +311,7 @@ class FahpRepository
             foreach ($min as $index => $value) {
                 $store[] = [
                     'name' => $index,
-                    'result' => $value,
+                    'result' => number_format($value, 3),
                     'random_token' => $token,
                 ];
             }
