@@ -17,7 +17,7 @@ export default function CardConsistencyRatio() {
                     <div className="block sm:flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
                             <h3 className="table-title font-bold tracking-widest text-2xl text-black uppercase pt-2">
-                                Consistency Ratio (CR)
+                                Konsistensi Rasio (CR)
                             </h3>
                         </div>
                     </div>
