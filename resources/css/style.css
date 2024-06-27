@@ -54,8 +54,11 @@
     transform: scale(0.9);
 }
 
-.select-input option{
+.input-select option{
     background-color: #fff;
     color: #334155;
+    cursor: pointer !important;
+    padding: 8px;
 }
+
 

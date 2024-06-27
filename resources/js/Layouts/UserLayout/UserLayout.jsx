@@ -11,7 +11,7 @@ import ResultFahp from "@/Components/Table/ResultFahp";
 import Ranking from "@/Components/Table/Ranking";
 import RankingResult from "@/Components/Table/RankingResult";
 
-import "../../../css/style.css";
+// import "../../../css/style.css";
 import "@/../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 export default function UserLayout({ user }) {

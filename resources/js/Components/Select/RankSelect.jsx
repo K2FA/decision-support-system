@@ -46,7 +46,12 @@ export default function RankSelect({
                 onChange={handleChange}
                 className="select-input py-0 w-full shadow mb-4 border-none bg-blueGray-50 cursor-pointer"
             >
-                <option value="" className="font-bold bg-gray-300">
+                <option
+                    value=""
+                    className="font-bold bg-gray-300"
+                    disabled
+                    selected
+                >
                     Pilih
                 </option>
                 {option.map((opsi, index) => (
