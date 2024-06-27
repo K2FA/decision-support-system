@@ -33,7 +33,8 @@
             font-weight: bold
         }
 
-        .alternative-weight {
+        .alternative-weight,
+        .criteria-label {
             font-size: 12px
         }
     </style>
@@ -59,7 +60,7 @@
                     <td class="criteria-name">{{ $criteria->name }}</td>
                     @foreach ($criteria_input[$criteria->id] as $crit)
                         @foreach ($anhipros[$crit->id] as $anhipro)
-                            <td>{{ $anhipro->result }}</td>
+                            <td class="criteria-label">{{ $anhipro->label }}</td>
                         @endforeach
                     @endforeach
                 </tr>
