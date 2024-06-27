@@ -85,6 +85,7 @@ class InputAhpController extends Controller
                 $store[] = [
                     'criteria_input_id' => $inputID->id,
                     'value' => 1,
+                    'label' => 'sama penting',
                     'random_token' => $random_token,
                     'user_id' => auth()->user()->id,
                 ];
@@ -93,7 +94,8 @@ class InputAhpController extends Controller
             foreach ($req as $criteria_id => $bobot) {
                 $store[] = [
                     'criteria_input_id' => $criteria_id,
-                    'value' => $bobot,
+                    'value' => $bobot['value'],
+                    'label' => $bobot['label'],
                     'random_token' => $random_token,
                     'user_id' => auth()->user()->id,
                 ];
