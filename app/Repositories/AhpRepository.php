@@ -10,6 +10,7 @@ use App\Models\CriteriaInput;
 use App\Models\DevidePw;
 use App\Models\MultiplicationMatrix;
 use App\Models\PairwiseComparison;
+use App\Models\Priority;
 use App\Models\PriorityWeight;
 use Error;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,8 @@ class AhpRepository
   protected function pairwise($comparison, $criteria, $token): bool
   {
     $status = false;
+    $priority = Priority::all();
+
     try {
 
       $pairwise_insert = [];
@@ -82,6 +85,7 @@ class AhpRepository
         $pairwise_insert[] = [
           'criteria_input_id' => $compare->criteria_input_id,
           'result' => $compare->value,
+          'label' => $compare->label,
           'random_token' => $compare->random_token,
         ];
       }
@@ -109,16 +113,25 @@ class AhpRepository
 
         $compare_value = 1 / $_compare;
         $result = 0;
+        $label = "";
+
         if ($compare_value > 1) {
           $result = round($compare_value);
         } else {
           $result = $compare_value;
         }
 
+        foreach ($priority as $prt) {
+          if ($prt->value == $result) {
+            $label = $prt->label;
+          }
+        }
+
         $append_to_pairwise_insert = [
+          'label' => $label,
+          'result' => number_format($result, 3),
           'criteria_input_id' => $cnig->id,
           'random_token' => $token,
-          'result' => number_format($result, 3),
         ];
 
         $pairwise_insert[] = $append_to_pairwise_insert;

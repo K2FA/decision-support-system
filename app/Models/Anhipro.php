@@ -13,6 +13,7 @@ class Anhipro extends Model
     protected $fillable = [
         'criteria_input_id',
         'result',
+        'label',
         'random_token',
     ];
 

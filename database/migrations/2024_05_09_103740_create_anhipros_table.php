@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(CriteriaInput::class);
             $table->double('result');
+            $table->string('label');
             $table->string('random_token', 32);
             $table->timestamps();
         });
