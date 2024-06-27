@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CriteriaInputSeeder::class,
             RankInputSeeder::class,
+            PrioritySeeder::class,
         ]);
     }
 }

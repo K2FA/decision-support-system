@@ -7,6 +7,7 @@ use App\Models\Criteria;
 use App\Models\CriteriaInput;
 use App\Models\Goal;
 use App\Models\GoalSelect;
+use App\Models\Priority;
 use App\Repositories\AhpRepository;
 use App\Repositories\FahpRepository;
 use Illuminate\Http\Request;
@@ -34,10 +35,12 @@ class InputAhpController extends Controller
 
         $criterias = Criteria::all();
         $criteria_input = CriteriaInput::with('Criteria')->get()->groupBy('kriteria_id');
+        $priority = Priority::all();
 
         return Inertia::render('User/User', compact(
             'criterias',
             'criteria_input',
+            'priority',
         ));
     }
 
