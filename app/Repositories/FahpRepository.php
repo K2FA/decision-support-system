@@ -78,7 +78,6 @@ class FahpRepository
     {
         $status = false;
 
-
         try {
             $chang = Chang::all();
 
@@ -90,6 +89,7 @@ class FahpRepository
                     $ahp_array = $ahp->toArray();
 
                     unset($ahp_array['id']);
+                    unset($ahp_array['label']);
                     unset($ahp_array['created_at']);
                     unset($ahp_array['updated_at']);
 
@@ -102,9 +102,9 @@ class FahpRepository
 
             TfnInput::insert($tfn_chang);
 
-
             $status = true;
         } catch (\Throwable $th) {
+            dd($th);
         }
         return $status;
     }

@@ -118,7 +118,7 @@ class AhpRepository
         if ($compare_value > 1) {
           $result = round($compare_value);
         } else {
-          $result = $compare_value;
+          $result = number_format($compare_value, 3);
         }
 
         foreach ($priority as $prt) {
