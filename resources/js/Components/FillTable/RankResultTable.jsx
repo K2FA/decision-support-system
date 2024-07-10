@@ -1,7 +1,7 @@
-import { usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function RankResultTable({ RankResult }) {
+    console.log(RankResult);
     return (
         <>
             <table className="items-center w-full bg-transparent border-collapse">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use app\Helper\AuthCheck;
 use App\Models\Criteria;
+use App\Models\CriteriaInput;
+use App\Models\RankInput;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -80,6 +82,15 @@ class CriteriaController extends Controller
      */
     public function destroy(Criteria $criterion)
     {
+        CriteriaInput::query()
+            ->where('kriteria_id', $criterion->id)
+            ->orWhere('jenis', $criterion->id)
+            ->delete();
+
+        RankInput::query()
+            ->where('criteria_id', $criterion->id)
+            ->delete();
+
         $criterion->delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }

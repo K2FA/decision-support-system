@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use app\Helper\AuthCheck;
 use App\Models\Alternative;
+use App\Models\RankInput;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -78,6 +79,10 @@ class AlternativeController extends Controller
      */
     public function destroy(Alternative $alternative)
     {
+        RankInput::query()
+            ->where('alternative_id', $alternative->id)
+            ->delete();
+
         $alternative->delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }

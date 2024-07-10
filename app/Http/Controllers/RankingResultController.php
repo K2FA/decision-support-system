@@ -20,7 +20,6 @@ class RankingResultController extends Controller
         $token = session()->get('random_token')[0];
         $rank_results = FinalRank::with("Alternative", 'GoalSelect')->where('random_token', $token)
             ->latest()
-            ->take(7)
             ->get();
 
         return Inertia::render('User/User', compact('rank_results'));

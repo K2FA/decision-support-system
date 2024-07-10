@@ -58,7 +58,7 @@ export default function AlternativeTable() {
                                 </Link>
                             </td>
                             <td className="px-2 w-36 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-white text-center">
-                                <Link
+                                <button
                                     className="sm:w-2/3 bg-red-500 hover:bg-red-700 rounded p-1"
                                     onClick={() =>
                                         handleDeleteBtn(alternative.id)
@@ -67,7 +67,7 @@ export default function AlternativeTable() {
                                 >
                                     <i className="fa-solid fa-trash mr-1 text-xs"></i>{" "}
                                     Delete
-                                </Link>
+                                </button>
                             </td>
                         </tr>
                     ))
