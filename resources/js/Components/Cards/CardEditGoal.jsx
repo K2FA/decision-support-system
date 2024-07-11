@@ -2,16 +2,24 @@ import { useForm, router, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 
 export default function CardEditGoal() {
-    const [goal, setGoal] = useState("");
+    // Get Data from database
+    const { goals } = usePage().props;
 
+    // Fill the input form with the data you want to edit
+    const [goal, setGoal] = useState(goals.name || "");
+
+    // Onchange action function
     const handleOnChange = (e) => {
         setGoal(e.target.value);
     };
 
+    // Submit action
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const id = new URL(window.location).pathname.split("/")[3];
+        // const id = new URL(window.location).pathname.split("/")[3];
+
+        const id = goals.id;
 
         router.put(`/table/goal/${id}`, {
             name: goal,

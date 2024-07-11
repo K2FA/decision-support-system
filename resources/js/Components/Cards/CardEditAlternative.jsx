@@ -1,17 +1,25 @@
-import { router } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 
 export default function CardEditAlternative() {
-    const [alternative, setAlternative] = useState("");
+    // Get Data from database
+    const { alternatives } = usePage().props;
 
+    // Fill the input form with the data you want to edit
+    const [alternative, setAlternative] = useState(alternatives.name || "");
+
+    // Onchange action function
     const handleOnChange = (e) => {
         setAlternative(e.target.value);
     };
 
+    // Submit action
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const id = new URL(window.location).pathname.split("/")[3];
+        // const id = new URL(window.location).pathname.split("/")[3];
+
+        const id = alternatives.id;
 
         router.put(`/table/alternative/${id}`, {
             name: alternative,

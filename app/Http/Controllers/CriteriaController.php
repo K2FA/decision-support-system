@@ -43,6 +43,20 @@ class CriteriaController extends Controller
             'name' => ['required', 'string'],
         ]);
         Criteria::create($valid);
+
+        // Untuk mengambil data tambahan baru
+        // $ids = Criteria::query()->whereNot('id', $criteria->id)->get();
+
+        // // Untuk menambahkan nilai yang sama penting
+        // CriteriaInput::create(['kriteria_id' => $criteria->id, 'jenis' => $criteria->id]);
+
+        // foreach ($ids as $id) {
+        //     CriteriaInput::create(['kriteria_id' => $criteria->id, 'jenis' => $id->id]);
+        //     CriteriaInput::create(['kriteria_id' => $id->id, 'jenis' => $criteria->id]);
+
+        //     // RankInput::create(['criteria_id' => $criteria->id]);
+        // }
+
         return redirect()->route('criteria.index');
     }
 
@@ -57,9 +71,10 @@ class CriteriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Criteria $criteria, Request $request)
+    public function edit($id)
     {
-        $criterias = $criteria->find($request->id);
+        $criterias = Criteria::find($id);
+
         return Inertia::render('Admin/Form/Add', compact('criterias'));
     }
 

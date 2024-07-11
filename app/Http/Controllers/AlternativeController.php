@@ -55,9 +55,9 @@ class AlternativeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alternative $alternative, Request $request)
+    public function edit($id)
     {
-        $alternatives = $alternative->find($request->id);
+        $alternatives = Alternative::find($id);
         return Inertia::render('Admin/Form/Add', compact('alternatives'));
     }
 

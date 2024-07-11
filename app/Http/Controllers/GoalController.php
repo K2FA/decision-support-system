@@ -58,9 +58,9 @@ class GoalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Goal $goal, Request $request)
+    public function edit($id)
     {
-        $goals = $goal->find($request->id);
+        $goals = Goal::find($id);
         return Inertia::render('Admin/Form/Add', compact('goals'));
     }
 

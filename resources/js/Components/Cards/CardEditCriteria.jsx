@@ -1,17 +1,25 @@
-import { router } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 
 export default function CardEditCriteria() {
-    const [criteria, setCriteria] = useState("");
+    // Get Data from database
+    const { criterias } = usePage().props;
 
+    // Fill the input form with the data you want to edit
+    const [criteria, setCriteria] = useState(criterias.name || "");
+
+    // Onchange action function
     const handleOnChange = (e) => {
         setCriteria(e.target.value);
     };
 
+    // Submit action
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const id = new URL(window.location).pathname.split("/")[3];
+        // const id = new URL(window.location).pathname.split("/")[3];
+
+        const id = criterias.id;
 
         router.put(`/table/criteria/${id}`, {
             name: criteria,

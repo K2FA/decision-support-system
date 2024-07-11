@@ -20,8 +20,6 @@ export default function CriteriaTable() {
         });
     };
 
-    console.log(flash);
-
     return (
         <table className="items-center w-full bg-transparent border-collapse">
             <thead>
