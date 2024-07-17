@@ -37,6 +37,10 @@
         .criteria-label {
             font-size: 12px
         }
+
+        .hasil-title {
+            margin-top: 5rem;
+        }
     </style>
 </head>
 
@@ -95,7 +99,7 @@
     </table>
 
     {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hasil Perhitungan ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-    <h3>Hasil Perhitungan:</h3>
+    <h3 class="hasil-title">Hasil Perhitungan:</h3>
     <table>
         <thead>
             <tr>
