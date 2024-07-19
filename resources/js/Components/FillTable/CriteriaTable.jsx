@@ -32,7 +32,7 @@ export default function CriteriaTable() {
                     </th>
 
                     <th className="px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap font-semibold text-center"></th>
-                    <th className="px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap font-semibold text-center"></th>
+                    {/* <th className="px-6 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap font-semibold text-center"></th> */}
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +55,7 @@ export default function CriteriaTable() {
                                     Edit
                                 </Link>
                             </td>
-                            <td className="px-2 w-36 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-white text-center">
+                            {/* <td className="px-2 w-36 align-middle border border-solid py-3 text-sm  border-slate-300 whitespace-nowrap text-white text-center">
                                 <button
                                     className="sm:w-2/3 bg-red-500 hover:bg-red-700 rounded p-1"
                                     as="button"
@@ -64,7 +64,7 @@ export default function CriteriaTable() {
                                     <i className="fa-solid fa-trash mr-1 text-xs"></i>
                                     Delete
                                 </button>
-                            </td>
+                            </td> */}
                         </tr>
                     ))
                 ) : (
