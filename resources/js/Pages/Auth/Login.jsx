@@ -50,7 +50,7 @@ export default function Login({ status, canResetPassword }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                            <div className="flex-auto px-4 lg:px-10 py-6 pt-0">
                                 <form onSubmit={submit}>
                                     <div className="relative w-full mb-3">
                                         <label
@@ -108,16 +108,17 @@ export default function Login({ status, canResetPassword }) {
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                        <div className="flex flex-wrap mt-6 relative">
-                            <div className="w-1/2"></div>
-                            <div className="w-1/2 text-right">
-                                <Link
-                                    href="/register"
-                                    className="text-blueGray-200"
-                                >
-                                    <small>Create new account</small>
-                                </Link>
+
+                            <div className="flex flex-wrap pr-10 pb-6 relative">
+                                <div className="w-1/2"></div>
+                                <div className="w-1/2 text-right">
+                                    <Link
+                                        href="/register"
+                                        className="text-blueGray-600"
+                                    >
+                                        <small>Create new account</small>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
