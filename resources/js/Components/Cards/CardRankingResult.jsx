@@ -4,7 +4,7 @@ import { usePage, Link } from "@inertiajs/react";
 import toast from "react-hot-toast";
 
 export default function CardRankingResult() {
-    const { rank_results, flash } = usePage().props;
+    const { rank_results, flash, ranks } = usePage().props;
 
     useEffect(() => {
         if (flash.success) {
@@ -15,6 +15,7 @@ export default function CardRankingResult() {
     const handlePdf = () => {
         window.location.href = "/user/generate-pdf";
     };
+
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -37,7 +38,7 @@ export default function CardRankingResult() {
                     </div>
                 </div>
                 <div className="block w-full overflow-x-auto p-2 sm:p-4 ">
-                    <RankResultTable RankResult={rank_results} />
+                    <RankResultTable RankResult={ranks} />
 
                     <div className="w-full flex justify-center mt-4">
                         <Link

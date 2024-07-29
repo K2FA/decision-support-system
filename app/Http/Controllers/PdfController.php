@@ -24,8 +24,27 @@ class PdfController extends Controller
         $token = session()->get('random_token')[0];
         $rank_results = FinalRank::with("Alternative", 'GoalSelect')->where('random_token', $token)
             ->latest()
-            ->take(7)
             ->get();
+
+        $ranks = [];
+
+        foreach ($rank_results as $rank) {
+            if ($rank->result != 0) {
+                $ranks[] = [
+                    'id' => $rank->id,
+                    'rank' => $rank->rank,
+                    'alternative_id' => $rank->alternative_id,
+                    'goal_select_id' => $rank->goal_select_id,
+                    'comparison_input_id' => $rank->comparison_input_id,
+                    'result' => $rank->result,
+                    'random_token' => $rank->random_token,
+                    'alternative_name' => $rank->Alternative->name,
+                    'goal_select_name' => $rank->GoalSelect->choice,
+                ];
+            }
+        }
+
+        // dd($ranks[0]['goal_select_name']);
 
         $criterias = Criteria::all();
         $alternative = Alternative::all();
@@ -40,7 +59,7 @@ class PdfController extends Controller
         }
 
         $html = view('pdf', compact(
-            'rank_results',
+            'ranks',
             'anhipros',
             'criterias',
             'criteria_input',

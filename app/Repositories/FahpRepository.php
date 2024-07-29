@@ -104,7 +104,6 @@ class FahpRepository
 
             $status = true;
         } catch (\Throwable $th) {
-            dd($th);
         }
         return $status;
     }

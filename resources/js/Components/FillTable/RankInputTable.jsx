@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 
 import RankSelect from "../Select/RankSelect";
 
-export default function RankInputTable({ onChange, Information }) {
+export default function RankInputTable({ onChange, Information, selectBoxId }) {
     const { rankInputs, criterias, alternatives } = usePage().props;
 
     const [formRankData, setFormRankData] = useState({});
@@ -17,6 +17,10 @@ export default function RankInputTable({ onChange, Information }) {
             onChange({ ...formRankData, [id]: value });
         },
         [formRankData, onChange]
+    );
+
+    const filteredAlternatives = alternatives.filter((alternative) =>
+        selectBoxId.includes(alternative.id)
     );
 
     return (
@@ -36,8 +40,8 @@ export default function RankInputTable({ onChange, Information }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {alternatives.map((alternative, index) => (
-                        <tr key={index}>
+                    {filteredAlternatives.map((alternative, index) => (
+                        <tr key={alternative.id}>
                             <td className=" px-4 w-1/6 sm:px-4 align-middle border border-solid py-3 text-sm sm:text-base text-blueGray-700 border-slate-300 whitespace-nowrap text-start font-bold">
                                 {alternative.name}
                             </td>

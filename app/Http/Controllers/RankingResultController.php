@@ -22,6 +22,14 @@ class RankingResultController extends Controller
             ->latest()
             ->get();
 
-        return Inertia::render('User/User', compact('rank_results'));
+        $ranks = [];
+
+        foreach ($rank_results as $rank) {
+            if ($rank->result != 0) {
+                $ranks[] = $rank;
+            }
+        }
+
+        return Inertia::render('User/User', compact('rank_results', 'ranks'));
     }
 }

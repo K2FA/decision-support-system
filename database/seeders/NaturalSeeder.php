@@ -56,15 +56,15 @@ class NaturalSeeder extends Seeder
                 'criteria_id' => 3,
                 'subcriteria' => [
                     [
-                        'name' => 'Kecil',
+                        'name' => 'Kecil (≤ 0,7 cm)',
                         'weight' => 1
                     ],
                     [
-                        'name' => 'Besar',
+                        'name' => 'Besar (1,1 cm - 1,5 cm)',
                         'weight' => 2
                     ],
                     [
-                        'name' => 'Sedang',
+                        'name' => 'Sedang (0,8 cm - 1 cm)',
                         'weight' => 3
                     ],
                 ]

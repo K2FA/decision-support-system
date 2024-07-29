@@ -37,15 +37,11 @@
         .criteria-label {
             font-size: 12px
         }
-
-        .hasil-title {
-            margin-top: 5rem;
-        }
     </style>
 </head>
 
 <body>
-    <h1>Proses Pasca Panen {{ $rank_results[0]->GoalSelect->choice }}</h1>
+    <h1>Proses Pasca Panen {{ $ranks[0]['goal_select_name'] }}</h1>
 
     {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Data Input ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
     <h3>Data Input Perbandingan Berpasangan:</h3>
@@ -85,10 +81,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($alternative as $alter)
+            @foreach ($ranks as $alter)
                 <tr>
-                    <td class="alternative-name">{{ $alter->name }}</td>
-                    @foreach ($rankInputs[$alter->id] as $rank_input)
+                    <td class="alternative-name">{{ $alter['alternative_name'] }}</td>
+                    @foreach ($rankInputs[$alter['id']] as $rank_input)
                         @foreach ($rank_datas[$rank_input->id] as $rank)
                             <td class="alternative-weight">{{ $rank->subcriteria }}</td>
                         @endforeach
@@ -110,12 +106,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($rank_results as $index => $result)
+            @foreach ($ranks as $index => $result)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $result->Alternative->name }}</td>
-                    <td>{{ $result->result }}</td>
-                    <td>{{ $result->rank }}</td>
+                    <td>{{ $result['alternative_name'] }}</td>
+                    <td>{{ $result['result'] }}</td>
+                    <td>{{ $result['rank'] }}</td>
                 </tr>
             @endforeach
         </tbody>
