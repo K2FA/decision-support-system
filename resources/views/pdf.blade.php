@@ -84,7 +84,7 @@
             @foreach ($ranks as $alter)
                 <tr>
                     <td class="alternative-name">{{ $alter['alternative_name'] }}</td>
-                    @foreach ($rankInputs[$alter['id']] as $rank_input)
+                    @foreach ($rankInputs[$alter['alternative_id']] as $rank_input)
                         @foreach ($rank_datas[$rank_input->id] as $rank)
                             <td class="alternative-weight">{{ $rank->subcriteria }}</td>
                         @endforeach
