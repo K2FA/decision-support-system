@@ -4,7 +4,7 @@ export default function RankResultTable({ RankResult }) {
     const getRankColor = (result) => {
         if (result <= 1.5) {
             return "Tidak Rekomendasi";
-        } else if (result <= 2.3) {
+        } else if (result <= 2.4) {
             return "Kurang Rekomendasi";
         } else if (result <= 3) {
             return "Rekomendasi";
