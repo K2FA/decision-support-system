@@ -4,7 +4,7 @@ import AdminNavbar from "@/Components/Navbars/Navbar";
 import Header from "@/Components/Header/HeaderAdmin";
 import Sidebar from "@/Components/Sidebars/Sidebar";
 import Footer from "@/Components/Footers/Footer";
-import CardAddForm from "@/Components/Cards/CardAddForm";
+import CardAddAlternative from "@/Components/Cards/CardAddAlternative";
 import CardEditGoal from "@/Components/Cards/CardEditGoal";
 import CardEditCriteria from "@/Components/Cards/CardEditCriteria";
 import CardEditAlternative from "@/Components/Cards/CardEditAlternative";
@@ -36,7 +36,7 @@ export default function FormAdminLayout({ user }) {
                     ) : alternativeEditPath ? (
                         <CardEditAlternative />
                     ) : (
-                        <CardAddForm />
+                        <CardAddAlternative />
                     )}
 
                     <Footer />

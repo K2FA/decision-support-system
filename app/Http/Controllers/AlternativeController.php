@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use app\Helper\AuthCheck;
 use App\Models\Alternative;
+use App\Models\Criteria;
 use App\Models\RankInput;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class AlternativeController extends Controller
@@ -34,13 +36,22 @@ class AlternativeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Alternative $alternative)
     {
         $valid =  $request->validate([
             'name' => ['required', 'string'],
         ]);
 
-        Alternative::create($valid);
+        $alt = Alternative::create($valid);
+
+        $crits = Criteria::all();
+
+        // RankInput::create(['criteria_id' => $criteria->id, 'alternative_id' => $alternative->id]);
+
+        foreach ($crits as $crit) {
+            RankInput::create(['criteria_id' => $crit->id, 'alternative_id' => $alt->id]);
+        }
+
         return redirect()->route('alternative.index');
     }
 
